@@ -1,73 +1,78 @@
-import { createTheme, ThemeProvider } from "@mui/material/styles";
 import React from "react";
 import ReactDOM from "react-dom";
-import { Provider } from "react-redux";
-import { HashRouter as Router } from "react-router-dom";
-import { createWeb3ReactRoot, Web3ReactProvider } from '@web3-react/core';
-import { NetworkContextName } from './constants';
-import getLibrary from './utils/getLibrary.js';
 import App from "./App";
-import { PoolContextProvider } from "./context/poolContext";
-import { StoreContextProvider } from "./context/store";
-import { ApplicationContextProvider } from "./context/applicationContext";
+import { MoralisProvider } from "react-moralis";
 import "./index.css";
-import store from "./redux/store";
-import reportWebVitals from "./reportWebVitals";
-
-const Web3ProviderNetwork = createWeb3ReactRoot(NetworkContextName);
+import { MoralisDappProvider } from "./providers/MoralisDappProvider/MoralisDappProvider";
+import { createTheme, ThemeProvider } from '@mui/material/styles';
+import CssBaseline from '@mui/material/CssBaseline';
+import { Web3ReactProvider } from '@web3-react/core'
+import { ethers } from 'ethers'
 
 const theme = createTheme({
   palette: {
-    mode: "dark",
+    mode: 'light',
     primary: {
-      main: "#27C498",
+      //main: '#1a90ff',
+      main: '#1cac1d',
     },
-    secondary: {
-      main: "#232227",
-    },
-    text: { main: "#FFFFFF" },
-  },
-  shape: {
-    borderRadius: 20,
+    neutral: {
+      main: '#f8f9f9',
+    }
   },
   typography: {
-    fontSize: 14,
+    fontFamily: ['Poppins', 'sans-serif'].join(','),
   },
   components: {
-    MuiSelect: {
+    MuiButton: {
       styleOverrides: {
-        select: {
-          height: 0,
+        text: {
+          fontWeight: 600,
+          textTransform: 'inherit'
         },
-      },
-    },
+        contained: {
+          fontWeight: 700,
+          textTransform: 'inherit',
+          borderRadius: 25
+        },
+      }
+    }
   },
 });
 
+const POLLING_INTERVAL = 12000
+
+const getLibrary = (provider) => {
+  const library = new ethers.providers.Web3Provider(provider)
+  library.pollingInterval = POLLING_INTERVAL
+  return library
+}
+
+// const APP_ID = process.env.REACT_APP_MORALIS_APPLICATION_ID;
+// const SERVER_URL = process.env.REACT_APP_MORALIS_SERVER_URL;
+
+const APP_ID = "DYFU90AwvC6Ktjxrr31VdJNhAV5UadWBr97duwex";
+
+const SERVER_URL = "https://gq7x7ofh7pyg.usemoralis.com:2053/server";
+
+const Application = () => {
+  return (
+    <MoralisProvider appId={APP_ID} serverUrl={SERVER_URL}>
+      <Web3ReactProvider getLibrary={getLibrary}>
+        <MoralisDappProvider>
+          <ThemeProvider theme={theme}>
+            <CssBaseline />
+            <App />
+          </ThemeProvider>
+          </MoralisDappProvider>
+      </Web3ReactProvider>  
+    </MoralisProvider>
+  );
+};
+
 ReactDOM.render(
-  <React.StrictMode>
-    <Web3ReactProvider getLibrary={getLibrary}>
-      <Web3ProviderNetwork getLibrary={getLibrary}>
-        <Provider store={store}>
-          <ApplicationContextProvider>
-            <StoreContextProvider>
-              <PoolContextProvider>
-                <ThemeProvider theme={theme}>
-                  <Router>
-                    <App />
-                  </Router>
-                </ThemeProvider>
-              </PoolContextProvider>
-            </StoreContextProvider>
-          </ApplicationContextProvider>
-        </Provider>
-      </Web3ProviderNetwork>
-    </Web3ReactProvider>
-  </React.StrictMode>,
+  // <React.StrictMode>
+  <Application />,
+  // </React.StrictMode>,
   document.getElementById("root")
 );
-
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
