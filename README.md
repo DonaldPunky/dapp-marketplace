@@ -27,10 +27,6 @@ Demo: https://launchpad.0xfactory.com/
 Presale Contract: https://0xfactory.com/launchpad-contract
 
 
-
-
-
-
 ## Launch and Setting Up Application
 
 [Read](./docs/launchAndSettingUp.md)
