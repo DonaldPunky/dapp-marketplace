@@ -57,43 +57,15 @@ Please install or have installed the following:
 
 1. Installing Brownie: Brownie is a python framework for smart contracts development,testing and deployments. It's quit like [HardHat](https://hardhat.org) but it uses python for writing test and deployements scripts instead of javascript.
    Here is a simple way to install brownie.
-   ```
-    pip install --user pipx
-    pipx ensurepath
-    # restart your terminal
-    pipx install eth-brownie
-   ```
-   Or if you can't get pipx to work, via pip (it's recommended to use pipx)
     ```
-    pip install eth-brownie
-    ```
-   Install [ganache-cli](https://www.npmjs.com/package/ganache-cli): 
-   ```sh
-    npm install -g ganache-cli
+    npm i
     ```
     
 3. Clone the repo:
    ```sh
-   git clone https://github.com/kaymen99/MarketPlace-dapp.git
+   git clone https://gitlab.com/evolevoting/marketplace-dapp.git
    cd MarketPlace-dapp
    ```
-3. Install Ganache:
-   Ganache is a local blockchain that run on your machine, it's used during development stages because it allows quick smart contract testing and avoids all real         Testnets problems. 
-   You can install ganache from this link : https://trufflesuite.com/ganache/
-   
-   Next, you need to setup the ganache network with brownie :
-   ```sh
-   brownie networks add Ethereum ganache-local host=http://127.0.0.1:7545 chainid=5777
-   ```
-4. Set your environment variables
-   To be able to deploy to real testnets you need to add your PRIVATE_KEY (You can find your PRIVATE_KEY from your ethereum wallet like metamask) and the infura project Id (just create an infura account it's free) to the .env file:
-   ```
-   PRIVATE_KEY=<PRIVATE_KEY>
-   WEB3_INFURA_PROJECT_ID=<< YOUR INFURA PROJECT ID >>
-   ```
-   
-   You'll also need some eth in the testnet, you can get it into your wallet by using a public faucet. 
-
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -150,49 +122,11 @@ The user can find the list of products he is selling and that he is buying on th
 
 <p align="right">(<a href="#top">back to top</a>)</p>
     
-### Scripts
-
-   In the MarketPlace-dapp folder you'll find a directory scripts, it contain all the python code for deploying your contracts and also some useful functions
-
-   The reset.py file is used to remove all previous contracts deployments from build directory:
-   ```sh
-   brownie run scripts/reset.py
-   ```
-   The deploy.py file allow the deployment to the testnet/local-network:
-   ```sh
-   brownie run scripts/deploy.py --network=ganache-local
-   ```
-   The update_front_end.py is used to transfer all the smart contracts data (abi,...) and addresses to the front end in the artifacts directory:
-   ```sh
-   brownie run scripts/update_front_end.py
-   ```
-   
-   After running this 3 cammands, the MarketPlace contract is now deployed and is integrated with the front end
-   
- <p align="right">(<a href="#top">back to top</a>)</p>
-  
- ### Testing
-
-   In the MarketPlace-dapp folder you'll find a directory tests, it contain all the python code used for testing the smart contract functionalities
-   
-   You can run all the tests by :
-   ```sh
-   brownie test
-   ```
-   Or you can test each function individualy:
-   ```sh
-   brownie test -k <function name>
-   ```
-   
-<p align="right">(<a href="#top">back to top</a>)</p>
-   
-### Front-end
+### FullStack
    
    The user interface of this application is build using React JS, it can be started by running: 
    ```sh
-   cd front-end
-   yarn
-   yarn start
+    npm start
    ```
    It uses the following libraries:
       <ul>
@@ -226,7 +160,7 @@ If you have any question or problem running this project just contact me: aymenM
 <!-- LICENSE -->
 ## License
 
-Distributed under the MIT License. See `LICENSE.txt` for more information.
+Distributed under the MIT License. See `LICENSE` for more information.
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
