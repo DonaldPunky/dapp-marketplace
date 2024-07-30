@@ -123,6 +123,9 @@ The app is based on a single global contract called MarketPlace, it contains the
     
 ### FullStack
    
+   ```sh
+    npm i
+   ```
    The user interface of this application is build using React JS, it can be started by running: 
    ```sh
     npm start
