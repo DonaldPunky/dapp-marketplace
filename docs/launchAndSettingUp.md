@@ -20,7 +20,7 @@
 
 5. Go to the Contracts section in the Main settings, you need to set up [Main Launchpad Contracts](https://support.onout.org/hc/1331700057/38/main-launchpad-contracts), and select a network you want to configure:
 
-    - if you have deployed contracts: fill in all options, and save settings via a generated transaction
-    - if you have not deployed contracts: Deploy contracts following the instruction in this settings section and save settings via a generated transaction
+   - if you have deployed contracts: fill in all options, and save settings via a generated transaction
+   - if you have not deployed contracts: Deploy contracts following the instruction in this settings section and save settings via a generated transaction
 
 6. Congratulation!!! You have set up your own Launchpad! Now you can connect to a configured network and surf application features.
