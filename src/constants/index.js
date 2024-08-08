@@ -1,4 +1,4 @@
-import BigNumber from "bignumber.js";
+import BigNumber from 'bignumber.js';
 import { injected, newWalletConnect, newWalletlink } from '../connectors';
 import { networks } from '../constants/networksInfo';
 
@@ -15,7 +15,7 @@ export const WALLET_NAMES = {
   INJECTED: 'Injected',
   METAMASK: 'MetaMask',
   WALLET_CONNECT: 'WalletConnect',
-//   WALLET_LINK: 'Coinbase Wallet',
+  //   WALLET_LINK: 'Coinbase Wallet',
 };
 
 export const SUPPORTED_WALLETS = {
@@ -45,14 +45,14 @@ export const SUPPORTED_WALLETS = {
     color: '#4196FC',
     mobile: true,
   },
-//   WALLET_LINK: {
-//     connector: newWalletlink(STORAGE_NETWORK_ID),
-//     name: WALLET_NAMES.WALLET_LINK,
-//     iconName: 'coinbaseWalletIcon.svg',
-//     description: 'Use Coinbase Wallet app on mobile device',
-//     href: null,
-//     color: '#315CF5',
-//   },
+  //   WALLET_LINK: {
+  //     connector: newWalletlink(STORAGE_NETWORK_ID),
+  //     name: WALLET_NAMES.WALLET_LINK,
+  //     iconName: 'coinbaseWalletIcon.svg',
+  //     description: 'Use Coinbase Wallet app on mobile device',
+  //     href: null,
+  //     color: '#315CF5',
+  //   },
 };
 
 export const NetworkContextName = 'NETWORK';

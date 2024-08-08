@@ -54,7 +54,7 @@ export const newWalletConnect = (chainId) => {
     qrcode: true,
     pollingInterval: 15000,
   });
-}
+};
 
 // export const newWalletlink = (chainId, appName = '', appLogoUrl = '') =>
 //   new WalletLinkConnector({

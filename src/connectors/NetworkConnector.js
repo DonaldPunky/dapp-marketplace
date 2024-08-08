@@ -1,12 +1,11 @@
-import { AbstractConnector } from '@web3-react/abstract-connector'
-import invariant from 'tiny-invariant'
+import { AbstractConnector } from '@web3-react/abstract-connector';
+import invariant from 'tiny-invariant';
 
 class RequestError extends Error {
-    constructor(message, code, data) {
-      super(message)
-    }
+  constructor(message, code, data) {
+    super(message);
   }
-
+}
 
 class MiniRpcProvider {
   isMetaMask = false;
@@ -21,13 +20,13 @@ class MiniRpcProvider {
   #batch = [];
 
   constructor(chainId, url, batchWaitTimeMs) {
-    this.chainId = chainId
-    this.url = url
-    const parsed = new URL(url)
-    this.host = parsed.host
-    this.path = parsed.pathname
+    this.chainId = chainId;
+    this.url = url;
+    const parsed = new URL(url);
+    this.host = parsed.host;
+    this.path = parsed.pathname;
     // how long to wait to batch calls
-    this.batchWaitTimeMs = batchWaitTimeMs ?? 50
+    this.batchWaitTimeMs = batchWaitTimeMs ?? 50;
   }
 
   clearBatch = async () => {
@@ -50,7 +49,9 @@ class MiniRpcProvider {
     }
 
     if (!response.ok) {
-      batch.forEach(({ reject }) => reject(new RequestError(`${response.status}: ${response.statusText}`, -32000)));
+      batch.forEach(({ reject }) =>
+        reject(new RequestError(`${response.status}: ${response.statusText}`, -32000))
+      );
       return;
     }
 
@@ -73,29 +74,31 @@ class MiniRpcProvider {
       } = byKey[result.id];
       if (resolve) {
         if ('error' in result) {
-          reject(new RequestError(result?.error?.message, result?.error?.code, result?.error?.data));
+          reject(
+            new RequestError(result?.error?.message, result?.error?.code, result?.error?.data)
+          );
         } else if ('result' in result) {
           resolve(result.result);
         } else {
-          reject(new RequestError(`Received unexpected JSON-RPC response to ${method} request.`, -32000, result));
+          reject(
+            new RequestError(
+              `Received unexpected JSON-RPC response to ${method} request.`,
+              -32000,
+              result
+            )
+          );
         }
       }
     }
-  }
+  };
 
-  sendAsync = (
-    request,
-    callback,
-  ) => {
+  sendAsync = (request, callback) => {
     this.request(request.method, request.params)
       .then((result) => callback(null, { jsonrpc: '2.0', id: request.id, result }))
       .catch((error) => callback(error, null));
-  }
+  };
 
-  request = async (
-    method,
-    params,
-  ) => {
+  request = async (method, params) => {
     if (typeof method !== 'string') {
       return this.request(method.method, method.params);
     }
@@ -114,9 +117,10 @@ class MiniRpcProvider {
         reject,
       });
     });
-    this.#batchTimeoutId = this.#batchTimeoutId ?? setTimeout(this.clearBatch, this.batchWaitTimeMs);
+    this.#batchTimeoutId =
+      this.#batchTimeoutId ?? setTimeout(this.clearBatch, this.batchWaitTimeMs);
     return promise;
-  }
+  };
 }
 
 export class NetworkConnector extends AbstractConnector {
@@ -124,7 +128,10 @@ export class NetworkConnector extends AbstractConnector {
   #currentChainId;
 
   constructor({ urls, defaultChainId }) {
-    invariant(defaultChainId || Object.keys(urls).length === 1, 'defaultChainId is a required argument with >1 url');
+    invariant(
+      defaultChainId || Object.keys(urls).length === 1,
+      'defaultChainId is a required argument with >1 url'
+    );
     super({ supportedChainIds: Object.keys(urls).map((k) => Number(k)) });
 
     this.#currentChainId = defaultChainId || Number(Object.keys(urls)[0]);
@@ -139,7 +146,11 @@ export class NetworkConnector extends AbstractConnector {
   }
 
   async activate() {
-    return { provider: this.#providers[this.#currentChainId], chainId: this.#currentChainId, account: null };
+    return {
+      provider: this.#providers[this.#currentChainId],
+      chainId: this.#currentChainId,
+      account: null,
+    };
   }
 
   async getProvider() {
