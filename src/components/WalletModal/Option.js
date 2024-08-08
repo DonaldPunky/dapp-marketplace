@@ -12,11 +12,11 @@ const InfoCard = styled.button`
 
   @media (max-width: 540px) {
     min-width: 6rem;
-  };
+  }
 
   @media (max-width: 340px) {
     min-width: 5rem;
-  };
+  }
 `;
 
 const OptionCard = styled(InfoCard)`
@@ -44,11 +44,11 @@ const OptionCardClickable = styled(OptionCard)`
 
   @media (max-width: 540px) {
     width: 4%;
-  };
+  }
 
   @media (max-width: 340px) {
     width: 40%;
-  };
+  }
 `;
 
 const CheckMarkWrapper = styled.div`
@@ -58,7 +58,7 @@ const CheckMarkWrapper = styled.div`
   border-radius: 50%;
   width: 1.4rem;
   height: 1.4rem;
-  background-color: #27AE60;
+  background-color: #27ae60;
   color: #ffffff;
 
   svg {
@@ -76,11 +76,11 @@ const Text = styled.div`
 
   @media (max-width: 540px) {
     font-size: 0.6rem;
-  };
+  }
 
   @media (max-width: 340px) {
     font-size: 0.54rem;
-  };
+  }
 `;
 
 const SubHeader = styled.div`
@@ -104,7 +104,7 @@ const IconWrapper = styled.div`
 
   @media (max-width: 960px) {
     align-items: flex-end;
-  };
+  }
 
   @media (max-width: 540px) {
     & > img,
@@ -112,7 +112,7 @@ const IconWrapper = styled.div`
       height: ${({ size }) => (size ? size - size / 4 + 'px' : '18px')};
       width: ${({ size }) => (size ? size - size / 4 + 'px' : '18px')};
     }
-  };
+  }
 
   @media (max-width: 340px) {
     & > img,
@@ -120,7 +120,7 @@ const IconWrapper = styled.div`
       height: ${({ size }) => (size ? size - size / 3 + 'px' : '16px')};
       width: ${({ size }) => (size ? size - size / 3 + 'px' : '16px')};
     }
-  };
+  }
 `;
 
 export default function Option({
@@ -136,7 +136,6 @@ export default function Option({
   active = false,
   id,
 }) {
-
   const content = (
     <OptionCardClickable
       id={id}
@@ -158,18 +157,14 @@ export default function Option({
       <Text>{header}</Text>
       {subheader && <SubHeader>{subheader}</SubHeader>}
     </OptionCardClickable>
-  )
+  );
   if (link) {
     return (
-      <a
-        target = '_blank'
-        href={link}
-        rel = 'noopener noreferrer'
-      >
+      <a target="_blank" href={link} rel="noopener noreferrer">
         {content}
       </a>
-    )
+    );
   }
 
-  return content
+  return content;
 }

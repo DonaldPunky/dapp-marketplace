@@ -1,10 +1,10 @@
 import { Fragment, useState } from 'react';
-import { Link } from "react-router-dom";
+import { Link } from 'react-router-dom';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
-import Account from "../../account/";
-import Networks from "../../Chains/Networks";
+import Account from '../../account/';
+import Networks from '../../Chains/Networks';
 // import logo from '../../../assets/images/logo-symbol1.svg';
 import logo from '../../../assets/images/logo-elo.png';
 import Navbar from './Navbar';
@@ -18,14 +18,12 @@ import SideDrawer from './SideDrawer';
 //   { label: "Gallery", href: "/gallery" },
 // ]
 
-const mainLinks = [
-{ label: "Home", href: "/" },
-]
+const mainLinks = [{ label: 'Home', href: '/' }];
 
-const presaleLink = { 
-  label: "Pre-sale", 
-  href: "/pre-sale" 
-}
+const presaleLink = {
+  label: 'Pre-sale',
+  href: '/pre-sale',
+};
 
 // const bridgeLink = {
 //   label: "Bridge",
@@ -33,13 +31,13 @@ const presaleLink = {
 // }
 
 //const comingSoonLink = ["Swap", "Mint", "Stake"];
-const comingSoonLink = ["Stake"];
+const comingSoonLink = ['Stake'];
 
 const moreMenuLinks = [
   // { label: "Transactions", href: "/transactions" },
   // { label: "NFTs", href: "/nfts" },
-  { label: "About us", href: "/about" },
-] 
+  { label: 'About us', href: '/about' },
+];
 
 const MainNavigation = () => {
   const [mobileDrawerOpen, setMobileDrawerOpen] = useState(false);
@@ -60,11 +58,9 @@ const MainNavigation = () => {
         color="inherit"
         enableColorOnDark
         elevation={0}
-        sx={{bgcolor: 'rgba(255,255,255,0.72)', backdropFilter: 'blur(20px)'}}
+        sx={{ bgcolor: 'rgba(255,255,255,0.72)', backdropFilter: 'blur(20px)' }}
       >
-        <Toolbar 
-          sx={{borderBottom: 1, borderColor: "grey.100"}}
-        >
+        <Toolbar sx={{ borderBottom: 1, borderColor: 'grey.100' }}>
           <IconButton
             color="inherit"
             aria-label="open drawer"
@@ -74,28 +70,25 @@ const MainNavigation = () => {
           >
             <MenuIcon />
           </IconButton>
-          <Box sx={{marginRight: "auto"}}>
-            <Link to="/" style={{marginRight: "auto"}}>
-              <img 
-                src={logo} 
-                alt="ELO logo" 
-                width="35"
-              />
+          <Box sx={{ marginRight: 'auto' }}>
+            <Link to="/" style={{ marginRight: 'auto' }}>
+              <img src={logo} alt="ELO logo" width="35" />
             </Link>
           </Box>
           <Box sx={{ display: { xs: 'none', md: 'block' } }}>
-            <Navbar 
+            <Navbar
               mainLinks={mainLinks}
               moreMenuLinks={moreMenuLinks}
               comingSoonLink={comingSoonLink}
               // bridgeLink={bridgeLink}
               presaleLink={presaleLink}
-              handleClickContracts={handleContractsDialogToggle} />
+              handleClickContracts={handleContractsDialogToggle}
+            />
           </Box>
-          <Box sx={{marginLeft: "auto"}}>
+          <Box sx={{ marginLeft: 'auto' }}>
             <Networks />
           </Box>
-          <Box sx={{ml: 1}}>
+          <Box sx={{ ml: 1 }}>
             <Account />
           </Box>
         </Toolbar>
@@ -107,14 +100,11 @@ const MainNavigation = () => {
         comingSoonLink={comingSoonLink}
         onClose={handleDrawerToggle}
         open={mobileDrawerOpen}
-        handleClickContracts={handleContractsDialogToggle} 
+        handleClickContracts={handleContractsDialogToggle}
       />
-      <Contracts 
-        open={contractsDialogOpen} 
-        handleClose={handleContractsDialogToggle} 
-      />
+      <Contracts open={contractsDialogOpen} handleClose={handleContractsDialogToggle} />
     </Fragment>
   );
-}
+};
 
 export default MainNavigation;

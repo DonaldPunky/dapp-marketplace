@@ -1,23 +1,21 @@
-import { useWeb3React } from "@web3-react/core";
-import BigNumber from "bignumber.js";
-import React from "react";
-import { Badge } from "react-bootstrap";
-import { ETHER } from "../../constants";
-import { useApplicationContext } from "../../context/applicationContext";
-import { usePoolContext } from "../../context/poolContext";
-import * as s from "../../styles/global";
-import { utils } from "../../utils";
+import { useWeb3React } from '@web3-react/core';
+import BigNumber from 'bignumber.js';
+import React from 'react';
+import { Badge } from 'react-bootstrap';
+import { ETHER } from '../../constants';
+import { useApplicationContext } from '../../context/applicationContext';
+import { usePoolContext } from '../../context/poolContext';
+import * as s from '../../styles/global';
+import { utils } from '../../utils';
 // import { getRouterName } from "../../utils/utils";
-import TokenInfo from "./tokenInfo";
+import TokenInfo from './tokenInfo';
 
 const PoolInfoRenderer = (props) => {
   const { idoAddress } = props;
 
   const { library } = useWeb3React();
 
-  const {
-    baseCurrencySymbol
-  } = useApplicationContext();
+  const { baseCurrencySymbol } = useApplicationContext();
 
   const poolContext = usePoolContext();
 
@@ -60,49 +58,53 @@ const PoolInfoRenderer = (props) => {
           {`${ETHER.div(idoInfo.tokenRate)} ${idoInfo.tokenSymbol}/${baseCurrencySymbol}`}
         </s.Container>
         <s.SpacerSmall />
-        {
-          isAddLiquidityEnabled && <s.Container fd="row" jc="space-between">
+        {isAddLiquidityEnabled && (
+          <s.Container fd="row" jc="space-between">
             <s.TextID fw="700">Listing rate</s.TextID>
             {`${ETHER.div(idoInfo.listingRate)} ${idoInfo.tokenSymbol}/${baseCurrencySymbol}`}
           </s.Container>
-        }
+        )}
         <s.SpacerSmall />
         <s.Container fd="row" jc="space-between" style={{ marginTop: 10 }}>
           <s.Card ai="center" style={{ padding: 0 }}>
             <s.TextID>Soft Cap</s.TextID>
             <s.TextDescription>
               {BigNumber(library.web3.utils.fromWei(idoInfo.softCap)).toFormat(2) +
-                " " + baseCurrencySymbol}
+                ' ' +
+                baseCurrencySymbol}
             </s.TextDescription>
           </s.Card>
           <s.Card ai="center" style={{ padding: 0 }}>
             <s.TextID>Hard Cap</s.TextID>
             <s.TextDescription>
               {BigNumber(library.web3.utils.fromWei(idoInfo.hardCap)).toFormat(2) +
-                " " + baseCurrencySymbol}
+                ' ' +
+                baseCurrencySymbol}
             </s.TextDescription>
           </s.Card>
           <s.Card ai="center" style={{ padding: 0 }}>
             <s.TextID>Minimum Buy</s.TextID>
             <s.TextDescription>
               {BigNumber(library.web3.utils.fromWei(idoInfo.min)).toFormat(2) +
-                " " + baseCurrencySymbol}
+                ' ' +
+                baseCurrencySymbol}
             </s.TextDescription>
           </s.Card>
           <s.Card ai="center" style={{ padding: 0 }}>
             <s.TextID>Maximum Buy</s.TextID>
             <s.TextDescription>
               {BigNumber(library.web3.utils.fromWei(idoInfo.max)).toFormat(2) +
-                " " + baseCurrencySymbol}
+                ' ' +
+                baseCurrencySymbol}
             </s.TextDescription>
           </s.Card>
         </s.Container>
         <s.SpacerSmall />
-        {
-          isAddLiquidityEnabled && <>
+        {isAddLiquidityEnabled && (
+          <>
             <s.Container fd="row" jc="space-between">
               <s.TextID fw="700">Liquidity %</s.TextID>
-              {idoInfo.lpPercentage + " %"}
+              {idoInfo.lpPercentage + ' %'}
             </s.Container>
             <s.SpacerSmall />
             {/* <s.Container fd="row" jc="space-between">
@@ -111,7 +113,7 @@ const PoolInfoRenderer = (props) => {
             </s.Container> */}
             <s.SpacerSmall />
           </>
-        }
+        )}
         <s.Container fd="row" jc="space-between">
           <s.TextID fw="700">Start time</s.TextID>
           {startDate.toString()}

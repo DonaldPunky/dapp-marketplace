@@ -1,18 +1,18 @@
-import BigNumber from "bignumber.js";
-import React, { useEffect, useState } from "react";
-import { useWeb3React } from "@web3-react/core";
-import { FaImage } from "react-icons/fa";
-import { useNavigate } from "react-router-dom";
-import { useStoreContext } from "../../../../context/store";
-import * as s from "../../../../styles/global";
-import { chainRouter } from "../../../../constants/networksInfo";
-import SocialMediaModal from "../../../Modal/socialmediaModal";
-import { useApplicationContext } from "../../../../context/applicationContext";
-import { useTokenContract } from "../../../../hooks/useContract";
-import ReadMore from "../../readMore";
-import { isAddress } from "../../../../utils/utils";
-import { useIPFS } from "../../../../hooks/useIPFS";
-import { ETHER } from "../../../../constants";
+import BigNumber from 'bignumber.js';
+import React, { useEffect, useState } from 'react';
+import { useWeb3React } from '@web3-react/core';
+import { FaImage } from 'react-icons/fa';
+import { useNavigate } from 'react-router-dom';
+import { useStoreContext } from '../../../../context/store';
+import * as s from '../../../../styles/global';
+import { chainRouter } from '../../../../constants/networksInfo';
+import SocialMediaModal from '../../../Modal/socialmediaModal';
+import { useApplicationContext } from '../../../../context/applicationContext';
+import { useTokenContract } from '../../../../hooks/useContract';
+import ReadMore from '../../readMore';
+import { isAddress } from '../../../../utils/utils';
+import { useIPFS } from '../../../../hooks/useIPFS';
+import { ETHER } from '../../../../constants';
 
 export default function Preview() {
   const { account, chainId, library } = useWeb3React();
@@ -55,8 +55,8 @@ export default function Preview() {
   const ipfs = useIPFS();
 
   const tokenContract = useTokenContract(tokenAddress);
-  const [IDOFactoryFee, sesIDOFactoryFee] = useState("0");
-  const [tokenApprove, setTokenApprove] = useState("");
+  const [IDOFactoryFee, sesIDOFactoryFee] = useState('0');
+  const [tokenApprove, setTokenApprove] = useState('');
   const [isTokenApprovalFetching, setIsTokenApprovalFetching] = useState(false);
   const [loading, setLoading] = useState(false);
 
@@ -68,7 +68,8 @@ export default function Preview() {
   const oneTokenInWei = ETHER.div(tokenRateBN).integerValue(BigNumber.ROUND_CEIL);
   const oneListingTokeninWei = ETHER.div(listingRateBN).integerValue(BigNumber.ROUND_CEIL);
 
-  const requiredToken = ETHER.times(hardCapBN).div(oneTokenInWei)
+  const requiredToken = ETHER.times(hardCapBN)
+    .div(oneTokenInWei)
     .plus(ETHER.times(hardCapBN).div(oneListingTokeninWei).times(lp).dividedBy(100))
     .times(tokenInfo.tokenDenominator);
 
@@ -83,19 +84,19 @@ export default function Preview() {
       } finally {
         setIsTokenApprovalFetching(false);
       }
-    }
+    };
     if (isAddress(tokenAddress) && tokenContract) {
       checkTokenApproval();
     } else {
-      setTokenApprove("");
+      setTokenApprove('');
     }
   }, [account, library, IDOFactoryAddress, tokenContract, tokenAddress]);
 
   useEffect(() => {
     const fetchIDOFactoryFee = async () => {
-      const IDOFactoryFee = await IDOFactoryContract?.feeAmount() || "0";
+      const IDOFactoryFee = (await IDOFactoryContract?.feeAmount()) || '0';
       sesIDOFactoryFee(IDOFactoryFee.toString());
-    }
+    };
 
     fetchIDOFactoryFee();
   }, [IDOFactoryContract]);
@@ -106,18 +107,14 @@ export default function Preview() {
       const response = await ipfs.add(JSONBodyString);
       return {
         success: true,
-        ipfsHash:
-          response.path,
+        ipfsHash: response.path,
       };
-
     } catch (error) {
-
       console.log(error);
       return {
         success: false,
         message: error.message,
       };
-
     }
   };
 
@@ -135,7 +132,7 @@ export default function Preview() {
           discord,
           telegram,
           twitter,
-        }
+        },
       };
 
       const ipfsResonse = await pinJSONToIPFS(metadata);
@@ -143,7 +140,7 @@ export default function Preview() {
       if (!ipfsResonse.success) {
         return {
           success: false,
-          status: "😢 Something went wrong while uploading your tokenURI.",
+          status: '😢 Something went wrong while uploading your tokenURI.',
         };
       }
       const tokenURI = ipfsResonse.ipfsHash;
@@ -170,30 +167,29 @@ export default function Preview() {
         chainRouter[chainId][0].WETH,
       ];
 
-      const tx = await IDOFactoryContract
-        .createIDO(
-          rewardToken,
-          finInfo,
-          timestamps,
-          dexInfo,
-          TokenLockerFactoryAddress,
-          tokenURI,
-          {
-            from: account,
-          },
-        );
+      const tx = await IDOFactoryContract.createIDO(
+        rewardToken,
+        finInfo,
+        timestamps,
+        dexInfo,
+        TokenLockerFactoryAddress,
+        tokenURI,
+        {
+          from: account,
+        }
+      );
 
       const receipt = await tx.wait();
 
       console.log('createIDO receipt', receipt);
 
       triggerUpdateAccountData();
-      const IDOCreatedIndex = receipt?.events?.findIndex?.((i) => i?.event === "IDOCreated");
-      if (IDOCreatedIndex || IDOCreatedIndex === 0){
-        navigate(`../launchpad/${receipt.events[IDOCreatedIndex].args.idoPool}`)
+      const IDOCreatedIndex = receipt?.events?.findIndex?.((i) => i?.event === 'IDOCreated');
+      if (IDOCreatedIndex || IDOCreatedIndex === 0) {
+        navigate(`../launchpad/${receipt.events[IDOCreatedIndex].args.idoPool}`);
       }
     } catch (error) {
-      console.log("createIDO Error: ", error);
+      console.log('createIDO Error: ', error);
     } finally {
       setLoading(false);
     }
@@ -215,7 +211,7 @@ export default function Preview() {
       setTokenApprove(amount);
       triggerUpdateAccountData();
     } catch (error) {
-      console.log("approveToken Error: ", error);
+      console.log('approveToken Error: ', error);
     } finally {
       setLoading(false);
     }
@@ -227,14 +223,14 @@ export default function Preview() {
       <s.Container ai="center">
         <div
           style={{
-            display: "flex",
+            display: 'flex',
             width: 140,
             height: 140,
             borderRadius: 20,
             margin: 20,
-            backgroundColor: "var(--upper-card)",
-            alignItems: "center",
-            justifyContent: "center",
+            backgroundColor: 'var(--upper-card)',
+            alignItems: 'center',
+            justifyContent: 'center',
           }}
         >
           <s.iconUpload
@@ -246,7 +242,7 @@ export default function Preview() {
               setIcon(file);
             }}
           ></s.iconUpload>
-          {icon !== "" ? (
+          {icon !== '' ? (
             <img
               style={{ width: 100, height: 100, borderRadius: 20 }}
               src={URL.createObjectURL(icon)}
@@ -256,55 +252,40 @@ export default function Preview() {
           )}
         </div>
       </s.Container>
-      <SocialMediaModal
-        website={website}
-        discord={discord}
-        telegram={telegram}
-        twitter={twitter}
-      />
+      <SocialMediaModal website={website} discord={discord} telegram={telegram} twitter={twitter} />
       <s.SpacerSmall />
       <s.TextID>Description</s.TextID>
       <ReadMore max={2000}>{description}</ReadMore>
 
       <s.TextID>Token address</s.TextID>
-      <s.TextDescriptionEllipsis>
-        {tokenInfo.tokenAddress}
-      </s.TextDescriptionEllipsis>
+      <s.TextDescriptionEllipsis>{tokenInfo.tokenAddress}</s.TextDescriptionEllipsis>
       <s.TextID>Token name</s.TextID>
       <s.TextDescription>{tokenInfo.tokenName}</s.TextDescription>
       <s.TextID>Total supply</s.TextID>
       <s.TextDescription>
-        {BigNumber(tokenInfo.totalSupply)
-          .dividedBy(tokenInfo.tokenDenominator)
-          .toFormat(0) +
-          " $" +
+        {BigNumber(tokenInfo.totalSupply).dividedBy(tokenInfo.tokenDenominator).toFormat(0) +
+          ' $' +
           tokenInfo.tokenSymbol}
       </s.TextDescription>
       <s.TextTitle fullWidth>IDO information</s.TextTitle>
       <s.TextID>Token rate</s.TextID>
       <s.TextDescription>
-        {"1 $" +
+        {'1 $' +
           baseCurrencySymbol +
-          " -> " +
+          ' -> ' +
           ETHER.div(oneTokenInWei) +
-          " $" +
+          ' $' +
           tokenInfo.tokenSymbol}
       </s.TextDescription>
-      <s.Container fd={"row"} jc="space-between">
+      <s.Container fd={'row'} jc="space-between">
         <s.Container flex={1} style={{ marginLeft: 10, marginRight: 10 }}>
           <s.TextID>Soft Cap</s.TextID>
           <s.TextDescription>
-            {BigNumber(softCap).toFormat(2) +
-              " $" +
-              baseCurrencySymbol}
+            {BigNumber(softCap).toFormat(2) + ' $' + baseCurrencySymbol}
           </s.TextDescription>
           <s.SpacerSmall />
           <s.TextID>Hard Cap</s.TextID>
-          <s.TextDescription>
-            {hardCapBN.toFormat(2) +
-              " $" +
-              baseCurrencySymbol}
-          </s.TextDescription>
+          <s.TextDescription>{hardCapBN.toFormat(2) + ' $' + baseCurrencySymbol}</s.TextDescription>
           <s.SpacerSmall />
           {/* <s.TextID>Pool router</s.TextID>
           <s.TextDescription>
@@ -317,52 +298,48 @@ export default function Preview() {
         <s.Container flex={1} style={{ marginLeft: 10, marginRight: 10 }}>
           <s.TextID>Minimum Buy</s.TextID>
           <s.TextDescription>
-            {BigNumber(minETH).toFormat(2) +
-              " $" +
-              baseCurrencySymbol}
+            {BigNumber(minETH).toFormat(2) + ' $' + baseCurrencySymbol}
           </s.TextDescription>
           <s.SpacerSmall />
           <s.TextID>Maximum Buy</s.TextID>
           <s.TextDescription>
-            {BigNumber(maxETH).toFormat(2) +
-              " $" +
-              baseCurrencySymbol}
+            {BigNumber(maxETH).toFormat(2) + ' $' + baseCurrencySymbol}
           </s.TextDescription>
-          {
-            isAddLiquidityEnabled && <>
+          {isAddLiquidityEnabled && (
+            <>
               <s.SpacerSmall />
               <s.TextID>Liquidity %</s.TextID>
               <s.TextDescription>
-                {BigNumber(liquidityPercentage).toFixed(0) + " %"}
+                {BigNumber(liquidityPercentage).toFixed(0) + ' %'}
               </s.TextDescription>
             </>
-          }
+          )}
         </s.Container>
       </s.Container>
-      {
-        isAddLiquidityEnabled && <>
+      {isAddLiquidityEnabled && (
+        <>
           <s.TextID>Listing rate</s.TextID>
           <s.TextDescription>
-            {"1 $" +
+            {'1 $' +
               baseCurrencySymbol +
-              " -> " +
+              ' -> ' +
               ETHER.div(oneListingTokeninWei) +
-              " $" +
+              ' $' +
               tokenInfo.tokenSymbol}
           </s.TextDescription>
           (TokenRate * HardCap) + ((HardCap * LP%) * ListingRate)
         </>
-      }
-      <s.TextDescription fullWidth style={{ color: "var(--primary)" }}>
-        {"Required " +
-          requiredToken
-            .dividedBy(tokenInfo.tokenDenominator)
-            .toFormat() +
-          " $" +
+      )}
+      <s.TextDescription fullWidth style={{ color: 'var(--primary)' }}>
+        {'Required ' +
+          requiredToken.dividedBy(tokenInfo.tokenDenominator).toFormat() +
+          ' $' +
           tokenInfo.tokenSymbol}
       </s.TextDescription>
       <s.Container ai="center">
-        {BigNumber(FeeTokenApproveToFactory?.toString?.()).lt(BigNumber(IDOFactoryFee?.toString?.())) ? (
+        {BigNumber(FeeTokenApproveToFactory?.toString?.()).lt(
+          BigNumber(IDOFactoryFee?.toString?.())
+        ) ? (
           <s.button
             style={{ marginTop: 20 }}
             disabled={loading}
@@ -371,7 +348,7 @@ export default function Preview() {
               approveToken(IDOFactoryFee, FeeTokenContract);
             }}
           >
-            {loading ? ". . ." : `APPROVE ${FeeTokenSymbol}`}
+            {loading ? '. . .' : `APPROVE ${FeeTokenSymbol}`}
           </s.button>
         ) : BigNumber(tokenApprove?.toString?.()).lt(BigNumber(requiredToken?.toString?.())) ? (
           <s.button
@@ -382,7 +359,7 @@ export default function Preview() {
               approveToken(BigNumber(requiredToken).toFixed(0), tokenContract);
             }}
           >
-            {loading ? ". . ." : `APPROVE ${tokenInfo.tokenSymbol}`}
+            {loading ? '. . .' : `APPROVE ${tokenInfo.tokenSymbol}`}
           </s.button>
         ) : (
           <s.button
@@ -393,12 +370,14 @@ export default function Preview() {
               createIDO();
             }}
           >
-            {loading ? ". . ." : "Create IDO Poll"}
+            {loading ? '. . .' : 'Create IDO Poll'}
           </s.button>
         )}
       </s.Container>
 
-      {IDOFactoryFee && IDOFactoryFee !== "0" && `Create IDO fee : ${library.web3.utils.fromWei(IDOFactoryFee)} ${FeeTokenSymbol}`}
+      {IDOFactoryFee &&
+        IDOFactoryFee !== '0' &&
+        `Create IDO fee : ${library.web3.utils.fromWei(IDOFactoryFee)} ${FeeTokenSymbol}`}
     </s.Container>
   );
 }

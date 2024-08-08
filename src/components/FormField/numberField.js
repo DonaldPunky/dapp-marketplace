@@ -1,5 +1,5 @@
-import { TextField, InputAdornment } from "@mui/material";
-import React from "react";
+import { TextField, InputAdornment } from '@mui/material';
+import React from 'react';
 
 export default function NumberField(props) {
   const { label, onChange, value, adornment, ...otherProps } = props;
@@ -17,9 +17,8 @@ export default function NumberField(props) {
         endAdornment: <InputAdornment position="end">{adornment || ''}</InputAdornment>,
         inputProps: {
           min: 0,
-        }
+        },
       }}
-
       {...otherProps}
     />
   );

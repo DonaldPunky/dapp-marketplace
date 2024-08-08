@@ -1,7 +1,7 @@
-import { Fragment, useState } from "react";
+import { Fragment, useState } from 'react';
 import Button from '@mui/material/Button';
-import WalletProviders from "./NetworkWalletProviders";
-import WalletIcon from '../ui/icons/Wallet'
+import WalletProviders from './NetworkWalletProviders';
+import WalletIcon from '../ui/icons/Wallet';
 
 const Unauthenticated = () => {
   const [walletProvidersDialogOpen, setWalletProvidersDialogOpen] = useState(false);
@@ -18,16 +18,16 @@ const Unauthenticated = () => {
         fullWidth
         onClick={handleWalletProvidersDialogToggle}
         startIcon={<WalletIcon />}
-        sx={{boxShadow: 'rgb(0 0 0 / 8%) 0px 8px 28px'}}
+        sx={{ boxShadow: 'rgb(0 0 0 / 8%) 0px 8px 28px' }}
       >
         Wallet Connect
       </Button>
-      <WalletProviders 
-        walletProvidersDialogOpen={walletProvidersDialogOpen} 
+      <WalletProviders
+        walletProvidersDialogOpen={walletProvidersDialogOpen}
         handleWalletProvidersDialogToggle={handleWalletProvidersDialogToggle}
       />
     </Fragment>
   );
-}
- 
+};
+
 export default Unauthenticated;

@@ -1,14 +1,14 @@
-import { FaBars } from "react-icons/fa";
-import { NavLink as Link } from "react-router-dom";
-import styled from "styled-components";
+import { FaBars } from 'react-icons/fa';
+import { NavLink as Link } from 'react-router-dom';
+import styled from 'styled-components';
 
 export const Nav = styled.nav`
-    height: 50px;
-    display: flex;
-    padding: 10px;
-    align-items: center;
-    z-index: 12;
-    background: transparent;
+  height: 50px;
+  display: flex;
+  padding: 10px;
+  align-items: center;
+  z-index: 12;
+  background: transparent;
 `;
 
 export const NavLogoCollapse = styled(Link)`
@@ -31,23 +31,22 @@ export const NavLogo = styled(Link)`
     font-size: 2rem;
     cursor: pointer;
   }
-
 `;
 
 export const NavLink = styled(Link)`
-color: #fff;
-display: flex;
-align-items: center;
-text-decoration: none;
-padding: 0 1rem;
-height: 100%;
-cursor: pointer;
-&.active {
-  color:white;
-}
-&:hover {
-  color: grey;
-}
+  color: #fff;
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  padding: 0 1rem;
+  height: 100%;
+  cursor: pointer;
+  &.active {
+    color: white;
+  }
+  &:hover {
+    color: grey;
+  }
 `;
 
 export const Bars = styled(FaBars)`
@@ -58,12 +57,11 @@ export const Bars = styled(FaBars)`
     display: flex;
     position: absolute;
     margin: 20px;
-    right: ${({ m }) => ( m ? m : "none" )};;
+    right: ${({ m }) => (m ? m : 'none')};
     font-size: 1.8rem;
     cursor: pointer;
   }
 `;
-
 
 export const NavMenuCollapse = styled.div`
   display: none;
@@ -74,7 +72,7 @@ export const NavMenuCollapse = styled.div`
     height: 100%;
     text-align: center;
     flex-direction: column;
-    background-color: #1A1A1D;
+    background-color: #1a1a1d;
   }
 `;
 

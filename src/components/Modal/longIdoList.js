@@ -1,17 +1,19 @@
-import React, { useState } from "react";
-import { useApplicationContext } from "../../context/applicationContext";
-import { usePoolContext } from "../../context/poolContext";
-import * as s from "../../styles/global";
-import { utils } from "../../utils";
-import LongIdo from "../Card/longIdo";
-import PoolRenderer from "../Card/poolRenderer";
+import React, { useState } from 'react';
+import { useApplicationContext } from '../../context/applicationContext';
+import { usePoolContext } from '../../context/poolContext';
+import * as s from '../../styles/global';
+import { utils } from '../../utils';
+import LongIdo from '../Card/longIdo';
+import PoolRenderer from '../Card/poolRenderer';
 
 const LongIdoList = () => {
   const [limit, setLimit] = useState(5);
   const [loading, setLoading] = useState(false);
 
   const { userPoolAddresses, allPools } = usePoolContext();
-  const { domainSettings: { isLockerEnabled } } = useApplicationContext();
+  const {
+    domainSettings: { isLockerEnabled },
+  } = useApplicationContext();
 
   // sort IDOs by start time
   userPoolAddresses.sort((a, b) => allPools[b]?.start - allPools[a]?.start);
@@ -23,14 +25,9 @@ const LongIdoList = () => {
   return (
     <s.Container ai="center">
       <s.Container ai="center">
-
-      {
-        isLockerEnabled ?
-        <s.Container
-          jc="space-around"
-          style={{ flexWrap: "wrap", marginTop: 20 }}
-        >
-          {userPoolAddresses.map((poolAddress, index) => {
+        {isLockerEnabled ? (
+          <s.Container jc="space-around" style={{ flexWrap: 'wrap', marginTop: 20 }}>
+            {userPoolAddresses.map((poolAddress, index) => {
               if (index >= limit) {
                 return null;
               }
@@ -40,20 +37,17 @@ const LongIdoList = () => {
                 </s.Container>
               );
             })}
-        </s.Container> :
-        <s.Container
-          fd="row"
-          jc="space-around"
-          style={{ flexWrap: "wrap", marginTop: 20 }}
-        >
-          {userPoolAddresses.map((poolAddress, index) => {
+          </s.Container>
+        ) : (
+          <s.Container fd="row" jc="space-around" style={{ flexWrap: 'wrap', marginTop: 20 }}>
+            {userPoolAddresses.map((poolAddress, index) => {
               if (index >= limit) {
                 return null;
               }
-              return <PoolRenderer key={index} pool={allPools[poolAddress]}/>;
+              return <PoolRenderer key={index} pool={allPools[poolAddress]} />;
             })}
-        </s.Container>
-      }
+          </s.Container>
+        )}
       </s.Container>
       <s.SpacerSmall />
       {limit >= userPoolAddresses.length ? null : (
@@ -66,7 +60,7 @@ const LongIdoList = () => {
             setLoading(false);
           }}
         >
-          {loading ? "LOADING . . ." : "LOADMORE"}
+          {loading ? 'LOADING . . .' : 'LOADMORE'}
         </s.button>
       )}
     </s.Container>

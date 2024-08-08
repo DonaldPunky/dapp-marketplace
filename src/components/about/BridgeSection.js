@@ -6,18 +6,19 @@ import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 
 const BridgeSection = () => {
   return (
-    <Box id="bridge" 
+    <Box
+      id="bridge"
       sx={{
-        bgcolor: "neutral.main", 
-        py: 7, 
-        borderBottom: 1, 
-        borderColor: "grey.100",
+        bgcolor: 'neutral.main',
+        py: 7,
+        borderBottom: 1,
+        borderColor: 'grey.100',
       }}
     >
       <Container>
-        <Typography 
-          variant="h4" 
-          component="div" 
+        <Typography
+          variant="h4"
+          component="div"
           color="text.primary"
           sx={{ fontWeight: 'bold', mb: 3 }}
         >
@@ -32,10 +33,10 @@ const BridgeSection = () => {
         <Button
           component="a"
           href="https://bridge.poly.network/token/"
-          target="_blank" 
+          target="_blank"
           rel="noopener noreferrer"
-          disableElevation 
-          variant="contained" 
+          disableElevation
+          variant="contained"
           endIcon={<ArrowForwardIcon />}
         >
           Bridge Now
@@ -43,6 +44,6 @@ const BridgeSection = () => {
       </Container>
     </Box>
   );
-}
- 
+};
+
 export default BridgeSection;

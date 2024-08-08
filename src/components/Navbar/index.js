@@ -1,16 +1,16 @@
-import BigNumber from "bignumber.js";
-import React from "react";
-import { Container, Nav, Navbar, NavDropdown } from "react-bootstrap";
-import { LinkContainer } from "react-router-bootstrap";
-import "../../App.css";
-import { useApplicationContext } from "../../context/applicationContext";
+import BigNumber from 'bignumber.js';
+import React from 'react';
+import { Container, Nav, Navbar, NavDropdown } from 'react-bootstrap';
+import { LinkContainer } from 'react-router-bootstrap';
+import '../../App.css';
+import { useApplicationContext } from '../../context/applicationContext';
 import styled from 'styled-components';
-import * as s from "../../styles/global";
-import { Web3Status } from "../Web3Status";
-import Loader from "../Loader";
-import { useWeb3React } from "@web3-react/core";
+import * as s from '../../styles/global';
+import { Web3Status } from '../Web3Status';
+import Loader from '../Loader';
+import { useWeb3React } from '@web3-react/core';
 import { CURRENCY } from '../../assets/images';
-import { Paper } from "@mui/material";
+import { Paper } from '@mui/material';
 
 const NetworkCard = styled(Paper)`
   display: flex;
@@ -34,10 +34,7 @@ const IconWrapper = styled.div`
 
 const Navigation = () => {
   const {
-    domainSettings: {
-      isLockerEnabled,
-      logoUrl,
-    },
+    domainSettings: { isLockerEnabled, logoUrl },
     isAdmin,
     chainName,
     networkExplorer,
@@ -64,7 +61,7 @@ const Navigation = () => {
     return (
       chainName && (
         // TODO: make some wrapped card
-        <NetworkCard elevation={2} title={`${chainName} network`}> 
+        <NetworkCard elevation={2} title={`${chainName} network`}>
           {!!networkImage && (
             <IconWrapper size={20}>
               <img src={networkImage} alt="network logo" />
@@ -73,12 +70,12 @@ const Navigation = () => {
           {chainName}
         </NetworkCard>
       )
-    )
-  }
+    );
+  };
 
   return (
     <Navbar collapseOnSelect expand="lg" variant="dark" style={{ margin: 15 }}>
-      <Container style={{ maxWidth: "100%" }}>
+      <Container style={{ maxWidth: '100%' }}>
         <s.LogoTitle src={logoUrl || mockCompanyLogo} />
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
@@ -89,67 +86,62 @@ const Navigation = () => {
             <LinkContainer to="/launchpad">
               <Nav.Link>Launchpad</Nav.Link>
             </LinkContainer>
-            {
-              isLockerEnabled &&
+            {isLockerEnabled && (
               <LinkContainer to="/locker">
                 <Nav.Link>Locker</Nav.Link>
               </LinkContainer>
-            }
+            )}
             <LinkContainer to="/account">
               <Nav.Link>Account</Nav.Link>
             </LinkContainer>
-            {
-              isAdmin &&
+            {isAdmin && (
               <LinkContainer to="/manage">
                 <Nav.Link>Manage</Nav.Link>
               </LinkContainer>
-            }
+            )}
           </Nav>
           <Nav>
             <Nav.Link>{getNetworkInfo()}</Nav.Link>
 
-            {
-              !hasFeeToken ? (
-                <Nav.Link>
-                  {
-                    isNativeCoinBalanceFetching ?
-                      <Loader/> :
-                      `$${baseCurrencySymbol} ` +
-                        BigNumber(ETHamount)
-                          .dividedBy(10 ** 18)
-                          .toFormat(2)
-                  }
+            {!hasFeeToken ? (
+              <Nav.Link>
+                {isNativeCoinBalanceFetching ? (
+                  <Loader />
+                ) : (
+                  `$${baseCurrencySymbol} ` +
+                  BigNumber(ETHamount)
+                    .dividedBy(10 ** 18)
+                    .toFormat(2)
+                )}
+              </Nav.Link>
+            ) : (
+              <NavDropdown
+                title={
+                  isNativeCoinBalanceFetching ? (
+                    <Loader />
+                  ) : (
+                    `$${baseCurrencySymbol} ` +
+                    BigNumber(ETHamount)
+                      .dividedBy(10 ** 18)
+                      .toFormat(2)
+                  )
+                }
+                id="collasible-nav-dropdown"
+              >
+                <Nav.Link href={`${networkExplorer}/address/${FeeTokenAddress}`} target="_blank">
+                  {isFeeTokenDataFetching ? (
+                    <Loader />
+                  ) : (
+                    `$${FeeTokenSymbol} ` +
+                    BigNumber(FeeTokenamount)
+                      .dividedBy(10 ** 18)
+                      .toFormat(0)
+                  )}
                 </Nav.Link>
-              ) : (
-                <NavDropdown
-                  title={
-                    isNativeCoinBalanceFetching ?
-                      <Loader/> :
-                      `$${baseCurrencySymbol} ` +
-                        BigNumber(ETHamount)
-                          .dividedBy(10 ** 18)
-                          .toFormat(2)
-                  }
-                  id="collasible-nav-dropdown"
-                >
-                  <Nav.Link
-                    href={`${networkExplorer}/address/${FeeTokenAddress}`}
-                    target="_blank"
-                  >
-                    {
-                      isFeeTokenDataFetching ?
-                        <Loader /> :
-                        `$${FeeTokenSymbol} ` +
-                          BigNumber(FeeTokenamount)
-                            .dividedBy(10 ** 18)
-                            .toFormat(0)
-                    }
-                  </Nav.Link>
-                  {/* <NavDropdown.Item href="#action/3.3"></NavDropdown.Item> */}
-                  <NavDropdown.Divider />
-                </NavDropdown>
-              )
-            }
+                {/* <NavDropdown.Item href="#action/3.3"></NavDropdown.Item> */}
+                <NavDropdown.Divider />
+              </NavDropdown>
+            )}
           </Nav>
           <Web3Status />
         </Navbar.Collapse>

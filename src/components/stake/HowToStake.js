@@ -11,16 +11,11 @@ const HowToStake = () => {
   };
 
   return (
-    <Box component="div" sx={{textAlign: 'center', mt: 2, mb: 4}}>
-      <Button onClick={handleStakingGuideDialogToggle}>
-        Learn how to stake
-      </Button>
-      <StakingGuide 
-        open={stakingGuideDialogOpen} 
-        handleClose={handleStakingGuideDialogToggle} 
-      />
+    <Box component="div" sx={{ textAlign: 'center', mt: 2, mb: 4 }}>
+      <Button onClick={handleStakingGuideDialogToggle}>Learn how to stake</Button>
+      <StakingGuide open={stakingGuideDialogOpen} handleClose={handleStakingGuideDialogToggle} />
     </Box>
   );
-}
- 
+};
+
 export default HowToStake;

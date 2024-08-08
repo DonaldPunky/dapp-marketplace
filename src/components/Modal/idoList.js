@@ -1,10 +1,10 @@
-import { Typography } from "@mui/material";
-import React, { useEffect, useState } from "react";
-import { usePoolContext } from "../../context/poolContext";
-import * as s from "../../styles/global";
-import { utils } from "../../utils";
-import PoolRenderer from "../Card/poolRenderer";
-import Loader from "../Loader";
+import { Typography } from '@mui/material';
+import React, { useEffect, useState } from 'react';
+import { usePoolContext } from '../../context/poolContext';
+import * as s from '../../styles/global';
+import { utils } from '../../utils';
+import PoolRenderer from '../Card/poolRenderer';
+import Loader from '../Loader';
 
 const IDOList = (props) => {
   const [limit, setLimit] = useState(5);
@@ -17,7 +17,7 @@ const IDOList = (props) => {
   const { owner, tokenAddress } = props;
 
   useEffect(() => {
-    console.log("allPools", allPools);
+    console.log('allPools', allPools);
   }, [allPools]);
 
   const loadmore = (amount) => {
@@ -25,41 +25,34 @@ const IDOList = (props) => {
   };
 
   if (!poolKeys.length || !allPools) {
-    return <s.Container ai="center">
-      <s.SpacerSmall />
-      <Loader size="2rem" />
-      <Typography>Wait for pools' data to load... This may take more than 30 seconds.</Typography>
-    </s.Container>;
+    return (
+      <s.Container ai="center">
+        <s.SpacerSmall />
+        <Loader size="2rem" />
+        <Typography>Wait for pools' data to load... This may take more than 30 seconds.</Typography>
+      </s.Container>
+    );
   }
 
   return (
     <s.Container ai="center">
       <s.Container ai="center">
-        <s.Container
-          fd="row"
-          jc="space-around"
-          style={{ flexWrap: "wrap", marginTop: 20 }}
-        >
+        <s.Container fd="row" jc="space-around" style={{ flexWrap: 'wrap', marginTop: 20 }}>
           {poolKeys.map((item, index) => {
             if (index >= limit) {
               return null;
             }
-            if (owner && owner !== "") {
+            if (owner && owner !== '') {
               if (allPools[item].owner.toLowerCase() !== owner.toLowerCase()) {
                 return null;
               }
             }
-            if (tokenAddress && tokenAddress !== "") {
-              if (
-                allPools[item].tokenAddress.toLowerCase() !==
-                tokenAddress.toLowerCase()
-              ) {
+            if (tokenAddress && tokenAddress !== '') {
+              if (allPools[item].tokenAddress.toLowerCase() !== tokenAddress.toLowerCase()) {
                 return null;
               }
             }
-            return (
-              <PoolRenderer key={index} pool={allPools[item]}></PoolRenderer>
-            );
+            return <PoolRenderer key={index} pool={allPools[item]}></PoolRenderer>;
           })}
         </s.Container>
       </s.Container>
@@ -74,7 +67,7 @@ const IDOList = (props) => {
             setLoading(false);
           }}
         >
-          {loading ? "LOADING . . ." : "LOADMORE"}
+          {loading ? 'LOADING . . .' : 'LOADMORE'}
         </s.button>
       )}
     </s.Container>

@@ -1,5 +1,5 @@
-import Blockies from "react-blockies";
-import { useMoralisDapp } from "../providers/MoralisDappProvider/MoralisDappProvider";
+import Blockies from 'react-blockies';
+import { useMoralisDapp } from '../providers/MoralisDappProvider/MoralisDappProvider';
 
 /**
  * Shows a blockie image for the provided wallet address

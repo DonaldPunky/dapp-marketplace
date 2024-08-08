@@ -4,12 +4,7 @@ import Step from '@mui/material/Step';
 import StepLabel from '@mui/material/StepLabel';
 import Typography from '@mui/material/Typography';
 
-const steps = [
-  'Connect Wallet',
-  'Choose Network',
-  'Enter Amount',
-  'Click Buy',
-];
+const steps = ['Connect Wallet', 'Choose Network', 'Enter Amount', 'Click Buy'];
 
 const PreSaleSteps = () => {
   return (
@@ -18,16 +13,13 @@ const PreSaleSteps = () => {
         {steps.map((label) => (
           <Step key={label}>
             <StepLabel>
-              <Typography sx={{fontWeight: 500}}>
-                {label}
-              </Typography>
+              <Typography sx={{ fontWeight: 500 }}>{label}</Typography>
             </StepLabel>
           </Step>
         ))}
       </Stepper>
     </Box>
-    
   );
-}
- 
+};
+
 export default PreSaleSteps;

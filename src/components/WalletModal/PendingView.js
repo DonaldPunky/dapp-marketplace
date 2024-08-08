@@ -1,9 +1,9 @@
-import React from 'react'
-import styled from 'styled-components'
-import Option from './Option'
-import { SUPPORTED_WALLETS } from '../../constants'
-import { injected } from '../../connectors'
-import Loader from '../Loader'
+import React from 'react';
+import styled from 'styled-components';
+import Option from './Option';
+import { SUPPORTED_WALLETS } from '../../constants';
+import { injected } from '../../connectors';
+import Loader from '../Loader';
 
 const PendingSection = styled.div`
   display: flex;
@@ -40,7 +40,7 @@ const ErrorGroup = styled.div`
   flex-flow: row nowrap;
   align-items: center;
   justify-content: flex-start;
-`
+`;
 
 const ErrorButton = styled.div`
   border-radius: 8px;
@@ -56,21 +56,16 @@ const ErrorButton = styled.div`
     cursor: pointer;
     background-color: #565A69;
   }
-`
+`;
 
 const LoadingWrapper = styled.div`
   ${({ theme }) => theme.flexRowNoWrap};
   align-items: center;
   justify-content: center;
-`
+`;
 
-export default function PendingView({
-  connector,
-  error = false,
-  setPendingError,
-  tryActivation,
-}) {
-  const isMetamask = window?.ethereum?.isMetaMask
+export default function PendingView({ connector, error = false, setPendingError, tryActivation }) {
+  const isMetamask = window?.ethereum?.isMetaMask;
 
   return (
     <PendingSection>
@@ -81,8 +76,8 @@ export default function PendingView({
               <div>Error connecting.</div>
               <ErrorButton
                 onClick={() => {
-                  setPendingError(false)
-                  connector && tryActivation(connector)
+                  setPendingError(false);
+                  connector && tryActivation(connector);
                 }}
               >
                 Try Again
@@ -97,14 +92,14 @@ export default function PendingView({
         </LoadingWrapper>
       </LoadingMessage>
       {Object.keys(SUPPORTED_WALLETS).map((key) => {
-        const option = SUPPORTED_WALLETS[key]
+        const option = SUPPORTED_WALLETS[key];
         if (option.connector === connector) {
           if (option.connector === injected) {
             if (isMetamask && option.name !== 'MetaMask') {
-              return null
+              return null;
             }
             if (!isMetamask && option.name === 'MetaMask') {
-              return null
+              return null;
             }
           }
           return (
@@ -117,10 +112,10 @@ export default function PendingView({
               subheader={option.description}
               icon={require('../../assets/images/' + option.iconName)}
             />
-          )
+          );
         }
-        return null
+        return null;
       })}
     </PendingSection>
-  )
+  );
 }
