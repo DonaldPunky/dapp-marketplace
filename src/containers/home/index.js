@@ -1,4 +1,4 @@
-import { Fragment } from 'react'
+import { Fragment } from 'react';
 import HeroSection from '../../components/home/HeroSection';
 import HowToSection from '../../components/home/HowToSection';
 import TokenomicsSection from '../../components/home/TokenomicsSection';
@@ -18,5 +18,5 @@ export default function Home() {
       <RoadmapSection />
       <AlreadyConvincedSection />
     </Fragment>
-  ) 
+  );
 }

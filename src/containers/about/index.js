@@ -1,4 +1,4 @@
-import { Fragment } from 'react'
+import { Fragment } from 'react';
 import HeroSection from '../../components/about/HeroSection';
 import PartnersSection from '../../components/home/PartnersSection';
 //import BridgeSection from '../../components/about/BridgeSection';
@@ -16,5 +16,5 @@ export default function About() {
       <TeamSection />
       <AlreadyConvincedSection />
     </Fragment>
-  ) 
+  );
 }
