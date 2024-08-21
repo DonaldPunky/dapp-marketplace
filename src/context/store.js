@@ -1,31 +1,31 @@
-import BigNumber from "bignumber.js";
-import React, { createContext, useState, useEffect } from "react";
+import BigNumber from 'bignumber.js';
+import React, { createContext, useState, useEffect } from 'react';
 
 export const StoreContext = createContext({});
 
 export const StoreContextProvider = ({ children }) => {
-  const [error, setError] = useState("");
-  const [icon, setIcon] = useState("");
-  const [address, setAddress] = useState("");
-  const [tokenRate, setTokenRate] = useState("");
-  const [softCap, setSoftCap] = useState("");
-  const [hardCap, setHardCap] = useState("");
+  const [error, setError] = useState('');
+  const [icon, setIcon] = useState('');
+  const [address, setAddress] = useState('');
+  const [tokenRate, setTokenRate] = useState('');
+  const [softCap, setSoftCap] = useState('');
+  const [hardCap, setHardCap] = useState('');
   const [router, setRouter] = useState(-1);
-  const [minETH, setMinETH] = useState("");
-  const [maxETH, setMaxETH] = useState("");
+  const [minETH, setMinETH] = useState('');
+  const [maxETH, setMaxETH] = useState('');
 
   const [isAddLiquidityEnabled, setIsAddLiquidityEnabled] = useState(false);
-  const [liquidityPercentage, setLiquidityPercentage] = useState("");
-  const [listingRate, setListingRate] = useState("");
+  const [liquidityPercentage, setLiquidityPercentage] = useState('');
+  const [listingRate, setListingRate] = useState('');
 
   const [start, setStart] = useState(Date.now());
   const [end, setEnd] = useState(Date.now());
   const [unlock, setUnlock] = useState(Date.now());
-  const [website, setWebsite] = useState("");
-  const [discord, setDiscord] = useState("");
-  const [telegram, setTelegram] = useState("");
-  const [twitter, setTwitter] = useState("");
-  const [description, setDescription] = useState("");
+  const [website, setWebsite] = useState('');
+  const [discord, setDiscord] = useState('');
+  const [telegram, setTelegram] = useState('');
+  const [twitter, setTwitter] = useState('');
+  const [description, setDescription] = useState('');
 
   const [tokenError, setTokenError] = useState({});
   const [idoError, setIdoError] = useState({});
@@ -39,100 +39,99 @@ export const StoreContextProvider = ({ children }) => {
     let formIsValid = true;
     if (!tokenInformation) {
       formIsValid = false;
-      errors["token"] = "Contract is not valid";
+      errors['token'] = 'Contract is not valid';
     }
     setTokenError(errors);
     return formIsValid;
   };
 
   useEffect(() => {
-    setTokenError({})
-  }, [address])
+    setTokenError({});
+  }, [address]);
 
   const idoFormValidate = () => {
     let errors = {};
     let formIsValid = true;
     if (BigNumber(softCap).gte(BigNumber(hardCap))) {
       formIsValid = false;
-      errors["softCap"] = "Soft cap cannot less than Hard cap";
+      errors['softCap'] = 'Soft cap cannot less than Hard cap';
     }
     if (BigNumber(minETH).gt(BigNumber(softCap))) {
       formIsValid = false;
-      errors["minETH"] = "Minimum buy cannot greater than Soft cap";
+      errors['minETH'] = 'Minimum buy cannot greater than Soft cap';
     }
     if (BigNumber(maxETH).gt(BigNumber(hardCap))) {
       formIsValid = false;
-      errors["maxETH"] = "Maximum buy cannot greater than Hard cap";
+      errors['maxETH'] = 'Maximum buy cannot greater than Hard cap';
     }
     if (BigNumber(minETH).gte(BigNumber(maxETH))) {
       formIsValid = false;
-      errors["minETH"] = "Minimum buy cannot less than Maximum buy";
+      errors['minETH'] = 'Minimum buy cannot less than Maximum buy';
     }
     if (BigNumber(tokenRate).lte(BigNumber(0))) {
       formIsValid = false;
-      errors["tokenRate"] = "Token rate cannot be zero";
+      errors['tokenRate'] = 'Token rate cannot be zero';
     }
     if (BigNumber(minETH).lte(BigNumber(0))) {
       formIsValid = false;
-      errors["minETH"] = "Minimum buy cannot be zero";
+      errors['minETH'] = 'Minimum buy cannot be zero';
     }
     if (BigNumber(softCap).lte(BigNumber(0))) {
       formIsValid = false;
-      errors["softCap"] = "Soft cap cannot be zero";
+      errors['softCap'] = 'Soft cap cannot be zero';
     }
     if (BigNumber(hardCap).lte(BigNumber(0))) {
       formIsValid = false;
-      errors["hardCap"] = "Hard cap cannot be zero";
+      errors['hardCap'] = 'Hard cap cannot be zero';
     }
     if (BigNumber(start).gte(BigNumber(end))) {
       formIsValid = false;
-      errors["start-end"] = "Start date cannot less than End date";
+      errors['start-end'] = 'Start date cannot less than End date';
     }
     if (BigNumber(end).gte(BigNumber(unlock))) {
       formIsValid = false;
-      errors["unlock"] = "Unlock date cannot less than End date";
+      errors['unlock'] = 'Unlock date cannot less than End date';
     }
-    if (tokenRate == "") {
+    if (tokenRate == '') {
       formIsValid = false;
-      errors["tokenRate"] = "Field cannot emypty";
+      errors['tokenRate'] = 'Field cannot emypty';
     }
-    if (softCap == "") {
+    if (softCap == '') {
       formIsValid = false;
-      errors["softCap"] = "Field cannot emypty";
+      errors['softCap'] = 'Field cannot emypty';
     }
-    if (hardCap == "") {
+    if (hardCap == '') {
       formIsValid = false;
-      errors["hardCap"] = "Field cannot emypty";
+      errors['hardCap'] = 'Field cannot emypty';
     }
-    if (minETH == "") {
+    if (minETH == '') {
       formIsValid = false;
-      errors["minETH"] = "Field cannot emypty";
+      errors['minETH'] = 'Field cannot emypty';
     }
-    if (maxETH == "") {
+    if (maxETH == '') {
       formIsValid = false;
-      errors["maxETH"] = "Field cannot emypty";
+      errors['maxETH'] = 'Field cannot emypty';
     }
     if (isAddLiquidityEnabled) {
       if (BigNumber(liquidityPercentage).lte(BigNumber(50))) {
         formIsValid = false;
-        errors["liquidityPercentage"] = "Liquidity should more than 50%";
+        errors['liquidityPercentage'] = 'Liquidity should more than 50%';
       }
       if (BigNumber(liquidityPercentage).gt(BigNumber(100))) {
         formIsValid = false;
-        errors["liquidityPercentage"] =
-          "Liquidity should less than or equal 100%";
+        errors['liquidityPercentage'] = 'Liquidity should less than or equal 100%';
       }
       if (BigNumber(listingRate).lte(BigNumber(0))) {
         formIsValid = false;
-        errors["listingRate"] = "Listing rate cannot be zero";
+        errors['listingRate'] = 'Listing rate cannot be zero';
       }
-      if (liquidityPercentage == "") {
+      if (liquidityPercentage == '') {
         formIsValid = false;
-        errors["liquidityPercentage"] = "Field cannot emypty";
+        errors['liquidityPercentage'] = 'Field cannot emypty';
       }
-      if (listingRate == "") {
+      if (listingRate == '') {
         formIsValid = false;
-        errors["listingRate"] = "Field cannot emypty";
+        errors['listingRate'] = 'Field cannot emypty';
       }
     }
     // if (router < 0) {
@@ -173,9 +172,7 @@ export const StoreContextProvider = ({ children }) => {
     twitter: [twitter, setTwitter],
     website: [website, setWebsite],
   };
-  return (
-    <StoreContext.Provider value={store}>{children}</StoreContext.Provider>
-  );
+  return <StoreContext.Provider value={store}>{children}</StoreContext.Provider>;
 };
 
 export const useStoreContext = () => React.useContext(StoreContext);

@@ -1,9 +1,9 @@
-import { useWeb3React } from "@web3-react/core";
-import React, { createContext, useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { networks } from "../constants/networksInfo";
-import { utils } from "../utils";
-import { useApplicationContext } from "./applicationContext";
+import { useWeb3React } from '@web3-react/core';
+import React, { createContext, useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { networks } from '../constants/networksInfo';
+import { utils } from '../utils';
+import { useApplicationContext } from './applicationContext';
 
 export const PoolContext = createContext({});
 
@@ -23,23 +23,27 @@ export const PoolContextProvider = ({ children }) => {
   const { account, chainId } = useWeb3React();
 
   const {
-    domainSettings: {
-      ipfsInfuraDedicatedGateway
-    }
+    domainSettings: { ipfsInfuraDedicatedGateway },
   } = useApplicationContext();
 
   useEffect(() => {
     if (ipfsInfuraDedicatedGateway) {
       const delayDebounceFn = setTimeout(() => {
         allPoolAddress.map(async (address, index) => {
-          await utils.loadPoolData(address, contract.web3, account, ipfsInfuraDedicatedGateway).then((IDOPoolData) => {
-            setAllPools((p) => ({ ...p, ...{ [address]: IDOPoolData } }));
-            const { owner, userData, idoAddress } = IDOPoolData;
-            if (
-              owner?.toLowerCase() === account?.toLowerCase()
-              || (userData?.totalInvestedETH && userData?.totalInvestedETH !== "0")
-            ) setUserPoolAddresses((prevUserPoolAddresses) => [ ...prevUserPoolAddresses, idoAddress ])
-          });
+          await utils
+            .loadPoolData(address, contract.web3, account, ipfsInfuraDedicatedGateway)
+            .then((IDOPoolData) => {
+              setAllPools((p) => ({ ...p, ...{ [address]: IDOPoolData } }));
+              const { owner, userData, idoAddress } = IDOPoolData;
+              if (
+                owner?.toLowerCase() === account?.toLowerCase() ||
+                (userData?.totalInvestedETH && userData?.totalInvestedETH !== '0')
+              )
+                setUserPoolAddresses((prevUserPoolAddresses) => [
+                  ...prevUserPoolAddresses,
+                  idoAddress,
+                ]);
+            });
         });
       }, 500);
 
@@ -48,25 +52,25 @@ export const PoolContextProvider = ({ children }) => {
   }, [allPoolAddress, ipfsInfuraDedicatedGateway]);
 
   useEffect(() => {
-    setUserPoolAddresses([])
+    setUserPoolAddresses([]);
     const delayDebounceFn = setTimeout(() => {
       Object.values(allPools).map(async (IDOPoolData, index) => {
         const { idoAddress, owner } = IDOPoolData;
         await utils.loadUserData(idoAddress, contract.web3, account).then((userData) => {
-          IDOPoolData.userData = userData
+          IDOPoolData.userData = userData;
           setAllPools((prevAllPools) => ({ ...prevAllPools, ...{ [idoAddress]: IDOPoolData } }));
 
           if (
-            owner?.toLowerCase() === account?.toLowerCase()
-            || (userData?.totalInvestedETH && userData?.totalInvestedETH !== "0")
-          ) setUserPoolAddresses((prevUserPoolAddresses) => [ ...prevUserPoolAddresses, idoAddress ])
-
+            owner?.toLowerCase() === account?.toLowerCase() ||
+            (userData?.totalInvestedETH && userData?.totalInvestedETH !== '0')
+          )
+            setUserPoolAddresses((prevUserPoolAddresses) => [...prevUserPoolAddresses, idoAddress]);
         });
       });
     }, 500);
 
     return () => clearTimeout(delayDebounceFn);
-  }, [account])
+  }, [account]);
 
   useEffect(() => {
     const delayDebounceFn = setTimeout(() => {
@@ -131,20 +135,23 @@ export const PoolContextProvider = ({ children }) => {
   }, [dispatch, contract]);
 
   useEffect(() => {
-    setUserLockersAddresses([])
+    setUserLockersAddresses([]);
     const delayDebounceFn = setTimeout(() => {
       Object.values(allLocker).map(async (lockerData, index) => {
         const { withdrawer, owner, lockerAddress } = lockerData;
         if (
-          owner?.toLowerCase() === account?.toLowerCase()
-          || withdrawer?.toLowerCase() === account?.toLowerCase()
-        ) setUserLockersAddresses((prevUserLockersAddresses) => [ ...prevUserLockersAddresses, lockerAddress ])
-
+          owner?.toLowerCase() === account?.toLowerCase() ||
+          withdrawer?.toLowerCase() === account?.toLowerCase()
+        )
+          setUserLockersAddresses((prevUserLockersAddresses) => [
+            ...prevUserLockersAddresses,
+            lockerAddress,
+          ]);
       });
     }, 500);
 
     return () => clearTimeout(delayDebounceFn);
-  }, [account, allLocker])
+  }, [account, allLocker]);
 
   const value = {
     allPools,
