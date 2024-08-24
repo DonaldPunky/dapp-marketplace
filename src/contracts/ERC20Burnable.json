@@ -316,21 +316,11 @@
   "ast": {
     "absolutePath": "@openzeppelin/contracts/token/ERC20/extensions/ERC20Burnable.sol",
     "exportedSymbols": {
-      "Context": [
-        1569
-      ],
-      "ERC20": [
-        753
-      ],
-      "ERC20Burnable": [
-        875
-      ],
-      "IERC20": [
-        831
-      ],
-      "IERC20Metadata": [
-        900
-      ]
+      "Context": [1569],
+      "ERC20": [753],
+      "ERC20Burnable": [875],
+      "IERC20": [831],
+      "IERC20Metadata": [900]
     },
     "id": 876,
     "license": "MIT",
@@ -338,12 +328,7 @@
     "nodes": [
       {
         "id": 833,
-        "literals": [
-          "solidity",
-          "^",
-          "0.8",
-          ".0"
-        ],
+        "literals": ["solidity", "^", "0.8", ".0"],
         "nodeType": "PragmaDirective",
         "src": "124:23:4"
       },
@@ -378,9 +363,7 @@
             "baseName": {
               "id": 837,
               "name": "Context",
-              "nameLocations": [
-                "454:7:4"
-              ],
+              "nameLocations": ["454:7:4"],
               "nodeType": "IdentifierPath",
               "referencedDeclaration": 1569,
               "src": "454:7:4"
@@ -393,9 +376,7 @@
             "baseName": {
               "id": 839,
               "name": "ERC20",
-              "nameLocations": [
-                "463:5:4"
-              ],
+              "nameLocations": ["463:5:4"],
               "nodeType": "IdentifierPath",
               "referencedDeclaration": 753,
               "src": "463:5:4"
@@ -416,13 +397,7 @@
         },
         "fullyImplemented": false,
         "id": 875,
-        "linearizedBaseContracts": [
-          875,
-          753,
-          900,
-          831,
-          1569
-        ],
+        "linearizedBaseContracts": [875, 753, 900, 831, 1569],
         "name": "ERC20Burnable",
         "nameLocation": "437:13:4",
         "nodeType": "ContractDefinition",

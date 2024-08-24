@@ -8810,54 +8810,25 @@
   "ast": {
     "absolutePath": "project:/contracts/TokenLockerFactory.sol",
     "exportedSymbols": {
-      "Address": [
-        1547
-      ],
-      "Context": [
-        1569
-      ],
-      "ERC20": [
-        753
-      ],
-      "IERC20": [
-        831
-      ],
-      "IERC20Metadata": [
-        900
-      ],
-      "IERC20Permit": [
-        936
-      ],
-      "Ownable": [
-        112
-      ],
-      "ReentrancyGuard": [
-        166
-      ],
-      "SafeERC20": [
-        1217
-      ],
-      "SafeMath": [
-        1881
-      ],
-      "TokenLocker": [
-        3810
-      ],
-      "TokenLockerFactory": [
-        3972
-      ]
+      "Address": [1547],
+      "Context": [1569],
+      "ERC20": [753],
+      "IERC20": [831],
+      "IERC20Metadata": [900],
+      "IERC20Permit": [936],
+      "Ownable": [112],
+      "ReentrancyGuard": [166],
+      "SafeERC20": [1217],
+      "SafeMath": [1881],
+      "TokenLocker": [3810],
+      "TokenLockerFactory": [3972]
     },
     "id": 3973,
     "nodeType": "SourceUnit",
     "nodes": [
       {
         "id": 3812,
-        "literals": [
-          "solidity",
-          "^",
-          "0.8",
-          ".0"
-        ],
+        "literals": ["solidity", "^", "0.8", ".0"],
         "nodeType": "PragmaDirective",
         "src": "0:23:18"
       },
@@ -8940,9 +8911,7 @@
             "baseName": {
               "id": 3819,
               "name": "Ownable",
-              "nameLocations": [
-                "381:7:18"
-              ],
+              "nameLocations": ["381:7:18"],
               "nodeType": "IdentifierPath",
               "referencedDeclaration": 112,
               "src": "381:7:18"
@@ -8953,17 +8922,11 @@
           }
         ],
         "canonicalName": "TokenLockerFactory",
-        "contractDependencies": [
-          3810
-        ],
+        "contractDependencies": [3810],
         "contractKind": "contract",
         "fullyImplemented": true,
         "id": 3972,
-        "linearizedBaseContracts": [
-          3972,
-          112,
-          1569
-        ],
+        "linearizedBaseContracts": [3972, 112, 1569],
         "name": "TokenLockerFactory",
         "nameLocation": "359:18:18",
         "nodeType": "ContractDefinition",
@@ -8974,9 +8937,7 @@
             "libraryName": {
               "id": 3821,
               "name": "SafeMath",
-              "nameLocations": [
-                "401:8:18"
-              ],
+              "nameLocations": ["401:8:18"],
               "nodeType": "IdentifierPath",
               "referencedDeclaration": 1881,
               "src": "401:8:18"
@@ -9000,9 +8961,7 @@
             "libraryName": {
               "id": 3824,
               "name": "SafeERC20",
-              "nameLocations": [
-                "433:9:18"
-              ],
+              "nameLocations": ["433:9:18"],
               "nodeType": "IdentifierPath",
               "referencedDeclaration": 1217,
               "src": "433:9:18"
@@ -9015,9 +8974,7 @@
               "pathNode": {
                 "id": 3825,
                 "name": "ERC20",
-                "nameLocations": [
-                  "447:5:18"
-                ],
+                "nameLocations": ["447:5:18"],
                 "nodeType": "IdentifierPath",
                 "referencedDeclaration": 753,
                 "src": "447:5:18"
@@ -9526,10 +9483,7 @@
                       "id": 3874,
                       "name": "require",
                       "nodeType": "Identifier",
-                      "overloadedDeclarations": [
-                        4294967278,
-                        4294967278
-                      ],
+                      "overloadedDeclarations": [4294967278, 4294967278],
                       "referencedDeclaration": 4294967278,
                       "src": "1071:7:18",
                       "typeDescriptions": {
@@ -9558,9 +9512,7 @@
                   "src": "1071:51:18"
                 },
                 {
-                  "assignments": [
-                    3884
-                  ],
+                  "assignments": [3884],
                   "declarations": [
                     {
                       "constant": false,
@@ -9583,9 +9535,7 @@
                         "pathNode": {
                           "id": 3882,
                           "name": "TokenLocker",
-                          "nameLocations": [
-                            "1133:11:18"
-                          ],
+                          "nameLocations": ["1133:11:18"],
                           "nodeType": "IdentifierPath",
                           "referencedDeclaration": 3810,
                           "src": "1133:11:18"
@@ -9688,9 +9638,7 @@
                         "pathNode": {
                           "id": 3885,
                           "name": "TokenLocker",
-                          "nameLocations": [
-                            "1163:11:18"
-                          ],
+                          "nameLocations": ["1163:11:18"],
                           "nodeType": "IdentifierPath",
                           "referencedDeclaration": 3810,
                           "src": "1163:11:18"
@@ -10275,9 +10223,7 @@
                     "pathNode": {
                       "id": 3859,
                       "name": "ERC20",
-                      "nameLocations": [
-                        "882:5:18"
-                      ],
+                      "nameLocations": ["882:5:18"],
                       "nodeType": "IdentifierPath",
                       "referencedDeclaration": 753,
                       "src": "882:5:18"
@@ -10451,10 +10397,7 @@
               "src": "1626:131:18",
               "statements": [
                 {
-                  "assignments": [
-                    3940,
-                    null
-                  ],
+                  "assignments": [3940, null],
                   "declarations": [
                     {
                       "constant": false,
@@ -10565,9 +10508,7 @@
                       "isLValue": false,
                       "isPure": false,
                       "lValueRequested": false,
-                      "names": [
-                        "value"
-                      ],
+                      "names": ["value"],
                       "nodeType": "FunctionCallOptions",
                       "options": [
                         {
@@ -10714,10 +10655,7 @@
                       "id": 3953,
                       "name": "require",
                       "nodeType": "Identifier",
-                      "overloadedDeclarations": [
-                        4294967278,
-                        4294967278
-                      ],
+                      "overloadedDeclarations": [4294967278, 4294967278],
                       "referencedDeclaration": 4294967278,
                       "src": "1714:7:18",
                       "typeDescriptions": {
@@ -10758,9 +10696,7 @@
                 "modifierName": {
                   "id": 3936,
                   "name": "onlyOwner",
-                  "nameLocations": [
-                    "1617:9:18"
-                  ],
+                  "nameLocations": ["1617:9:18"],
                   "nodeType": "IdentifierPath",
                   "referencedDeclaration": 31,
                   "src": "1617:9:18"
@@ -10852,9 +10788,7 @@
                 "modifierName": {
                   "id": 3963,
                   "name": "onlyOwner",
-                  "nameLocations": [
-                    "1802:9:18"
-                  ],
+                  "nameLocations": ["1802:9:18"],
                   "nodeType": "IdentifierPath",
                   "referencedDeclaration": 31,
                   "src": "1802:9:18"

@@ -11295,72 +11295,31 @@
   "ast": {
     "absolutePath": "project:/contracts/IDOFactory.sol",
     "exportedSymbols": {
-      "Address": [
-        1547
-      ],
-      "Context": [
-        1569
-      ],
-      "ERC20": [
-        753
-      ],
-      "ERC20Burnable": [
-        875
-      ],
-      "IDOFactory": [
-        2252
-      ],
-      "IDOPool": [
-        3131
-      ],
-      "IERC20": [
-        831
-      ],
-      "IERC20Metadata": [
-        900
-      ],
-      "IERC20Permit": [
-        936
-      ],
-      "IUniswapV2Factory": [
-        3204
-      ],
-      "IUniswapV2Router01": [
-        3512
-      ],
-      "IUniswapV2Router02": [
-        3600
-      ],
-      "Ownable": [
-        112
-      ],
-      "ReentrancyGuard": [
-        166
-      ],
-      "SafeERC20": [
-        1217
-      ],
-      "SafeMath": [
-        1881
-      ],
-      "TokenLocker": [
-        3776
-      ],
-      "TokenLockerFactory": [
-        3938
-      ]
+      "Address": [1547],
+      "Context": [1569],
+      "ERC20": [753],
+      "ERC20Burnable": [875],
+      "IDOFactory": [2252],
+      "IDOPool": [3131],
+      "IERC20": [831],
+      "IERC20Metadata": [900],
+      "IERC20Permit": [936],
+      "IUniswapV2Factory": [3204],
+      "IUniswapV2Router01": [3512],
+      "IUniswapV2Router02": [3600],
+      "Ownable": [112],
+      "ReentrancyGuard": [166],
+      "SafeERC20": [1217],
+      "SafeMath": [1881],
+      "TokenLocker": [3776],
+      "TokenLockerFactory": [3938]
     },
     "id": 2253,
     "nodeType": "SourceUnit",
     "nodes": [
       {
         "id": 1883,
-        "literals": [
-          "solidity",
-          "^",
-          "0.8",
-          ".0"
-        ],
+        "literals": ["solidity", "^", "0.8", ".0"],
         "nodeType": "PragmaDirective",
         "src": "0:23:11"
       },
@@ -11431,9 +11390,7 @@
             "baseName": {
               "id": 1889,
               "name": "Ownable",
-              "nameLocations": [
-                "326:7:11"
-              ],
+              "nameLocations": ["326:7:11"],
               "nodeType": "IdentifierPath",
               "referencedDeclaration": 112,
               "src": "326:7:11"
@@ -11444,17 +11401,11 @@
           }
         ],
         "canonicalName": "IDOFactory",
-        "contractDependencies": [
-          3131
-        ],
+        "contractDependencies": [3131],
         "contractKind": "contract",
         "fullyImplemented": true,
         "id": 2252,
-        "linearizedBaseContracts": [
-          2252,
-          112,
-          1569
-        ],
+        "linearizedBaseContracts": [2252, 112, 1569],
         "name": "IDOFactory",
         "nameLocation": "312:10:11",
         "nodeType": "ContractDefinition",
@@ -11465,9 +11416,7 @@
             "libraryName": {
               "id": 1891,
               "name": "SafeMath",
-              "nameLocations": [
-                "346:8:11"
-              ],
+              "nameLocations": ["346:8:11"],
               "nodeType": "IdentifierPath",
               "referencedDeclaration": 1881,
               "src": "346:8:11"
@@ -11491,9 +11440,7 @@
             "libraryName": {
               "id": 1894,
               "name": "SafeERC20",
-              "nameLocations": [
-                "378:9:11"
-              ],
+              "nameLocations": ["378:9:11"],
               "nodeType": "IdentifierPath",
               "referencedDeclaration": 1217,
               "src": "378:9:11"
@@ -11506,9 +11453,7 @@
               "pathNode": {
                 "id": 1895,
                 "name": "ERC20Burnable",
-                "nameLocations": [
-                  "392:13:11"
-                ],
+                "nameLocations": ["392:13:11"],
                 "nodeType": "IdentifierPath",
                 "referencedDeclaration": 875,
                 "src": "392:13:11"
@@ -11527,9 +11472,7 @@
             "libraryName": {
               "id": 1898,
               "name": "SafeERC20",
-              "nameLocations": [
-                "417:9:11"
-              ],
+              "nameLocations": ["417:9:11"],
               "nodeType": "IdentifierPath",
               "referencedDeclaration": 1217,
               "src": "417:9:11"
@@ -11542,9 +11485,7 @@
               "pathNode": {
                 "id": 1899,
                 "name": "ERC20",
-                "nameLocations": [
-                  "431:5:11"
-                ],
+                "nameLocations": ["431:5:11"],
                 "nodeType": "IdentifierPath",
                 "referencedDeclaration": 753,
                 "src": "431:5:11"
@@ -11579,9 +11520,7 @@
               "pathNode": {
                 "id": 1902,
                 "name": "ERC20Burnable",
-                "nameLocations": [
-                  "443:13:11"
-                ],
+                "nameLocations": ["443:13:11"],
                 "nodeType": "IdentifierPath",
                 "referencedDeclaration": 875,
                 "src": "443:13:11"
@@ -12261,9 +12200,7 @@
                     "pathNode": {
                       "id": 1941,
                       "name": "ERC20Burnable",
-                      "nameLocations": [
-                        "1065:13:11"
-                      ],
+                      "nameLocations": ["1065:13:11"],
                       "nodeType": "IdentifierPath",
                       "referencedDeclaration": 875,
                       "src": "1065:13:11"
@@ -12435,10 +12372,7 @@
                       "id": 1974,
                       "name": "require",
                       "nodeType": "Identifier",
-                      "overloadedDeclarations": [
-                        4294967278,
-                        4294967278
-                      ],
+                      "overloadedDeclarations": [4294967278, 4294967278],
                       "referencedDeclaration": 4294967278,
                       "src": "1358:7:11",
                       "typeDescriptions": {
@@ -12613,9 +12547,7 @@
                 "modifierName": {
                   "id": 1971,
                   "name": "onlyOwner",
-                  "nameLocations": [
-                    "1338:9:11"
-                  ],
+                  "nameLocations": ["1338:9:11"],
                   "nodeType": "IdentifierPath",
                   "referencedDeclaration": 31,
                   "src": "1338:9:11"
@@ -12790,9 +12722,7 @@
                 "modifierName": {
                   "id": 1996,
                   "name": "onlyOwner",
-                  "nameLocations": [
-                    "1581:9:11"
-                  ],
+                  "nameLocations": ["1581:9:11"],
                   "nodeType": "IdentifierPath",
                   "referencedDeclaration": 31,
                   "src": "1581:9:11"
@@ -12966,9 +12896,7 @@
                 "modifierName": {
                   "id": 2012,
                   "name": "onlyOwner",
-                  "nameLocations": [
-                    "1740:9:11"
-                  ],
+                  "nameLocations": ["1740:9:11"],
                   "nodeType": "IdentifierPath",
                   "referencedDeclaration": 31,
                   "src": "1740:9:11"
@@ -13109,10 +13037,7 @@
                       "id": 2033,
                       "name": "require",
                       "nodeType": "Identifier",
-                      "overloadedDeclarations": [
-                        4294967278,
-                        4294967278
-                      ],
+                      "overloadedDeclarations": [4294967278, 4294967278],
                       "referencedDeclaration": 4294967278,
                       "src": "1964:7:11",
                       "typeDescriptions": {
@@ -13309,9 +13234,7 @@
                 "modifierName": {
                   "id": 2030,
                   "name": "onlyOwner",
-                  "nameLocations": [
-                    "1940:9:11"
-                  ],
+                  "nameLocations": ["1940:9:11"],
                   "nodeType": "IdentifierPath",
                   "referencedDeclaration": 31,
                   "src": "1940:9:11"
@@ -13403,9 +13326,7 @@
               "src": "2458:1533:11",
               "statements": [
                 {
-                  "assignments": [
-                    2075
-                  ],
+                  "assignments": [2075],
                   "declarations": [
                     {
                       "constant": false,
@@ -13428,9 +13349,7 @@
                         "pathNode": {
                           "id": 2073,
                           "name": "IDOPool",
-                          "nameLocations": [
-                            "2468:7:11"
-                          ],
+                          "nameLocations": ["2468:7:11"],
                           "nodeType": "IdentifierPath",
                           "referencedDeclaration": 3131,
                           "src": "2468:7:11"
@@ -13565,9 +13484,7 @@
                         "pathNode": {
                           "id": 2076,
                           "name": "IDOPool",
-                          "nameLocations": [
-                            "2502:7:11"
-                          ],
+                          "nameLocations": ["2502:7:11"],
                           "nodeType": "IdentifierPath",
                           "referencedDeclaration": 3131,
                           "src": "2502:7:11"
@@ -13600,9 +13517,7 @@
                   "src": "2468:235:11"
                 },
                 {
-                  "assignments": [
-                    2088
-                  ],
+                  "assignments": [2088],
                   "declarations": [
                     {
                       "constant": false,
@@ -13684,9 +13599,7 @@
                   "src": "2714:45:11"
                 },
                 {
-                  "assignments": [
-                    2094
-                  ],
+                  "assignments": [2094],
                   "declarations": [
                     {
                       "constant": false,
@@ -14900,9 +14813,7 @@
                           "src": "3474:325:11",
                           "statements": [
                             {
-                              "assignments": [
-                                2169
-                              ],
+                              "assignments": [2169],
                               "declarations": [
                                 {
                                   "constant": false,
@@ -15366,9 +15277,7 @@
                     "pathNode": {
                       "id": 2055,
                       "name": "ERC20",
-                      "nameLocations": [
-                        "2220:5:11"
-                      ],
+                      "nameLocations": ["2220:5:11"],
                       "nodeType": "IdentifierPath",
                       "referencedDeclaration": 753,
                       "src": "2220:5:11"
@@ -15403,10 +15312,7 @@
                     "pathNode": {
                       "id": 2058,
                       "name": "IDOPool.FinInfo",
-                      "nameLocations": [
-                        "2248:7:11",
-                        "2256:7:11"
-                      ],
+                      "nameLocations": ["2248:7:11", "2256:7:11"],
                       "nodeType": "IdentifierPath",
                       "referencedDeclaration": 2288,
                       "src": "2248:15:11"
@@ -15441,10 +15347,7 @@
                     "pathNode": {
                       "id": 2061,
                       "name": "IDOPool.Timestamps",
-                      "nameLocations": [
-                        "2289:7:11",
-                        "2297:10:11"
-                      ],
+                      "nameLocations": ["2289:7:11", "2297:10:11"],
                       "nodeType": "IdentifierPath",
                       "referencedDeclaration": 2295,
                       "src": "2289:18:11"
@@ -15479,10 +15382,7 @@
                     "pathNode": {
                       "id": 2064,
                       "name": "IDOPool.DEXInfo",
-                      "nameLocations": [
-                        "2336:7:11",
-                        "2344:7:11"
-                      ],
+                      "nameLocations": ["2336:7:11", "2344:7:11"],
                       "nodeType": "IdentifierPath",
                       "referencedDeclaration": 2302,
                       "src": "2336:15:11"
@@ -15844,9 +15744,7 @@
               "src": "4274:123:11",
               "statements": [
                 {
-                  "assignments": [
-                    2242
-                  ],
+                  "assignments": [2242],
                   "declarations": [
                     {
                       "constant": false,

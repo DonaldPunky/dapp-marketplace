@@ -11730,51 +11730,24 @@
   "ast": {
     "absolutePath": "project:/contracts/TokenLocker.sol",
     "exportedSymbols": {
-      "Address": [
-        1547
-      ],
-      "Context": [
-        1569
-      ],
-      "ERC20": [
-        753
-      ],
-      "IERC20": [
-        831
-      ],
-      "IERC20Metadata": [
-        900
-      ],
-      "IERC20Permit": [
-        936
-      ],
-      "Ownable": [
-        112
-      ],
-      "ReentrancyGuard": [
-        166
-      ],
-      "SafeERC20": [
-        1217
-      ],
-      "SafeMath": [
-        1881
-      ],
-      "TokenLocker": [
-        3810
-      ]
+      "Address": [1547],
+      "Context": [1569],
+      "ERC20": [753],
+      "IERC20": [831],
+      "IERC20Metadata": [900],
+      "IERC20Permit": [936],
+      "Ownable": [112],
+      "ReentrancyGuard": [166],
+      "SafeERC20": [1217],
+      "SafeMath": [1881],
+      "TokenLocker": [3810]
     },
     "id": 3811,
     "nodeType": "SourceUnit",
     "nodes": [
       {
         "id": 3636,
-        "literals": [
-          "solidity",
-          "^",
-          "0.8",
-          ".0"
-        ],
+        "literals": ["solidity", "^", "0.8", ".0"],
         "nodeType": "PragmaDirective",
         "src": "0:23:17"
       },
@@ -11845,9 +11818,7 @@
             "baseName": {
               "id": 3642,
               "name": "Ownable",
-              "nameLocations": [
-                "346:7:17"
-              ],
+              "nameLocations": ["346:7:17"],
               "nodeType": "IdentifierPath",
               "referencedDeclaration": 112,
               "src": "346:7:17"
@@ -11862,11 +11833,7 @@
         "contractKind": "contract",
         "fullyImplemented": true,
         "id": 3810,
-        "linearizedBaseContracts": [
-          3810,
-          112,
-          1569
-        ],
+        "linearizedBaseContracts": [3810, 112, 1569],
         "name": "TokenLocker",
         "nameLocation": "331:11:17",
         "nodeType": "ContractDefinition",
@@ -11877,9 +11844,7 @@
             "libraryName": {
               "id": 3644,
               "name": "SafeMath",
-              "nameLocations": [
-                "366:8:17"
-              ],
+              "nameLocations": ["366:8:17"],
               "nodeType": "IdentifierPath",
               "referencedDeclaration": 1881,
               "src": "366:8:17"
@@ -11903,9 +11868,7 @@
             "libraryName": {
               "id": 3647,
               "name": "SafeERC20",
-              "nameLocations": [
-                "398:9:17"
-              ],
+              "nameLocations": ["398:9:17"],
               "nodeType": "IdentifierPath",
               "referencedDeclaration": 1217,
               "src": "398:9:17"
@@ -11918,9 +11881,7 @@
               "pathNode": {
                 "id": 3648,
                 "name": "ERC20",
-                "nameLocations": [
-                  "412:5:17"
-                ],
+                "nameLocations": ["412:5:17"],
                 "nodeType": "IdentifierPath",
                 "referencedDeclaration": 753,
                 "src": "412:5:17"
@@ -11955,9 +11916,7 @@
               "pathNode": {
                 "id": 3651,
                 "name": "ERC20",
-                "nameLocations": [
-                  "424:5:17"
-                ],
+                "nameLocations": ["424:5:17"],
                 "nodeType": "IdentifierPath",
                 "referencedDeclaration": 753,
                 "src": "424:5:17"
@@ -12225,10 +12184,7 @@
                       "id": 3677,
                       "name": "require",
                       "nodeType": "Identifier",
-                      "overloadedDeclarations": [
-                        4294967278,
-                        4294967278
-                      ],
+                      "overloadedDeclarations": [4294967278, 4294967278],
                       "referencedDeclaration": 4294967278,
                       "src": "741:7:17",
                       "typeDescriptions": {
@@ -12462,9 +12418,7 @@
                     "pathNode": {
                       "id": 3666,
                       "name": "ERC20",
-                      "nameLocations": [
-                        "624:5:17"
-                      ],
+                      "nameLocations": ["624:5:17"],
                       "nodeType": "IdentifierPath",
                       "referencedDeclaration": 753,
                       "src": "624:5:17"
@@ -12755,10 +12709,7 @@
                       "id": 3707,
                       "name": "require",
                       "nodeType": "Identifier",
-                      "overloadedDeclarations": [
-                        4294967278,
-                        4294967278
-                      ],
+                      "overloadedDeclarations": [4294967278, 4294967278],
                       "referencedDeclaration": 4294967278,
                       "src": "1009:7:17",
                       "typeDescriptions": {
@@ -12877,10 +12828,7 @@
                       "id": 3720,
                       "name": "require",
                       "nodeType": "Identifier",
-                      "overloadedDeclarations": [
-                        4294967278,
-                        4294967278
-                      ],
+                      "overloadedDeclarations": [4294967278, 4294967278],
                       "referencedDeclaration": 4294967278,
                       "src": "1105:7:17",
                       "typeDescriptions": {
@@ -12999,10 +12947,7 @@
                       "id": 3728,
                       "name": "require",
                       "nodeType": "Identifier",
-                      "overloadedDeclarations": [
-                        4294967278,
-                        4294967278
-                      ],
+                      "overloadedDeclarations": [4294967278, 4294967278],
                       "referencedDeclaration": 4294967278,
                       "src": "1174:7:17",
                       "typeDescriptions": {
@@ -13369,10 +13314,7 @@
                       "id": 3754,
                       "name": "require",
                       "nodeType": "Identifier",
-                      "overloadedDeclarations": [
-                        4294967278,
-                        4294967278
-                      ],
+                      "overloadedDeclarations": [4294967278, 4294967278],
                       "referencedDeclaration": 4294967278,
                       "src": "1392:7:17",
                       "typeDescriptions": {
@@ -13491,10 +13433,7 @@
                       "id": 3762,
                       "name": "require",
                       "nodeType": "Identifier",
-                      "overloadedDeclarations": [
-                        4294967278,
-                        4294967278
-                      ],
+                      "overloadedDeclarations": [4294967278, 4294967278],
                       "referencedDeclaration": 4294967278,
                       "src": "1461:7:17",
                       "typeDescriptions": {
@@ -13523,9 +13462,7 @@
                   "src": "1461:55:17"
                 },
                 {
-                  "assignments": [
-                    3771
-                  ],
+                  "assignments": [3771],
                   "declarations": [
                     {
                       "constant": false,

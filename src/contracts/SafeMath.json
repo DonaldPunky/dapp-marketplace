@@ -14,9 +14,7 @@
   "ast": {
     "absolutePath": "@openzeppelin/contracts/utils/math/SafeMath.sol",
     "exportedSymbols": {
-      "SafeMath": [
-        1881
-      ]
+      "SafeMath": [1881]
     },
     "id": 1882,
     "license": "MIT",
@@ -24,12 +22,7 @@
     "nodes": [
       {
         "id": 1571,
-        "literals": [
-          "solidity",
-          "^",
-          "0.8",
-          ".0"
-        ],
+        "literals": ["solidity", "^", "0.8", ".0"],
         "nodeType": "PragmaDirective",
         "src": "107:23:10"
       },
@@ -47,9 +40,7 @@
         },
         "fullyImplemented": true,
         "id": 1881,
-        "linearizedBaseContracts": [
-          1881
-        ],
+        "linearizedBaseContracts": [1881],
         "name": "SafeMath",
         "nameLocation": "490:8:10",
         "nodeType": "ContractDefinition",
@@ -66,9 +57,7 @@
                   "src": "727:124:10",
                   "statements": [
                     {
-                      "assignments": [
-                        1585
-                      ],
+                      "assignments": [1585],
                       "declarations": [
                         {
                           "constant": false,
@@ -894,9 +883,7 @@
                       }
                     },
                     {
-                      "assignments": [
-                        1653
-                      ],
+                      "assignments": [1653],
                       "declarations": [
                         {
                           "constant": false,
@@ -2913,10 +2900,7 @@
                           "id": 1817,
                           "name": "require",
                           "nodeType": "Identifier",
-                          "overloadedDeclarations": [
-                            4294967278,
-                            4294967278
-                          ],
+                          "overloadedDeclarations": [4294967278, 4294967278],
                           "referencedDeclaration": 4294967278,
                           "src": "5118:7:10",
                           "typeDescriptions": {
@@ -3224,10 +3208,7 @@
                           "id": 1842,
                           "name": "require",
                           "nodeType": "Identifier",
-                          "overloadedDeclarations": [
-                            4294967278,
-                            4294967278
-                          ],
+                          "overloadedDeclarations": [4294967278, 4294967278],
                           "referencedDeclaration": 4294967278,
                           "src": "5833:7:10",
                           "typeDescriptions": {
@@ -3535,10 +3516,7 @@
                           "id": 1867,
                           "name": "require",
                           "nodeType": "Identifier",
-                          "overloadedDeclarations": [
-                            4294967278,
-                            4294967278
-                          ],
+                          "overloadedDeclarations": [4294967278, 4294967278],
                           "referencedDeclaration": 4294967278,
                           "src": "6709:7:10",
                           "typeDescriptions": {

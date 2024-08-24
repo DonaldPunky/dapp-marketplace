@@ -764,21 +764,14 @@
   "ast": {
     "absolutePath": "project:/contracts/IUniswapV2Router01.sol",
     "exportedSymbols": {
-      "IUniswapV2Router01": [
-        3546
-      ]
+      "IUniswapV2Router01": [3546]
     },
     "id": 3547,
     "nodeType": "SourceUnit",
     "nodes": [
       {
         "id": 3240,
-        "literals": [
-          "solidity",
-          ">=",
-          "0.6",
-          ".2"
-        ],
+        "literals": ["solidity", ">=", "0.6", ".2"],
         "nodeType": "PragmaDirective",
         "src": "0:24:15"
       },
@@ -790,9 +783,7 @@
         "contractKind": "interface",
         "fullyImplemented": false,
         "id": 3546,
-        "linearizedBaseContracts": [
-          3546
-        ],
+        "linearizedBaseContracts": [3546],
         "name": "IUniswapV2Router01",
         "nameLocation": "36:18:15",
         "nodeType": "ContractDefinition",

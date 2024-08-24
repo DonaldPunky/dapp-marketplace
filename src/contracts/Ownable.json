@@ -67,12 +67,8 @@
   "ast": {
     "absolutePath": "@openzeppelin/contracts/access/Ownable.sol",
     "exportedSymbols": {
-      "Context": [
-        1569
-      ],
-      "Ownable": [
-        112
-      ]
+      "Context": [1569],
+      "Ownable": [112]
     },
     "id": 113,
     "license": "MIT",
@@ -80,12 +76,7 @@
     "nodes": [
       {
         "id": 1,
-        "literals": [
-          "solidity",
-          "^",
-          "0.8",
-          ".0"
-        ],
+        "literals": ["solidity", "^", "0.8", ".0"],
         "nodeType": "PragmaDirective",
         "src": "102:23:0"
       },
@@ -108,9 +99,7 @@
             "baseName": {
               "id": 4,
               "name": "Context",
-              "nameLocations": [
-                "683:7:0"
-              ],
+              "nameLocations": ["683:7:0"],
               "nodeType": "IdentifierPath",
               "referencedDeclaration": 1569,
               "src": "683:7:0"
@@ -131,10 +120,7 @@
         },
         "fullyImplemented": true,
         "id": 112,
-        "linearizedBaseContracts": [
-          112,
-          1569
-        ],
+        "linearizedBaseContracts": [112, 1569],
         "name": "Ownable",
         "nameLocation": "672:7:0",
         "nodeType": "ContractDefinition",
@@ -629,10 +615,7 @@
                       "id": 44,
                       "name": "require",
                       "nodeType": "Identifier",
-                      "overloadedDeclarations": [
-                        4294967278,
-                        4294967278
-                      ],
+                      "overloadedDeclarations": [4294967278, 4294967278],
                       "referencedDeclaration": 4294967278,
                       "src": "1414:7:0",
                       "typeDescriptions": {
@@ -821,9 +804,7 @@
                 "modifierName": {
                   "id": 57,
                   "name": "onlyOwner",
-                  "nameLocations": [
-                    "1875:9:0"
-                  ],
+                  "nameLocations": ["1875:9:0"],
                   "nodeType": "IdentifierPath",
                   "referencedDeclaration": 31,
                   "src": "1875:9:0"
@@ -984,10 +965,7 @@
                       "id": 76,
                       "name": "require",
                       "nodeType": "Identifier",
-                      "overloadedDeclarations": [
-                        4294967278,
-                        4294967278
-                      ],
+                      "overloadedDeclarations": [4294967278, 4294967278],
                       "referencedDeclaration": 4294967278,
                       "src": "2161:7:0",
                       "typeDescriptions": {
@@ -1088,9 +1066,7 @@
                 "modifierName": {
                   "id": 73,
                   "name": "onlyOwner",
-                  "nameLocations": [
-                    "2141:9:0"
-                  ],
+                  "nameLocations": ["2141:9:0"],
                   "nodeType": "IdentifierPath",
                   "referencedDeclaration": 31,
                   "src": "2141:9:0"
@@ -1156,9 +1132,7 @@
               "src": "2496:124:0",
               "statements": [
                 {
-                  "assignments": [
-                    98
-                  ],
+                  "assignments": [98],
                   "declarations": [
                     {
                       "constant": false,

@@ -11299,24 +11299,12 @@
   "ast": {
     "absolutePath": "project:/contracts/FeeToken.sol",
     "exportedSymbols": {
-      "Context": [
-        1569
-      ],
-      "ERC20": [
-        753
-      ],
-      "ERC20Burnable": [
-        875
-      ],
-      "FeeToken": [
-        1912
-      ],
-      "IERC20": [
-        831
-      ],
-      "IERC20Metadata": [
-        900
-      ]
+      "Context": [1569],
+      "ERC20": [753],
+      "ERC20Burnable": [875],
+      "FeeToken": [1912],
+      "IERC20": [831],
+      "IERC20Metadata": [900]
     },
     "id": 1913,
     "license": "Unlicense",
@@ -11324,12 +11312,7 @@
     "nodes": [
       {
         "id": 1883,
-        "literals": [
-          "solidity",
-          "^",
-          "0.8",
-          ".0"
-        ],
+        "literals": ["solidity", "^", "0.8", ".0"],
         "nodeType": "PragmaDirective",
         "src": "37:23:11"
       },
@@ -11364,9 +11347,7 @@
             "baseName": {
               "id": 1886,
               "name": "ERC20",
-              "nameLocations": [
-                "215:5:11"
-              ],
+              "nameLocations": ["215:5:11"],
               "nodeType": "IdentifierPath",
               "referencedDeclaration": 753,
               "src": "215:5:11"
@@ -11379,9 +11360,7 @@
             "baseName": {
               "id": 1888,
               "name": "ERC20Burnable",
-              "nameLocations": [
-                "222:13:11"
-              ],
+              "nameLocations": ["222:13:11"],
               "nodeType": "IdentifierPath",
               "referencedDeclaration": 875,
               "src": "222:13:11"
@@ -11396,14 +11375,7 @@
         "contractKind": "contract",
         "fullyImplemented": true,
         "id": 1912,
-        "linearizedBaseContracts": [
-          1912,
-          875,
-          753,
-          900,
-          831,
-          1569
-        ],
+        "linearizedBaseContracts": [1912, 875, 753, 900, 831, 1569],
         "name": "FeeToken",
         "nameLocation": "203:8:11",
         "nodeType": "ContractDefinition",
@@ -11676,9 +11648,7 @@
                 "modifierName": {
                   "id": 1899,
                   "name": "ERC20",
-                  "nameLocations": [
-                    "312:5:11"
-                  ],
+                  "nameLocations": ["312:5:11"],
                   "nodeType": "IdentifierPath",
                   "referencedDeclaration": 753,
                   "src": "312:5:11"

@@ -90,9 +90,7 @@
   "ast": {
     "absolutePath": "@openzeppelin/contracts/token/ERC20/extensions/draft-IERC20Permit.sol",
     "exportedSymbols": {
-      "IERC20Permit": [
-        936
-      ]
+      "IERC20Permit": [936]
     },
     "id": 937,
     "license": "MIT",
@@ -100,12 +98,7 @@
     "nodes": [
       {
         "id": 902,
-        "literals": [
-          "solidity",
-          "^",
-          "0.8",
-          ".0"
-        ],
+        "literals": ["solidity", "^", "0.8", ".0"],
         "nodeType": "PragmaDirective",
         "src": "114:23:6"
       },
@@ -123,9 +116,7 @@
         },
         "fullyImplemented": false,
         "id": 936,
-        "linearizedBaseContracts": [
-          936
-        ],
+        "linearizedBaseContracts": [936],
         "name": "IERC20Permit",
         "nameLocation": "630:12:6",
         "nodeType": "ContractDefinition",

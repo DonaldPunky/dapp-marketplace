@@ -198,9 +198,7 @@
   "ast": {
     "absolutePath": "@openzeppelin/contracts/token/ERC20/IERC20.sol",
     "exportedSymbols": {
-      "IERC20": [
-        831
-      ]
+      "IERC20": [831]
     },
     "id": 832,
     "license": "MIT",
@@ -208,12 +206,7 @@
     "nodes": [
       {
         "id": 755,
-        "literals": [
-          "solidity",
-          "^",
-          "0.8",
-          ".0"
-        ],
+        "literals": ["solidity", "^", "0.8", ".0"],
         "nodeType": "PragmaDirective",
         "src": "106:23:3"
       },
@@ -231,9 +224,7 @@
         },
         "fullyImplemented": false,
         "id": 831,
-        "linearizedBaseContracts": [
-          831
-        ],
+        "linearizedBaseContracts": [831],
         "name": "IERC20",
         "nameLocation": "212:6:3",
         "nodeType": "ContractDefinition",

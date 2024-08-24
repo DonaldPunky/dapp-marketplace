@@ -204,21 +204,14 @@
   "ast": {
     "absolutePath": "project:/contracts/IUniswapV2Factory.sol",
     "exportedSymbols": {
-      "IUniswapV2Factory": [
-        3238
-      ]
+      "IUniswapV2Factory": [3238]
     },
     "id": 3239,
     "nodeType": "SourceUnit",
     "nodes": [
       {
         "id": 3167,
-        "literals": [
-          "solidity",
-          ">=",
-          "0.6",
-          ".12"
-        ],
+        "literals": ["solidity", ">=", "0.6", ".12"],
         "nodeType": "PragmaDirective",
         "src": "0:25:14"
       },
@@ -230,9 +223,7 @@
         "contractKind": "interface",
         "fullyImplemented": false,
         "id": 3238,
-        "linearizedBaseContracts": [
-          3238
-        ],
+        "linearizedBaseContracts": [3238],
         "name": "IUniswapV2Factory",
         "nameLocation": "37:17:14",
         "nodeType": "ContractDefinition",

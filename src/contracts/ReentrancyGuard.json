@@ -14,9 +14,7 @@
   "ast": {
     "absolutePath": "@openzeppelin/contracts/security/ReentrancyGuard.sol",
     "exportedSymbols": {
-      "ReentrancyGuard": [
-        166
-      ]
+      "ReentrancyGuard": [166]
     },
     "id": 167,
     "license": "MIT",
@@ -24,12 +22,7 @@
     "nodes": [
       {
         "id": 114,
-        "literals": [
-          "solidity",
-          "^",
-          "0.8",
-          ".0"
-        ],
+        "literals": ["solidity", "^", "0.8", ".0"],
         "nodeType": "PragmaDirective",
         "src": "112:23:1"
       },
@@ -47,9 +40,7 @@
         },
         "fullyImplemented": true,
         "id": 166,
-        "linearizedBaseContracts": [
-          166
-        ],
+        "linearizedBaseContracts": [166],
         "name": "ReentrancyGuard",
         "nameLocation": "906:15:1",
         "nodeType": "ContractDefinition",
@@ -430,10 +421,7 @@
                       "id": 145,
                       "name": "require",
                       "nodeType": "Identifier",
-                      "overloadedDeclarations": [
-                        4294967278,
-                        4294967278
-                      ],
+                      "overloadedDeclarations": [4294967278, 4294967278],
                       "referencedDeclaration": 4294967278,
                       "src": "2460:7:1",
                       "typeDescriptions": {
