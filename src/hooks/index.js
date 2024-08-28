@@ -47,42 +47,42 @@ export function useEagerConnect() {
  * and out after checking what network theyre on
  */
 export function useInactiveListener(suppress = false) {
-  const { active, error, activate, deactivate } = useWeb3ReactCore() // specifically using useWeb3React because of what this hook does
+  const { active, error, activate, deactivate } = useWeb3ReactCore(); // specifically using useWeb3React because of what this hook does
 
   useEffect(() => {
-    const { ethereum } = window
+    const { ethereum } = window;
 
     if (ethereum && ethereum.on && !active && !error && !suppress) {
-      const handleChainChanged = chainId => {
-        const supported = injected.supportedChainIds?.includes(Number(chainId))
+      const handleChainChanged = (chainId) => {
+        const supported = injected.supportedChainIds?.includes(Number(chainId));
 
-        if (!supported) return deactivate()
+        if (!supported) return deactivate();
 
         // eat errors
         activate(injected, undefined, true).catch((error) => {
-          console.error('Failed to activate after chain changed', error)
-        })
-      }
+          console.error('Failed to activate after chain changed', error);
+        });
+      };
 
-      const handleAccountsChanged = accounts => {
+      const handleAccountsChanged = (accounts) => {
         if (accounts.length > 0) {
           // eat errors
           activate(injected, undefined, true).catch((error) => {
-            console.error('Failed to activate after accounts changed', error)
-          })
+            console.error('Failed to activate after accounts changed', error);
+          });
         }
-      }
+      };
 
-      ethereum.on('chainChanged', handleChainChanged)
-      ethereum.on('accountsChanged', handleAccountsChanged)
+      ethereum.on('chainChanged', handleChainChanged);
+      ethereum.on('accountsChanged', handleAccountsChanged);
 
       return () => {
         if (ethereum.removeListener) {
-          ethereum.removeListener('chainChanged', handleChainChanged)
-          ethereum.removeListener('accountsChanged', handleAccountsChanged)
+          ethereum.removeListener('chainChanged', handleChainChanged);
+          ethereum.removeListener('accountsChanged', handleAccountsChanged);
         }
-      }
+      };
     }
-    return undefined
-  }, [active, error, suppress, activate, deactivate])
+    return undefined;
+  }, [active, error, suppress, activate, deactivate]);
 }

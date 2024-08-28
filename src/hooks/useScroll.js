@@ -7,4 +7,4 @@ const useScroll = () => {
   return [executeScroll, scrollRef];
 };
 
-export default useScroll
+export default useScroll;
