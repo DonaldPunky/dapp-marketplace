@@ -5,7 +5,7 @@ import { useApplicationContext } from '../../../../context/applicationContext';
 import { isWebUri } from '../../../../utils/url';
 import { saveAppData } from '../../../../utils/storage';
 import { TextField, Stack, Typography, Switch } from '@mui/material';
-import * as s from "../../../../styles/global";
+import * as s from '../../../../styles/global';
 import styled from 'styled-components';
 import Loader from '../../../../components/Loader';
 import { InjectedConnector } from '@web3-react/injected-connector';
@@ -17,21 +17,19 @@ const ContentWrapper = styled.div`
   width: 100%;
   flex-direction: column;
 
-  ${({ disabled }) => (disabled ? `
+  ${({ disabled }) =>
+    disabled
+      ? `
     cursor: not-allowed;
     pointer-events: none;
     opacity: 0.6;
-    ` : ''
-  )};
-`
+    `
+      : ''};
+`;
 
 export default function Interface() {
   const { library, chainId, account, connector } = useWeb3React();
-  const {
-    domain,
-    domainSettings,
-    triggerDomainData,
-  } = useApplicationContext();
+  const { domain, domainSettings, triggerDomainData } = useApplicationContext();
 
   const [isLoading, setIsLoading] = useState(false);
 
@@ -56,76 +54,76 @@ export default function Interface() {
   const [disableSourceCopyright, setDisableSourceCopyright] = useState(stateDisableSourceCopyright);
   const [isLockerEnabled, setIsLockerEnabled] = useState(stateIsLockerEnabled);
   const [isValidLogo, setIsValidLogo] = useState(Boolean(isWebUri(stateLogoUrl)));
-//   const [faviconUrl, setFaviconUrl] = useState(stateFavicon)
-//   const [isValidFavicon, setIsValidFavicon] = useState(Boolean(validUrl.isUri(stateFavicon)))
+  //   const [faviconUrl, setFaviconUrl] = useState(stateFavicon)
+  //   const [isValidFavicon, setIsValidFavicon] = useState(Boolean(validUrl.isUri(stateFavicon)))
 
   useEffect(() => {
     setIsValidLogo(logoUrl ? Boolean(isWebUri(logoUrl)) : true);
   }, [logoUrl]);
 
-//   useEffect(() => {
-//     setIsValidFavicon(faviconUrl ? Boolean(validUrl.isUri(faviconUrl)) : true)
-//   }, [faviconUrl])
+  //   useEffect(() => {
+  //     setIsValidFavicon(faviconUrl ? Boolean(validUrl.isUri(faviconUrl)) : true)
+  //   }, [faviconUrl])
 
-//   const [backgroundUrl, setBackgroundUrl] = useState(stateBackground)
-//   const [isValidBackground, setIsValidBackground] = useState(Boolean(validUrl.isUri(backgroundUrl)))
+  //   const [backgroundUrl, setBackgroundUrl] = useState(stateBackground)
+  //   const [isValidBackground, setIsValidBackground] = useState(Boolean(validUrl.isUri(backgroundUrl)))
 
-//   useEffect(() => {
-//     setIsValidBackground(backgroundUrl ? Boolean(validUrl.isUri(backgroundUrl)) : true)
-//   }, [backgroundUrl])
+  //   useEffect(() => {
+  //     setIsValidBackground(backgroundUrl ? Boolean(validUrl.isUri(backgroundUrl)) : true)
+  //   }, [backgroundUrl])
 
-//   const [brandColor, setBrandColor] = useState(stateBrandColor)
-//   const [brandColorValid, setBrandColorValid] = useState(false)
+  //   const [brandColor, setBrandColor] = useState(stateBrandColor)
+  //   const [brandColorValid, setBrandColorValid] = useState(false)
 
-//   const [backgroundColorDark, setBackgroundColorDark] = useState(stateBackgroundColorDark)
-//   const [bgColorDarkValid, setBgColorDarkValid] = useState(false)
+  //   const [backgroundColorDark, setBackgroundColorDark] = useState(stateBackgroundColorDark)
+  //   const [bgColorDarkValid, setBgColorDarkValid] = useState(false)
 
-//   const [backgroundColorLight, setBackgroundColorLight] = useState(stateBackgroundColorLight)
-//   const [bgColorLightValid, setBgColorLightValid] = useState(false)
+  //   const [backgroundColorLight, setBackgroundColorLight] = useState(stateBackgroundColorLight)
+  //   const [bgColorLightValid, setBgColorLightValid] = useState(false)
 
-//   const [textColorDark, setTextColorDark] = useState(stateTextColorDark)
-//   const [textColorDarkValid, setTextColorDarkValid] = useState(false)
+  //   const [textColorDark, setTextColorDark] = useState(stateTextColorDark)
+  //   const [textColorDarkValid, setTextColorDarkValid] = useState(false)
 
-//   const [textColorLight, setTextColorLight] = useState(stateTextColorLight)
-//   const [textColorLightValid, setTextColorLightValid] = useState(false)
+  //   const [textColorLight, setTextColorLight] = useState(stateTextColorLight)
+  //   const [textColorLightValid, setTextColorLightValid] = useState(false)
 
-//   const ColorType = {
-//     BRAND: 'brand',
-//     BACKGROUND_LIGHT: 'bg-l',
-//     BACKGROUND_DARK: 'bg-d',
-//     TEXT_COLOR_LIGHT: 'tc-l',
-//     TEXT_COLOR_DARK: 'tc-d',
-//   }
+  //   const ColorType = {
+  //     BRAND: 'brand',
+  //     BACKGROUND_LIGHT: 'bg-l',
+  //     BACKGROUND_DARK: 'bg-d',
+  //     TEXT_COLOR_LIGHT: 'tc-l',
+  //     TEXT_COLOR_DARK: 'tc-d',
+  //   }
 
-//   const updateColor = (value, type) => {
-//     switch (type) {
-//       case ColorType.BRAND:
-//         setBrandColor(value)
-//         break
-//       case ColorType.BACKGROUND_LIGHT:
-//         setBackgroundColorLight(value)
-//         break
-//       case ColorType.BACKGROUND_DARK:
-//         setBackgroundColorDark(value)
-//         break
-//       case ColorType.TEXT_COLOR_LIGHT:
-//         setTextColorLight(value)
-//         break
-//       case ColorType.TEXT_COLOR_DARK:
-//         setTextColorDark(value)
-//     }
-//   }
+  //   const updateColor = (value, type) => {
+  //     switch (type) {
+  //       case ColorType.BRAND:
+  //         setBrandColor(value)
+  //         break
+  //       case ColorType.BACKGROUND_LIGHT:
+  //         setBackgroundColorLight(value)
+  //         break
+  //       case ColorType.BACKGROUND_DARK:
+  //         setBackgroundColorDark(value)
+  //         break
+  //       case ColorType.TEXT_COLOR_LIGHT:
+  //         setTextColorLight(value)
+  //         break
+  //       case ColorType.TEXT_COLOR_DARK:
+  //         setTextColorDark(value)
+  //     }
+  //   }
 
-//   const [areColorsValid, setAreColorsValid] = useState(false)
+  //   const [areColorsValid, setAreColorsValid] = useState(false)
 
-//   useEffect(() => {
-//     setAreColorsValid(
-//       brandColorValid && bgColorDarkValid && bgColorLightValid && textColorDarkValid && textColorLightValid
-//     )
-//   }, [brandColorValid, bgColorDarkValid, bgColorLightValid, textColorDarkValid, textColorLightValid])
+  //   useEffect(() => {
+  //     setAreColorsValid(
+  //       brandColorValid && bgColorDarkValid && bgColorLightValid && textColorDarkValid && textColorLightValid
+  //     )
+  //   }, [brandColorValid, bgColorDarkValid, bgColorLightValid, textColorDarkValid, textColorLightValid])
 
-//   const [navigationLinks, setNavigationLinks] = useState(stateNavigationLinks)
-  const [socialLinks, setSocialLinks] = useState(stateSocialLinks)
+  //   const [navigationLinks, setNavigationLinks] = useState(stateNavigationLinks)
+  const [socialLinks, setSocialLinks] = useState(stateSocialLinks);
 
   const currentStrSettings = JSON.stringify({
     projectName: stateProjectName,
@@ -151,14 +149,14 @@ export default function Interface() {
       logoUrl,
       disableSourceCopyright,
       isLockerEnabled,
-    //   faviconUrl,
-    //   backgroundUrl,
-    //   brandColor,
-    //   backgroundColorDark,
-    //   backgroundColorLight,
-    //   textColorDark,
-    //   textColorLight,
-    //   navigationLinks,
+      //   faviconUrl,
+      //   backgroundUrl,
+      //   brandColor,
+      //   backgroundColorDark,
+      //   backgroundColorLight,
+      //   textColorDark,
+      //   textColorLight,
+      //   navigationLinks,
       socialLinks,
     });
 
@@ -180,21 +178,20 @@ export default function Interface() {
     socialLinks,
   ]);
 
-
   const isStorageNetwork = chainId === STORAGE_NETWORK_ID;
-  const canChangeNetwork = (connector instanceof InjectedConnector);
+  const canChangeNetwork = connector instanceof InjectedConnector;
   const canAndShouldSwitchToStorageNetwork = canChangeNetwork && !isStorageNetwork;
 
   const [cannotSaveSettings, setCannotSaveSettings] = useState(true);
 
   useEffect(() => {
     setCannotSaveSettings(
-        (!isStorageNetwork && !canChangeNetwork) ||
+      (!isStorageNetwork && !canChangeNetwork) ||
         (isStorageNetwork && !settingsChanged) ||
         !isValidLogo
-        // !isValidFavicon ||
-        // !isValidBackground ||
-        // !areColorsValid
+      // !isValidFavicon ||
+      // !isValidBackground ||
+      // !areColorsValid
     );
   }, [
     settingsChanged,
@@ -204,7 +201,7 @@ export default function Interface() {
     // areColorsValid,
     isStorageNetwork,
     canChangeNetwork,
-]);
+  ]);
 
   const saveInterfaceSettings = async () => {
     setIsLoading(true);
@@ -238,7 +235,7 @@ export default function Interface() {
         onHash: (hash) => {
           console.log('saveInterfaceSettings hash: ', hash);
         },
-      })
+      });
     } catch (error) {
       console.group('%c saveInterfaceSettings', 'color: red');
       console.error(error);
@@ -246,7 +243,7 @@ export default function Interface() {
     } finally {
       setIsLoading(false);
     }
-  }
+  };
 
   const switchToStorage = async () => {
     setIsLoading(true);
@@ -258,7 +255,7 @@ export default function Interface() {
     } finally {
       setIsLoading(false);
     }
-  }
+  };
 
   return (
     <ContentWrapper disabled={isLoading}>
@@ -283,17 +280,11 @@ export default function Interface() {
 
       <s.SpacerSmall />
 
-      <SocialLinks
-        socialLinks={socialLinks}
-        setSocialLinks={setSocialLinks}
-      />
+      <SocialLinks socialLinks={socialLinks} setSocialLinks={setSocialLinks} />
 
       <s.SpacerSmall />
 
-      <Stack
-        direction="row"
-        justifyContent="space-between"
-      >
+      <Stack direction="row" justifyContent="space-between">
         <Typography>Deactivate Source Copyright</Typography>
         <Switch
           checked={!!disableSourceCopyright}
@@ -303,10 +294,7 @@ export default function Interface() {
         />
       </Stack>
 
-      <Stack
-        direction="row"
-        justifyContent="space-between"
-      >
+      <Stack direction="row" justifyContent="space-between">
         <Typography>Activate Token Locker Functionality</Typography>
         <Switch
           checked={!!isLockerEnabled}
@@ -402,13 +390,14 @@ export default function Interface() {
         onClick={canAndShouldSwitchToStorageNetwork ? switchToStorage : saveInterfaceSettings}
         disabled={cannotSaveSettings}
       >
-        { isLoading
-          ? <Loader />
-          : isStorageNetwork
-            ? 'Save Interface Settings'
-            : `Switch to ${STORAGE_NETWORK_NAME}`
-        }
+        {isLoading ? (
+          <Loader />
+        ) : isStorageNetwork ? (
+          'Save Interface Settings'
+        ) : (
+          `Switch to ${STORAGE_NETWORK_NAME}`
+        )}
       </s.button>
     </ContentWrapper>
-  )
+  );
 }

@@ -4,7 +4,7 @@ import { FaWallet } from 'react-icons/fa';
 // import { networks } from '../constants/networksInfo';
 import { SUPPORTED_NETWORKS, SUPPORTED_CHAIN_IDS } from '../connectors';
 import { Web3Status } from '../components/Web3Status';
-import * as s from "../styles/global";
+import * as s from '../styles/global';
 import { useApplicationContext } from '../context/applicationContext';
 // import Panel from './Panel'
 // import { ApplicationModal, setOpenModal } from '../state/application/actions'
@@ -49,30 +49,26 @@ const SupportedNetworksList = styled.ul`
   }
 `;
 
-
 // const unavailableOrZeroAddr = value => !value || value === ZERO_ADDRESS;
 
 export default function Connection() {
-  const {
-    isAvailableNetwork,
-  } = useApplicationContext();
+  const { isAvailableNetwork } = useApplicationContext();
 
-//   const wordpressData = useWordpressInfo()
-//   const dispatch = useDispatch();
-//   const { admin, factory, router } = useAppState()
+  //   const wordpressData = useWordpressInfo()
+  //   const dispatch = useDispatch();
+  //   const { admin, factory, router } = useAppState()
 
+  //   const [changeAllowed, setChangeAllowed] = useState(false)
 
-//   const [changeAllowed, setChangeAllowed] = useState(false)
-
-//   useEffect(() => {
-//     setChangeAllowed(
-//       wordpressData?.wpAdmin
-//         ? wordpressData.wpAdmin.toLowerCase() === account?.toLowerCase()
-//         : admin && admin !== ZERO_ADDRESS
-//         ? admin.toLowerCase() === account?.toLowerCase()
-//         : true
-//     )
-//   }, [needToConfigure, wordpressData, account, admin])
+  //   useEffect(() => {
+  //     setChangeAllowed(
+  //       wordpressData?.wpAdmin
+  //         ? wordpressData.wpAdmin.toLowerCase() === account?.toLowerCase()
+  //         : admin && admin !== ZERO_ADDRESS
+  //         ? admin.toLowerCase() === account?.toLowerCase()
+  //         : true
+  //     )
+  //   }, [needToConfigure, wordpressData, account, admin])
 
   return (
     <s.Wrapper>
@@ -80,28 +76,28 @@ export default function Connection() {
         <s.BodyWrapper>
           <SupportedNetworksWrapper>
             {
-            // chainId && wordpressData?.wpNetworkIds?.length && !wordpressData.wpNetworkIds.includes(chainId) ? (
-            //   <>
-            //     <h3>{t('youCanNotUseThisNetwork')}</h3>
-            //     <div>
-            //       <SubTitle>
-            //         {wordpressData.wpNetworkIds.length > 1
-            //           ? t('pleaseSelectOneOfTheFollowingNetworks')
-            //           : t('pleaseSelectTheFollowingNetwork')}
-            //         :
-            //       </SubTitle>
-            //       {wordpressData.wpNetworkIds.map((id) =>
-            //         !!id ? (
-            //           <NetworkRow key={id}>
-            //             {/* @ts-ignore */}
-            //             {networks[id]?.name} (ID: {networks[id]?.chainId})
-            //           </NetworkRow>
-            //         ) : null
-            //       )}
-            //     </div>
-            //   </>
-            // ) : (
-            ( <>
+              // chainId && wordpressData?.wpNetworkIds?.length && !wordpressData.wpNetworkIds.includes(chainId) ? (
+              //   <>
+              //     <h3>{t('youCanNotUseThisNetwork')}</h3>
+              //     <div>
+              //       <SubTitle>
+              //         {wordpressData.wpNetworkIds.length > 1
+              //           ? t('pleaseSelectOneOfTheFollowingNetworks')
+              //           : t('pleaseSelectTheFollowingNetwork')}
+              //         :
+              //       </SubTitle>
+              //       {wordpressData.wpNetworkIds.map((id) =>
+              //         !!id ? (
+              //           <NetworkRow key={id}>
+              //             {/* @ts-ignore */}
+              //             {networks[id]?.name} (ID: {networks[id]?.chainId})
+              //           </NetworkRow>
+              //         ) : null
+              //       )}
+              //     </div>
+              //   </>
+              // ) : (
+              <>
                 <h3>Sorry, you can not use this network</h3>
                 {SUPPORTED_CHAIN_IDS.length && (
                   <>
@@ -116,7 +112,7 @@ export default function Connection() {
                   </>
                 )}
               </>
-            )}
+            }
           </SupportedNetworksWrapper>
         </s.BodyWrapper>
       ) : (

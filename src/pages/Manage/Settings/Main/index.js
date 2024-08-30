@@ -1,8 +1,7 @@
-import * as s from "../../../../styles/global";
+import * as s from '../../../../styles/global';
 import IPFS from './IPFS';
 import Networks from './Networks';
 import Contracts from './Contracts';
-
 
 export default function Main() {
   return (
@@ -13,5 +12,5 @@ export default function Main() {
       <s.SpacerSmall />
       <Contracts />
     </>
-  )
+  );
 }

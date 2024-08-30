@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import styled from "styled-components";
+import styled from 'styled-components';
 import { useWeb3React } from '@web3-react/core';
-import * as s from "../../../styles/global";
+import * as s from '../../../styles/global';
 import { FaWrench } from 'react-icons/fa';
 import { useApplicationContext } from '../../../context/applicationContext';
 import { shortenAddress } from '../../../utils/utils';
@@ -30,7 +30,7 @@ const Tab = styled.button`
   padding: 0.4rem 0.7rem;
   font-size: 1em;
   border: none;
-  background-color: ${({ active }) => (active ? "#424149" : 'transparent')};
+  background-color: ${({ active }) => (active ? '#424149' : 'transparent')};
   color: #fff;
 
   :first-child {
@@ -46,9 +46,7 @@ const Tab = styled.button`
 
 export default function Settings() {
   const { account } = useWeb3React();
-  const {
-    chainName,
-  } = useApplicationContext();
+  const { chainName } = useApplicationContext();
 
   const [tab, setTab] = useState('main');
 
@@ -68,9 +66,9 @@ export default function Settings() {
         <Tab key={index} active={tab === info.tabKey} onClick={() => setTab(info.tabKey)}>
           {info.tabName}
         </Tab>
-      )
+      );
     });
-  }
+  };
 
   return (
     <>
@@ -83,13 +81,16 @@ export default function Settings() {
       {account && (
         <>
           <Row>
-            <span>Storage Network:</span><span>{STORAGE_NETWORK_NAME}</span>
+            <span>Storage Network:</span>
+            <span>{STORAGE_NETWORK_NAME}</span>
           </Row>
           <Row>
-            <span>Connected Network:</span><span>{chainName}</span>
+            <span>Connected Network:</span>
+            <span>{chainName}</span>
           </Row>
           <Row>
-            <span>Account:</span><span>{shortenAddress(account)}</span>
+            <span>Account:</span>
+            <span>{shortenAddress(account)}</span>
           </Row>
           <s.SpacerSmall />
         </>
@@ -103,9 +104,7 @@ export default function Settings() {
           <Main />
         </>
       )}
-      {tab === 'contracts' && (
-        <Contracts />
-      )}
+      {tab === 'contracts' && <Contracts />}
       {tab === 'interface' && (
         <>
           <s.SpacerMedium />
@@ -114,5 +113,5 @@ export default function Settings() {
       )}
       {/* {tab === 'migration' && <Migration />} */}
     </>
-  )
+  );
 }

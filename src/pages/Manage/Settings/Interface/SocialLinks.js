@@ -1,9 +1,6 @@
-import React, { useState } from 'react'
-import styled from 'styled-components'
-import {
-  FaTimes,
-  FaAngleDown,
-} from 'react-icons/fa'
+import React, { useState } from 'react';
+import styled from 'styled-components';
+import { FaTimes, FaAngleDown } from 'react-icons/fa';
 import {
   TextField,
   Accordion,
@@ -12,8 +9,8 @@ import {
   List,
   ListItem,
   Divider,
-} from '@mui/material'
-import * as s from "../../../../styles/global";
+} from '@mui/material';
+import * as s from '../../../../styles/global';
 import { isWebUri } from '../../../../utils/url';
 
 const Overflow = styled.span`
@@ -38,18 +35,18 @@ const NewItemWrapper = styled.div`
   padding: 1rem;
 `;
 
-export default function SocialLinks({socialLinks, setSocialLinks}) {
+export default function SocialLinks({ socialLinks, setSocialLinks }) {
   const [newLink, setNewItem] = useState('');
   const [linkError, setLinkError] = useState(false);
 
   const onRemove = (targetIndex) => {
     setSocialLinks((prevItems) => prevItems.filter((_, index) => index !== targetIndex));
-  }
+  };
 
   const onNewItemChange = (event) => {
     setLinkError(false);
     setNewItem(event.target.value);
-  }
+  };
 
   const onAdd = () => {
     if (isWebUri(newLink)) {
@@ -58,7 +55,7 @@ export default function SocialLinks({socialLinks, setSocialLinks}) {
     } else {
       setLinkError(true);
     }
-  }
+  };
 
   return (
     <Accordion>
@@ -71,18 +68,19 @@ export default function SocialLinks({socialLinks, setSocialLinks}) {
       </AccordionSummary>
       <List>
         <Divider />
-        {socialLinks?.length > 0 && socialLinks?.map((link, index) => (
-          <React.Fragment key={index}>
-            <ListItem style={{ justifyContent: 'space-between' }}>
-              <Overflow>{link}</Overflow>
-              <RemoveButton type="button" onClick={() => onRemove(index)} title="Remove item">
-                <FaTimes />
-              </RemoveButton>
-            </ListItem>
+        {socialLinks?.length > 0 &&
+          socialLinks?.map((link, index) => (
+            <React.Fragment key={index}>
+              <ListItem style={{ justifyContent: 'space-between' }}>
+                <Overflow>{link}</Overflow>
+                <RemoveButton type="button" onClick={() => onRemove(index)} title="Remove item">
+                  <FaTimes />
+                </RemoveButton>
+              </ListItem>
 
-            <Divider />
-          </React.Fragment>
-        ))}
+              <Divider />
+            </React.Fragment>
+          ))}
       </List>
 
       <NewItemWrapper>
@@ -94,8 +92,10 @@ export default function SocialLinks({socialLinks, setSocialLinks}) {
           value={newLink}
           onChange={onNewItemChange}
         />
-        <AddButton onClick={onAdd} disabled={!newLink}>Add</AddButton>
+        <AddButton onClick={onAdd} disabled={!newLink}>
+          Add
+        </AddButton>
       </NewItemWrapper>
     </Accordion>
-  )
+  );
 }

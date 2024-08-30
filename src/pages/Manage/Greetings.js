@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { FaRegHandPeace } from 'react-icons/fa';
-import * as s from "../../styles/global";
+import * as s from '../../styles/global';
 import { useApplicationContext } from '../../context/applicationContext';
 import { useWeb3React } from '@web3-react/core';
 import { STORAGE_NETWORK_ID, STORAGE_NETWORK_NAME } from '../../constants';
@@ -42,10 +42,7 @@ const ActionButton = styled(s.button)`
 
 export default function Greetings() {
   const { account, library, chainId, connector, deactivate } = useWeb3React();
-  const {
-    domain,
-    triggerDomainData,
-  } = useApplicationContext();
+  const { domain, triggerDomainData } = useApplicationContext();
 
   const [onStorageNetwork, setOnStorageNetwork] = useState(false);
 
@@ -72,7 +69,7 @@ export default function Greetings() {
         onHash: (hash) => {
           console.log('saveDomainOwner hash: ', hash);
         },
-      })
+      });
     } catch (error) {
       console.group('%c saveDomainOwner', 'color: red');
       console.error(error);
@@ -80,7 +77,7 @@ export default function Greetings() {
     } finally {
       setIsSavingDomainOwner(false);
     }
-  }
+  };
 
   const switchToStorage = async () => {
     if (!connector) return;
@@ -89,14 +86,16 @@ export default function Greetings() {
       if (connector instanceof InjectedConnector) {
         await switchInjectedNetwork(STORAGE_NETWORK_ID);
       } // if the connector is walletconnect and the user has already tried to connect, manually reset the connector
-      else if (connector instanceof WalletConnectConnector && connector.walletConnectProvider?.wc?.uri) {
+      else if (
+        connector instanceof WalletConnectConnector &&
+        connector.walletConnectProvider?.wc?.uri
+      ) {
         connector.walletConnectProvider = undefined;
       }
     } catch (error) {
       console.error(error);
     }
-  }
-
+  };
 
   return (
     <>
@@ -113,18 +112,23 @@ export default function Greetings() {
         Only this address can access and change app settings.
       </s.Text>
 
-      <s.Text warning>If you want to change the address, switch to another address. If you can't switch, just disconnect your wallet and connect it to the new address.</s.Text>
+      <s.Text warning>
+        If you want to change the address, switch to another address. If you can't switch, just
+        disconnect your wallet and connect it to the new address.
+      </s.Text>
 
       {!onStorageNetwork && <s.Text warning>You have to be on {STORAGE_NETWORK_NAME}</s.Text>}
 
       <ButtonBlock>
-        <ActionButton disabled={isSavingDomainOwner} secondary onClick={deactivate}>Disconnect</ActionButton>
+        <ActionButton disabled={isSavingDomainOwner} secondary onClick={deactivate}>
+          Disconnect
+        </ActionButton>
         {!onStorageNetwork ? (
-            <ActionButton onClick={switchToStorage}>
-            Switch to {STORAGE_NETWORK_NAME}
-            </ActionButton>
+          <ActionButton onClick={switchToStorage}>Switch to {STORAGE_NETWORK_NAME}</ActionButton>
         ) : (
-        <ActionButton disabled={isSavingDomainOwner} onClick={saveDomainOwner}>{isSavingDomainOwner ? <Loader /> : "Set Owner"}</ActionButton>
+          <ActionButton disabled={isSavingDomainOwner} onClick={saveDomainOwner}>
+            {isSavingDomainOwner ? <Loader /> : 'Set Owner'}
+          </ActionButton>
         )}
       </ButtonBlock>
     </>

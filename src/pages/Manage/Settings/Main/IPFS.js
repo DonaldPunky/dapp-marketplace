@@ -5,7 +5,7 @@ import { useApplicationContext } from '../../../../context/applicationContext';
 import { isWebUri } from '../../../../utils/url';
 import { saveAppData } from '../../../../utils/storage';
 import { TextField, Typography } from '@mui/material';
-import * as s from "../../../../styles/global";
+import * as s from '../../../../styles/global';
 import styled from 'styled-components';
 import Loader from '../../../../components/Loader';
 import { InjectedConnector } from '@web3-react/injected-connector';
@@ -16,21 +16,19 @@ const ContentWrapper = styled.div`
   width: 100%;
   flex-direction: column;
 
-  ${({ disabled }) => (disabled ? `
+  ${({ disabled }) =>
+    disabled
+      ? `
     cursor: not-allowed;
     pointer-events: none;
     opacity: 0.6;
-    ` : ''
-  )};
-`
+    `
+      : ''};
+`;
 
 export default function IPFS() {
   const { library, chainId, account, connector } = useWeb3React();
-  const {
-    domain,
-    domainSettings,
-    triggerDomainData,
-  } = useApplicationContext();
+  const { domain, domainSettings, triggerDomainData } = useApplicationContext();
 
   const [isLoading, setIsLoading] = useState(false);
 
@@ -40,9 +38,13 @@ export default function IPFS() {
     ipfsInfuraProjectSecret: stateIpfsInfuraProjectSecret,
   } = domainSettings;
 
-  const [ipfsInfuraDedicatedGateway, setIpfsInfuraDedicatedGateway] = useState(stateIpfsInfuraDedicatedGateway);
+  const [ipfsInfuraDedicatedGateway, setIpfsInfuraDedicatedGateway] = useState(
+    stateIpfsInfuraDedicatedGateway
+  );
   const [ipfsInfuraProjectId, setIpfsInfuraProjectId] = useState(stateIpfsInfuraProjectId);
-  const [ipfsInfuraProjectSecret, setIpfsInfuraProjectSecret] = useState(stateIpfsInfuraProjectSecret);
+  const [ipfsInfuraProjectSecret, setIpfsInfuraProjectSecret] = useState(
+    stateIpfsInfuraProjectSecret
+  );
 
   const currentStrSettings = JSON.stringify({
     ipfsInfuraDedicatedGateway: stateIpfsInfuraDedicatedGateway,
@@ -67,23 +69,17 @@ export default function IPFS() {
     ipfsInfuraProjectSecret,
   ]);
 
-
   const isStorageNetwork = chainId === STORAGE_NETWORK_ID;
-  const canChangeNetwork = (connector instanceof InjectedConnector);
+  const canChangeNetwork = connector instanceof InjectedConnector;
   const canAndShouldSwitchToStorageNetwork = canChangeNetwork && !isStorageNetwork;
 
   const [cannotSaveSettings, setCannotSaveSettings] = useState(true);
 
   useEffect(() => {
     setCannotSaveSettings(
-        (!isStorageNetwork && !canChangeNetwork) ||
-        (isStorageNetwork && !settingsChanged)
+      (!isStorageNetwork && !canChangeNetwork) || (isStorageNetwork && !settingsChanged)
     );
-  }, [
-    settingsChanged,
-    isStorageNetwork,
-    canChangeNetwork,
-]);
+  }, [settingsChanged, isStorageNetwork, canChangeNetwork]);
 
   const saveIPFSSettings = async () => {
     setIsLoading(true);
@@ -106,7 +102,7 @@ export default function IPFS() {
         onHash: (hash) => {
           console.log('saveIPFSSettings hash: ', hash);
         },
-      })
+      });
     } catch (error) {
       console.group('%c saveIPFSSettings', 'color: red');
       console.error(error);
@@ -114,7 +110,7 @@ export default function IPFS() {
     } finally {
       setIsLoading(false);
     }
-  }
+  };
 
   const switchToStorage = async () => {
     setIsLoading(true);
@@ -126,7 +122,7 @@ export default function IPFS() {
     } finally {
       setIsLoading(false);
     }
-  }
+  };
 
   return (
     <ContentWrapper disabled={isLoading}>
@@ -169,13 +165,14 @@ export default function IPFS() {
         onClick={canAndShouldSwitchToStorageNetwork ? switchToStorage : saveIPFSSettings}
         disabled={cannotSaveSettings}
       >
-        { isLoading
-          ? <Loader />
-          : isStorageNetwork
-            ? 'Save Infura IPFS Settings'
-            : `Switch to ${STORAGE_NETWORK_NAME}`
-        }
+        {isLoading ? (
+          <Loader />
+        ) : isStorageNetwork ? (
+          'Save Infura IPFS Settings'
+        ) : (
+          `Switch to ${STORAGE_NETWORK_NAME}`
+        )}
       </s.button>
     </ContentWrapper>
-  )
+  );
 }

@@ -4,7 +4,7 @@ import { useWeb3React } from '@web3-react/core';
 import { useApplicationContext } from '../../../../context/applicationContext';
 import { saveAppData } from '../../../../utils/storage';
 import { TextField, Typography, InputLabel, Select, MenuItem } from '@mui/material';
-import * as s from "../../../../styles/global";
+import * as s from '../../../../styles/global';
 import styled from 'styled-components';
 import Loader from '../../../../components/Loader';
 import { InjectedConnector } from '@web3-react/injected-connector';
@@ -16,32 +16,34 @@ const ContentWrapper = styled.div`
   width: 100%;
   flex-direction: column;
 
-  ${({ disabled }) => (disabled ? `
+  ${({ disabled }) =>
+    disabled
+      ? `
     cursor: not-allowed;
     pointer-events: none;
     opacity: 0.6;
-    ` : ''
-  )};
-`
+    `
+      : ''};
+`;
 
 export default function Networks() {
   const { library, chainId, account, connector } = useWeb3React();
   const {
     domain,
-    domainSettings: {
-      networks
-    },
+    domainSettings: { networks },
     triggerDomainData,
   } = useApplicationContext();
 
   const [isLoading, setIsLoading] = useState(false);
 
-  const [chainIdToSetUp, setChainIdToSetUp] = useState((chainId && !!networks?.[chainId || 0]) ? chainId : '');
+  const [chainIdToSetUp, setChainIdToSetUp] = useState(
+    chainId && !!networks?.[chainId || 0] ? chainId : ''
+  );
   const [webSocketRPC, setWebSocketRPC] = useState(networks?.[chainId || 0]?.webSocketRPC || '');
   const [canSaveNetworksSettings, setCanSaveNetworksSettings] = useState(false);
 
   const isStorageNetwork = chainId === STORAGE_NETWORK_ID;
-  const canChangeNetwork = (connector instanceof InjectedConnector);
+  const canChangeNetwork = connector instanceof InjectedConnector;
 
   useEffect(() => {
     const isDifferentSettings =
@@ -49,17 +51,16 @@ export default function Networks() {
 
     setCanSaveNetworksSettings(
       isStorageNetwork &&
-      SUPPORTED_CHAIN_IDS.includes(chainIdToSetUp) &&
-      webSocketRPC &&
-      // TODO: add isValidWebSocketRPC with connecting to the ws and check the related chainIdToSetUp
-      isDifferentSettings
+        SUPPORTED_CHAIN_IDS.includes(chainIdToSetUp) &&
+        webSocketRPC &&
+        // TODO: add isValidWebSocketRPC with connecting to the ws and check the related chainIdToSetUp
+        isDifferentSettings
     );
   }, [networks, webSocketRPC, chainIdToSetUp, isStorageNetwork]);
 
   useEffect(() => {
     setWebSocketRPC(networks?.[chainIdToSetUp || 0]?.webSocketRPC || '');
-  }, [networks, chainIdToSetUp])
-
+  }, [networks, chainIdToSetUp]);
 
   const saveNetworksData = async () => {
     setIsLoading(true);
@@ -77,12 +78,12 @@ export default function Networks() {
           },
         },
         onReceipt: () => {
-            triggerDomainData();
-          },
+          triggerDomainData();
+        },
         onHash: (hash) => {
           console.log('saveNetworksData hash: ', hash);
         },
-      })
+      });
     } catch (error) {
       console.group('%c saveNetworksData', 'color: red');
       console.error(error);
@@ -90,7 +91,7 @@ export default function Networks() {
     } finally {
       setIsLoading(false);
     }
-  }
+  };
 
   const switchToStorage = async () => {
     setIsLoading(true);
@@ -102,7 +103,7 @@ export default function Networks() {
     } finally {
       setIsLoading(false);
     }
-  }
+  };
 
   return (
     <ContentWrapper disabled={isLoading}>
@@ -121,7 +122,9 @@ export default function Networks() {
         }}
       >
         {SUPPORTED_CHAIN_IDS.map((chainId) => (
-          <MenuItem key={chainId} value={chainId}>{SUPPORTED_NETWORKS[chainId].name}</MenuItem>
+          <MenuItem key={chainId} value={chainId}>
+            {SUPPORTED_NETWORKS[chainId].name}
+          </MenuItem>
         ))}
       </Select>
 
@@ -137,25 +140,15 @@ export default function Networks() {
 
       <s.SpacerSmall />
 
-      {
-        isStorageNetwork ? (
-          <s.button
-            onClick={saveNetworksData}
-            disabled={!canSaveNetworksSettings}
-          >
-            { isLoading ? <Loader /> : 'Save Networks Settings' }
-          </s.button>
-        ) : (
-          <s.button
-            onClick={switchToStorage}
-            disabled={!canChangeNetwork}
-          >
-            { isLoading ? <Loader /> : `Switch to ${STORAGE_NETWORK_NAME}` }
-          </s.button>
-        )
-
-      }
-
+      {isStorageNetwork ? (
+        <s.button onClick={saveNetworksData} disabled={!canSaveNetworksSettings}>
+          {isLoading ? <Loader /> : 'Save Networks Settings'}
+        </s.button>
+      ) : (
+        <s.button onClick={switchToStorage} disabled={!canChangeNetwork}>
+          {isLoading ? <Loader /> : `Switch to ${STORAGE_NETWORK_NAME}`}
+        </s.button>
+      )}
     </ContentWrapper>
-  )
+  );
 }
