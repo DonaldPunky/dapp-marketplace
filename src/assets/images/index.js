@@ -1,5 +1,5 @@
-import ETH from './eth.png';
-import BNB from './bnb.png';
+import ETH from "./eth.png";
+import BNB from "./bnb.png";
 
 export const CURRENCY = {
   ETH,
