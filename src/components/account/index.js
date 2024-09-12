@@ -1,6 +1,6 @@
-import { useWeb3React } from '@web3-react/core';
-import Authenticated from './Authenticated';
-import Unauthenticated from './Unauthenticated';
+import { useWeb3React } from "@web3-react/core";
+import Authenticated from "./Authenticated";
+import Unauthenticated from "./Unauthenticated";
 
 function Account() {
   const { library, account } = useWeb3React();
