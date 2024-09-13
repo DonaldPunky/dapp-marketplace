@@ -1,13 +1,14 @@
-import { Fragment, useState, useEffect } from 'react';
-import Chip from '@mui/material/Chip';
-import AccountDetails from './AccountDetails';
-import { getEllipsisTxt } from '../../helpers/formatters';
-import { ethers } from 'ethers';
+import { Fragment, useState, useEffect } from "react";
+import Chip from "@mui/material/Chip";
+import AccountDetails from "./AccountDetails";
+import { getEllipsisTxt } from "../../helpers/formatters";
+import { ethers } from "ethers";
 
 const Authenticated = ({ library, account }) => {
   const [balance, setBalance] = useState();
   const [chainId, setChainId] = useState(0);
-  const [accountDetailsDialogOpen, setAccountDetailsDialogOpen] = useState(false);
+  const [accountDetailsDialogOpen, setAccountDetailsDialogOpen] =
+    useState(false);
 
   const getBalance = async () => {
     const bal = await library.getBalance(account);
