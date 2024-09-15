@@ -3,21 +3,45 @@
   {
     "anonymous": false,
     "inputs": [
-      { "indexed": false, "internalType": "address", "name": "", "type": "address" },
-      { "indexed": false, "internalType": "uint256", "name": "", "type": "uint256" }
+      {
+        "indexed": false,
+        "internalType": "address",
+        "name": "",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
     ],
     "name": "UserDepositedSuccess",
     "type": "event"
   },
   {
     "anonymous": false,
-    "inputs": [{ "indexed": false, "internalType": "uint256", "name": "", "type": "uint256" }],
+    "inputs": [
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
     "name": "UserWithdrawSuccess",
     "type": "event"
   },
   {
     "anonymous": false,
-    "inputs": [{ "indexed": false, "internalType": "uint256", "name": "", "type": "uint256" }],
+    "inputs": [
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
     "name": "UserWithdrawTokensSuccess",
     "type": "event"
   },
@@ -41,8 +65,16 @@
   {
     "inputs": [
       { "internalType": "address", "name": "_sale_token", "type": "address" },
-      { "internalType": "uint256", "name": "_soft_token_rate", "type": "uint256" },
-      { "internalType": "uint256", "name": "_public_token_rate", "type": "uint256" },
+      {
+        "internalType": "uint256",
+        "name": "_soft_token_rate",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "_public_token_rate",
+        "type": "uint256"
+      },
       { "internalType": "uint256", "name": "_raise_min", "type": "uint256" },
       { "internalType": "uint256", "name": "_raise_max", "type": "uint256" },
       { "internalType": "uint256", "name": "_softcap", "type": "uint256" },
@@ -69,8 +101,16 @@
     "name": "presale_info",
     "outputs": [
       { "internalType": "address", "name": "sale_token", "type": "address" },
-      { "internalType": "uint256", "name": "soft_token_rate", "type": "uint256" },
-      { "internalType": "uint256", "name": "public_token_rate", "type": "uint256" },
+      {
+        "internalType": "uint256",
+        "name": "soft_token_rate",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "public_token_rate",
+        "type": "uint256"
+      },
       { "internalType": "uint256", "name": "raise_min", "type": "uint256" },
       { "internalType": "uint256", "name": "raise_max", "type": "uint256" },
       { "internalType": "uint256", "name": "softcap", "type": "uint256" },
@@ -104,7 +144,11 @@
       { "internalType": "bool", "name": "force_failed", "type": "bool" },
       { "internalType": "uint256", "name": "raised_amount", "type": "uint256" },
       { "internalType": "uint256", "name": "sold_amount", "type": "uint256" },
-      { "internalType": "uint256", "name": "token_withdraw", "type": "uint256" },
+      {
+        "internalType": "uint256",
+        "name": "token_withdraw",
+        "type": "uint256"
+      },
       { "internalType": "uint256", "name": "base_withdraw", "type": "uint256" },
       { "internalType": "uint256", "name": "num_buyers", "type": "uint256" }
     ],

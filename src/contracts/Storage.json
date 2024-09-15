@@ -6,7 +6,9 @@
     {
       "inputs": [],
       "name": "allKeys",
-      "outputs": [{ "internalType": "string[]", "name": "", "type": "string[]" }],
+      "outputs": [
+        { "internalType": "string[]", "name": "", "type": "string[]" }
+      ],
       "stateMutability": "view",
       "type": "function"
     },
@@ -28,21 +30,27 @@
       "type": "function"
     },
     {
-      "inputs": [{ "internalType": "string", "name": "_key", "type": "string" }],
+      "inputs": [
+        { "internalType": "string", "name": "_key", "type": "string" }
+      ],
       "name": "clearKeyData",
       "outputs": [],
       "stateMutability": "nonpayable",
       "type": "function"
     },
     {
-      "inputs": [{ "internalType": "string[]", "name": "_keys", "type": "string[]" }],
+      "inputs": [
+        { "internalType": "string[]", "name": "_keys", "type": "string[]" }
+      ],
       "name": "clearKeysData",
       "outputs": [],
       "stateMutability": "nonpayable",
       "type": "function"
     },
     {
-      "inputs": [{ "internalType": "string", "name": "_key", "type": "string" }],
+      "inputs": [
+        { "internalType": "string", "name": "_key", "type": "string" }
+      ],
       "name": "getData",
       "outputs": [
         {
@@ -83,7 +91,11 @@
             { "internalType": "string", "name": "key", "type": "string" },
             {
               "components": [
-                { "internalType": "address", "name": "owner", "type": "address" },
+                {
+                  "internalType": "address",
+                  "name": "owner",
+                  "type": "address"
+                },
                 { "internalType": "string", "name": "info", "type": "string" }
               ],
               "internalType": "struct IStorage.Data",
