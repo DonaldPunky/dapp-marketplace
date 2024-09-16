@@ -1,8 +1,8 @@
-import { useState, useEffect } from 'react';
-import { useWeb3React } from '@web3-react/core';
-import { getCurrentDomain } from '../utils/utils';
-import { useStorageContract } from './useContract';
-import { STORAGE_APP_KEY, ZERO_ADDRESS } from '../constants';
+import { useState, useEffect } from "react";
+import { useWeb3React } from "@web3-react/core";
+import { getCurrentDomain } from "../utils/utils";
+import { useStorageContract } from "./useContract";
+import { STORAGE_APP_KEY, ZERO_ADDRESS } from "../constants";
 
 const isValidArray = (arr) => Array.isArray(arr) && !!arr.length;
 
@@ -10,13 +10,13 @@ const defaultSettings = () => ({
   contracts: {},
   networks: {},
 
-  ipfsInfuraDedicatedGateway: '',
-  ipfsInfuraProjectId: '',
-  ipfsInfuraProjectSecret: '',
+  ipfsInfuraDedicatedGateway: "",
+  ipfsInfuraProjectId: "",
+  ipfsInfuraProjectSecret: "",
 
-  admin: '',
-  projectName: '',
-  logoUrl: '',
+  admin: "",
+  projectName: "",
+  logoUrl: "",
   socialLinks: [],
   disableSourceCopyright: false,
   isLockerEnabled: true,
@@ -62,19 +62,22 @@ const parseSettings = (settings) => {
 
     if (ipfsInfuraDedicatedGateway)
       appSettings.ipfsInfuraDedicatedGateway = ipfsInfuraDedicatedGateway;
-    if (ipfsInfuraProjectId) appSettings.ipfsInfuraProjectId = ipfsInfuraProjectId;
-    if (ipfsInfuraProjectSecret) appSettings.ipfsInfuraProjectSecret = ipfsInfuraProjectSecret;
+    if (ipfsInfuraProjectId)
+      appSettings.ipfsInfuraProjectId = ipfsInfuraProjectId;
+    if (ipfsInfuraProjectSecret)
+      appSettings.ipfsInfuraProjectSecret = ipfsInfuraProjectSecret;
 
     if (projectName) appSettings.projectName = projectName;
     if (logoUrl) appSettings.logoUrl = logoUrl;
     if (isValidArray(socialLinks)) appSettings.socialLinks = socialLinks;
-    if (typeof disableSourceCopyright === 'boolean')
+    if (typeof disableSourceCopyright === "boolean")
       appSettings.disableSourceCopyright = disableSourceCopyright;
-    if (typeof isLockerEnabled === 'boolean') appSettings.isLockerEnabled = isLockerEnabled;
+    if (typeof isLockerEnabled === "boolean")
+      appSettings.isLockerEnabled = isLockerEnabled;
   } catch (error) {
-    console.group('%c Storage settings', 'color: red');
+    console.group("%c Storage settings", "color: red");
     console.error(error);
-    console.log('source settings: ', settings);
+    console.log("source settings: ", settings);
     console.groupEnd();
   }
 
@@ -99,17 +102,19 @@ export default function useDomainData() {
     const fetchDomainData = async () => {
       setIsDomainDataFetching(true);
       try {
-        const { info, owner } = await storageContract.methods.getData(domain).call();
+        const { info, owner } = await storageContract.methods
+          .getData(domain)
+          .call();
 
-        const settings = parseSettings(info || '{}');
+        const settings = parseSettings(info || "{}");
 
-        const admin = owner === ZERO_ADDRESS ? '' : owner;
+        const admin = owner === ZERO_ADDRESS ? "" : owner;
 
         setDomainSettings({ ...settings, admin });
 
         setIsDomainDataFetched(true);
       } catch (error) {
-        console.log('fetchDomainData Error: ', error);
+        console.log("fetchDomainData Error: ", error);
       } finally {
         setIsDomainDataFetching(false);
       }

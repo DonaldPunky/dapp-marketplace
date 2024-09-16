@@ -1,15 +1,15 @@
-import { useMemo } from 'react';
-import Web3 from 'web3';
-import TokenLockerFactory from '../contracts/TokenLockerFactory.json';
-import Locker from '../contracts/TokenLocker.json';
-import IDOFactory from '../contracts/IDOFactory.json';
-import IDOPool from '../contracts/IDOPool.json';
-import STORAGE from '../contracts/Storage.json';
-import ERC20 from '../contracts/ERC20.json';
-import { STORAGE_NETWORK_ID } from '../constants';
-import { networks } from '../constants/networksInfo';
-import { getContract, isAddress } from '../utils/utils';
-import { useActiveWeb3React } from './index';
+import { useMemo } from "react";
+import Web3 from "web3";
+import TokenLockerFactory from "../contracts/TokenLockerFactory.json";
+import Locker from "../contracts/TokenLocker.json";
+import IDOFactory from "../contracts/IDOFactory.json";
+import IDOPool from "../contracts/IDOPool.json";
+import STORAGE from "../contracts/Storage.json";
+import ERC20 from "../contracts/ERC20.json";
+import { STORAGE_NETWORK_ID } from "../constants";
+import { networks } from "../constants/networksInfo";
+import { getContract, isAddress } from "../utils/utils";
+import { useActiveWeb3React } from "./index";
 
 export function useStorageContract() {
   const { storage, rpc } = networks[STORAGE_NETWORK_ID];
@@ -21,7 +21,7 @@ export function useStorageContract() {
       const web3 = new Web3(rpc);
       return new web3.eth.Contract(STORAGE.abi, storage);
     } catch (error) {
-      console.error('Failed to get Storage contract', error);
+      console.error("Failed to get Storage contract", error);
     }
 
     return null;
@@ -39,10 +39,10 @@ function useContract(address, ABI, withSignerIfPossible = true) {
         address,
         ABI,
         library,
-        withSignerIfPossible && account ? account : undefined
+        withSignerIfPossible && account ? account : undefined,
       );
     } catch (error) {
-      console.error('Failed to get contract', error);
+      console.error("Failed to get contract", error);
       return null;
     }
   }, [address, ABI, library, withSignerIfPossible, account]);
