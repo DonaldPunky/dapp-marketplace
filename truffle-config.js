@@ -1,7 +1,7 @@
 const HDWalletProvider = require("@truffle/hdwallet-provider");
 const fs = require("fs");
 const mnemonic = fs.readFileSync(".secret").toString().trim();
-const infuraId = 'fc70ab71d9c44a6fbd3ad9477c52e893';
+const infuraId = "fc70ab71d9c44a6fbd3ad9477c52e893";
 
 module.exports = {
   contracts_build_directory: "./src/contracts/",
@@ -15,7 +15,7 @@ module.exports = {
       provider: () =>
         new HDWalletProvider(
           mnemonic,
-          `https://data-seed-prebsc-1-s1.binance.org:8545`
+          `https://data-seed-prebsc-1-s1.binance.org:8545`,
         ),
       network_id: 97,
       confirmations: 10,
@@ -34,7 +34,7 @@ module.exports = {
       provider: function () {
         return new HDWalletProvider(
           mnemonic,
-          `https://ropsten.infura.io/v3/${infuraId}`
+          `https://ropsten.infura.io/v3/${infuraId}`,
         );
       },
       networkCheckTimeoutnetworkCheckTimeout: 10000,
@@ -46,7 +46,7 @@ module.exports = {
       provider: function () {
         return new HDWalletProvider(
           mnemonic,
-          `https://rinkeby.infura.io/v3/${infuraId}`
+          `https://rinkeby.infura.io/v3/${infuraId}`,
         );
       },
       network_id: 4,
@@ -58,7 +58,7 @@ module.exports = {
       provider: function () {
         return new HDWalletProvider(
           mnemonic,
-          `https://goerli.infura.io/v3/${infuraId}`
+          `https://goerli.infura.io/v3/${infuraId}`,
         );
       },
       network_id: 5,
@@ -69,10 +69,7 @@ module.exports = {
     },
     nsc: {
       provider: function () {
-        return new HDWalletProvider(
-          mnemonic,
-          `https://rpc.nextsmartchain.com`
-        );
+        return new HDWalletProvider(mnemonic, `https://rpc.nextsmartchain.com`);
       },
       network_id: 96,
       networkCheckTimeoutnetworkCheckTimeout: 10000,
@@ -81,10 +78,7 @@ module.exports = {
     },
     kek: {
       provider: function () {
-        return new HDWalletProvider(
-          mnemonic,
-          `https://mainnet.kekchain.com`
-        );
+        return new HDWalletProvider(mnemonic, `https://mainnet.kekchain.com`);
       },
       network_id: 103090,
       confirmations: 2,
@@ -103,18 +97,18 @@ module.exports = {
   compilers: {
     solc: {
       version: "^0.8.0", // A version or constraint - Ex. "^0.5.0"
-      parser: "solcjs",  // Leverages solc-js purely for speedy parsing
+      parser: "solcjs", // Leverages solc-js purely for speedy parsing
       settings: {
         optimizer: {
           enabled: true,
-          runs: 99999,  // Optimize for how many times you intend to run the code
+          runs: 99999, // Optimize for how many times you intend to run the code
         },
       },
     },
   },
 
-  plugins: ['truffle-plugin-verify'],
+  plugins: ["truffle-plugin-verify"],
   api_keys: {
-    etherscan: 'X88AP9B52SENYPTR31W5SGRK5EGJZD2BJC'
+    etherscan: "X88AP9B52SENYPTR31W5SGRK5EGJZD2BJC",
   },
 };
