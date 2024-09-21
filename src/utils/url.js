@@ -1,7 +1,9 @@
 /* eslint-disable no-useless-escape */
 // internal URI spitter method - direct from RFC 3986
 const splitUri = (uri) => {
-  const splitted = uri.match(/(?:([^:\/?#]+):)?(?:\/\/([^\/?#]*))?([^?#]*)(?:\?([^#]*))?(?:#(.*))?/);
+  const splitted = uri.match(
+    /(?:([^:\/?#]+):)?(?:\/\/([^\/?#]*))?([^?#]*)(?:\?([^#]*))?(?:#(.*))?/,
+  );
   return splitted;
 };
 
@@ -11,19 +13,20 @@ const isUri = (value) => {
   }
 
   // check for illegal characters
-  if (/[^a-z0-9\:\/\?\#\[\]\@\!\$\&\'\(\)\*\+\,\;\=\.\-\_\~\%]/i.test(value)) return;
+  if (/[^a-z0-9\:\/\?\#\[\]\@\!\$\&\'\(\)\*\+\,\;\=\.\-\_\~\%]/i.test(value))
+    return;
 
   // check for hex escapes that aren't complete
   if (/%[^0-9a-f]/i.test(value)) return;
   if (/%[0-9a-f](:?[^0-9a-f]|$)/i.test(value)) return;
 
   let splitted = [];
-  let scheme = '';
-  let authority = '';
-  let path = '';
-  let query = '';
-  let fragment = '';
-  let out = '';
+  let scheme = "";
+  let authority = "";
+  let path = "";
+  let query = "";
+  let fragment = "";
+  let out = "";
 
   // from RFC 3986
   splitted = splitUri(value);
@@ -45,26 +48,26 @@ const isUri = (value) => {
   }
 
   // scheme must begin with a   letter, then consist of   letters, digits, +, ., or -
-  if (!/^[a-z][a-z0-9\+\-\.]*$/.test(scheme.toLowerCase()))  return;
+  if (!/^[a-z][a-z0-9\+\-\.]*$/.test(scheme.toLowerCase())) return;
 
   // re-assemble the URL per section 5.3 in RFC 3986
-  out += scheme + ':';
+  out += scheme + ":";
   if (authority && authority.length) {
-    out += '//' + authority;
+    out += "//" + authority;
   }
 
   out += path;
 
   if (query && query.length) {
-    out += '?' + query;
+    out += "?" + query;
   }
 
   if (fragment && fragment.length) {
-    out += '#' + fragment;
+    out += "#" + fragment;
   }
 
   return out;
-}
+};
 
 function isHttpUri(value, allowHttps) {
   if (!isUri(value)) {
@@ -72,13 +75,13 @@ function isHttpUri(value, allowHttps) {
   }
 
   let splitted = [];
-  let scheme = '';
-  let authority = '';
-  let path = '';
-  let port = '';
-  let query = '';
-  let fragment = '';
-  let out = '';
+  let scheme = "";
+  let authority = "";
+  let path = "";
+  let port = "";
+  let query = "";
+  let fragment = "";
+  let out = "";
 
   // from RFC 3986
   splitted = splitUri(value);
@@ -88,12 +91,12 @@ function isHttpUri(value, allowHttps) {
   query = splitted[4];
   fragment = splitted[5];
 
-  if (!scheme)  return;
+  if (!scheme) return;
 
-  if(allowHttps) {
-    if (scheme.toLowerCase() !== 'https') return;
+  if (allowHttps) {
+    if (scheme.toLowerCase() !== "https") return;
   } else {
-    if (scheme.toLowerCase() !== 'http') return;
+    if (scheme.toLowerCase() !== "http") return;
   }
 
   // fully-qualified URIs must have an authority section that is
@@ -104,12 +107,12 @@ function isHttpUri(value, allowHttps) {
 
   // enable port component
   if (/:(\d+)$/.test(authority)) {
-      port = authority.match(/:(\d+)$/)[0];
-      authority = authority.replace(/:\d+$/, '');
+    port = authority.match(/:(\d+)$/)[0];
+    authority = authority.replace(/:\d+$/, "");
   }
 
-  out += scheme + ':';
-  out += '//' + authority;
+  out += scheme + ":";
+  out += "//" + authority;
 
   if (port) {
     out += port;
@@ -117,12 +120,12 @@ function isHttpUri(value, allowHttps) {
 
   out += path;
 
-  if(query && query.length){
-    out += '?' + query;
+  if (query && query.length) {
+    out += "?" + query;
   }
 
-  if(fragment && fragment.length){
-    out += '#' + fragment;
+  if (fragment && fragment.length) {
+    out += "#" + fragment;
   }
 
   return out;
@@ -130,8 +133,8 @@ function isHttpUri(value, allowHttps) {
 
 export const isHttpsUri = (value) => {
   return isHttpUri(value, true);
-}
+};
 
 export const isWebUri = (value) => {
-  return (isHttpUri(value) || isHttpsUri(value));
-}
+  return isHttpUri(value) || isHttpsUri(value);
+};
