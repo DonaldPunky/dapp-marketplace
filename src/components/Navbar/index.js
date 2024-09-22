@@ -1,16 +1,16 @@
-import BigNumber from 'bignumber.js';
-import React from 'react';
-import { Container, Nav, Navbar, NavDropdown } from 'react-bootstrap';
-import { LinkContainer } from 'react-router-bootstrap';
-import '../../App.css';
-import { useApplicationContext } from '../../context/applicationContext';
-import styled from 'styled-components';
-import * as s from '../../styles/global';
-import { Web3Status } from '../Web3Status';
-import Loader from '../Loader';
-import { useWeb3React } from '@web3-react/core';
-import { CURRENCY } from '../../assets/images';
-import { Paper } from '@mui/material';
+import BigNumber from "bignumber.js";
+import React from "react";
+import { Container, Nav, Navbar, NavDropdown } from "react-bootstrap";
+import { LinkContainer } from "react-router-bootstrap";
+import "../../App.css";
+import { useApplicationContext } from "../../context/applicationContext";
+import styled from "styled-components";
+import * as s from "../../styles/global";
+import { Web3Status } from "../Web3Status";
+import Loader from "../Loader";
+import { useWeb3React } from "@web3-react/core";
+import { CURRENCY } from "../../assets/images";
+import { Paper } from "@mui/material";
 
 const NetworkCard = styled(Paper)`
   display: flex;
@@ -27,8 +27,8 @@ const IconWrapper = styled.div`
 
   & > img,
   span {
-    height: ${({ size }) => (size ? size + 'px' : '24px')};
-    width: ${({ size }) => (size ? size + 'px' : '24px')};
+    height: ${({ size }) => (size ? size + "px" : "24px")};
+    width: ${({ size }) => (size ? size + "px" : "24px")};
   }
 `;
 
@@ -49,9 +49,11 @@ const Navigation = () => {
 
   const { chainId } = useWeb3React();
 
-  const mockCompanyLogo = 'https://wallet.wpmix.net/wp-content/uploads/2020/07/yourlogohere.png';
+  const mockCompanyLogo =
+    "https://wallet.wpmix.net/wp-content/uploads/2020/07/yourlogohere.png";
 
-  const hasFeeToken = !isFeeTokenDataFetching && FeeTokenSymbol && FeeTokenAddress;
+  const hasFeeToken =
+    !isFeeTokenDataFetching && FeeTokenSymbol && FeeTokenAddress;
 
   const getNetworkInfo = () => {
     if (!chainId) return null;
@@ -75,7 +77,7 @@ const Navigation = () => {
 
   return (
     <Navbar collapseOnSelect expand="lg" variant="dark" style={{ margin: 15 }}>
-      <Container style={{ maxWidth: '100%' }}>
+      <Container style={{ maxWidth: "100%" }}>
         <s.LogoTitle src={logoUrl || mockCompanyLogo} />
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
@@ -128,7 +130,10 @@ const Navigation = () => {
                 }
                 id="collasible-nav-dropdown"
               >
-                <Nav.Link href={`${networkExplorer}/address/${FeeTokenAddress}`} target="_blank">
+                <Nav.Link
+                  href={`${networkExplorer}/address/${FeeTokenAddress}`}
+                  target="_blank"
+                >
                   {isFeeTokenDataFetching ? (
                     <Loader />
                   ) : (

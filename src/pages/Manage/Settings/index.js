@@ -1,14 +1,14 @@
-import React, { useState } from 'react';
-import styled from 'styled-components';
-import { useWeb3React } from '@web3-react/core';
-import * as s from '../../../styles/global';
-import { FaWrench } from 'react-icons/fa';
-import { useApplicationContext } from '../../../context/applicationContext';
-import { shortenAddress } from '../../../utils/utils';
-import { STORAGE_NETWORK_NAME } from '../../../constants';
-import Main from './Main';
-import Contracts from './Contracts';
-import Interface from './Interface';
+import React, { useState } from "react";
+import styled from "styled-components";
+import { useWeb3React } from "@web3-react/core";
+import * as s from "../../../styles/global";
+import { FaWrench } from "react-icons/fa";
+import { useApplicationContext } from "../../../context/applicationContext";
+import { shortenAddress } from "../../../utils/utils";
+import { STORAGE_NETWORK_NAME } from "../../../constants";
+import Main from "./Main";
+import Contracts from "./Contracts";
+import Interface from "./Interface";
 
 const Row = styled.div`
   display: flex;
@@ -30,7 +30,7 @@ const Tab = styled.button`
   padding: 0.4rem 0.7rem;
   font-size: 1em;
   border: none;
-  background-color: ${({ active }) => (active ? '#424149' : 'transparent')};
+  background-color: ${({ active }) => (active ? "#424149" : "transparent")};
   color: #fff;
 
   :first-child {
@@ -48,13 +48,13 @@ export default function Settings() {
   const { account } = useWeb3React();
   const { chainName } = useApplicationContext();
 
-  const [tab, setTab] = useState('main');
+  const [tab, setTab] = useState("main");
 
   const returnTabs = () => {
     const tabs = [
-      { tabKey: 'main', tabName: 'Main' },
-      { tabKey: 'contracts', tabName: 'Contracts' },
-      { tabKey: 'interface', tabName: 'Interface' },
+      { tabKey: "main", tabName: "Main" },
+      { tabKey: "contracts", tabName: "Contracts" },
+      { tabKey: "interface", tabName: "Interface" },
     ];
 
     // if (chainId === STORAGE_NETWORK_ID) {
@@ -63,7 +63,11 @@ export default function Settings() {
 
     return tabs.map((info, index) => {
       return (
-        <Tab key={index} active={tab === info.tabKey} onClick={() => setTab(info.tabKey)}>
+        <Tab
+          key={index}
+          active={tab === info.tabKey}
+          onClick={() => setTab(info.tabKey)}
+        >
           {info.tabName}
         </Tab>
       );
@@ -98,14 +102,14 @@ export default function Settings() {
 
       <Tabs>{returnTabs()}</Tabs>
 
-      {tab === 'main' && (
+      {tab === "main" && (
         <>
           <s.SpacerSmall />
           <Main />
         </>
       )}
-      {tab === 'contracts' && <Contracts />}
-      {tab === 'interface' && (
+      {tab === "contracts" && <Contracts />}
+      {tab === "interface" && (
         <>
           <s.SpacerMedium />
           <Interface />

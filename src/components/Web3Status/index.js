@@ -1,14 +1,14 @@
-import { useState } from 'react';
-import { useWeb3React } from '@web3-react/core';
+import { useState } from "react";
+import { useWeb3React } from "@web3-react/core";
 import {
   NetworkContextName,
   //   ZERO_ADDRESS,
-} from '../../constants';
+} from "../../constants";
 
-import WalletModal from '../WalletModal';
+import WalletModal from "../WalletModal";
 
-import * as s from '../../styles/global';
-import { shortenAddress } from '../../utils/utils';
+import * as s from "../../styles/global";
+import { shortenAddress } from "../../utils/utils";
 
 export function Web3Status() {
   const {
@@ -51,7 +51,10 @@ export function Web3Status() {
           </s.button>
         )}
       </s.Container>
-      <WalletModal isOpen={isWaleltModalOpen} closeModal={() => setIsWaleltModalOpen(false)} />
+      <WalletModal
+        isOpen={isWaleltModalOpen}
+        closeModal={() => setIsWaleltModalOpen(false)}
+      />
     </>
   );
 }

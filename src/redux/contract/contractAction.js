@@ -29,27 +29,29 @@ export const fetchContract = (chainId, networks, contracts) => {
 
     const webSocketRPC = networks?.[chainId]?.webSocketRPC;
     const IDOFactoryAddress = contracts?.[chainId]?.IDOFactoryAddress;
-    const TokenLockerFactoryAddress = contracts?.[chainId]?.TokenLockerFactoryAddress;
+    const TokenLockerFactoryAddress =
+      contracts?.[chainId]?.TokenLockerFactoryAddress;
 
     try {
-      if (!webSocketRPC || !IDOFactoryAddress || !TokenLockerFactoryAddress) throw Error("Network is not configured");
+      if (!webSocketRPC || !IDOFactoryAddress || !TokenLockerFactoryAddress)
+        throw Error("Network is not configured");
 
       const web3 = new Web3(webSocketRPC);
 
       const IDOFactoryContract = new web3.eth.Contract(
         IDOFactory.abi,
-        IDOFactoryAddress
+        IDOFactoryAddress,
       );
       const LockerFactoryContract = new web3.eth.Contract(
         TokenLockerFactory.abi,
-        TokenLockerFactoryAddress
+        TokenLockerFactoryAddress,
       );
       dispatch(
         fetchContractSuccess({
           IDOFactory: IDOFactoryContract,
           TokenLockerFactory: LockerFactoryContract,
           web3,
-        })
+        }),
       );
     } catch (err) {
       console.log(err);

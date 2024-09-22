@@ -1,6 +1,6 @@
-import { FaBars } from 'react-icons/fa';
-import { NavLink as Link } from 'react-router-dom';
-import styled from 'styled-components';
+import { FaBars } from "react-icons/fa";
+import { NavLink as Link } from "react-router-dom";
+import styled from "styled-components";
 
 export const Nav = styled.nav`
   height: 50px;
@@ -57,7 +57,7 @@ export const Bars = styled(FaBars)`
     display: flex;
     position: absolute;
     margin: 20px;
-    right: ${({ m }) => (m ? m : 'none')};
+    right: ${({ m }) => (m ? m : "none")};
     font-size: 1.8rem;
     cursor: pointer;
   }

@@ -1,12 +1,12 @@
-import { Checkbox, TextField } from '@mui/material';
-import React, { useState } from 'react';
-import { useSelector } from 'react-redux';
-import LockerList from '../components/Modal/lockerList';
-import * as s from '../styles/global';
-import { utils } from '../utils';
+import { Checkbox, TextField } from "@mui/material";
+import React, { useState } from "react";
+import { useSelector } from "react-redux";
+import LockerList from "../components/Modal/lockerList";
+import * as s from "../styles/global";
+import { utils } from "../utils";
 
 const Locker = (props) => {
-  const [address, setAddress] = useState('');
+  const [address, setAddress] = useState("");
   const contract = useSelector((state) => state.contract);
   const [showZero, setShowZero] = useState(0);
 
@@ -31,7 +31,7 @@ const Locker = (props) => {
       </s.Container>
       <TextField
         fullWidth
-        label={'Search by token address '}
+        label={"Search by token address "}
         onChange={async (e) => {
           e.preventDefault();
           utils.typewatch(setAddress(e.target.value), 2000);

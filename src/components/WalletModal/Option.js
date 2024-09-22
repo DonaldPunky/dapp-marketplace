@@ -1,9 +1,9 @@
-import React from 'react';
-import styled from 'styled-components';
-import { IoIosCheckmarkCircleOutline } from 'react-icons/io';
+import React from "react";
+import styled from "styled-components";
+import { IoIosCheckmarkCircleOutline } from "react-icons/io";
 
 const InfoCard = styled.button`
-  background-color: ${({ active }) => (active ? '#3a3d47' : '#424149')};
+  background-color: ${({ active }) => (active ? "#3a3d47" : "#424149")};
   padding: 1rem;
   outline: none;
   border-radius: 1rem;
@@ -37,9 +37,13 @@ const OptionCardClickable = styled(OptionCard)`
 
   &:hover {
     ${({ color, clickable }) =>
-      clickable ? (color ? `border-color: ${color}; cursor: pointer;` : 'cursor: pointer;') : ''};
+      clickable
+        ? color
+          ? `border-color: ${color}; cursor: pointer;`
+          : "cursor: pointer;"
+        : ""};
   }
-  opacity: ${({ disabled }) => (disabled ? '0.5' : '1')};
+  opacity: ${({ disabled }) => (disabled ? "0.5" : "1")};
   transition: 0.1s;
 
   @media (max-width: 540px) {
@@ -98,8 +102,8 @@ const IconWrapper = styled.div`
 
   & > img,
   span {
-    height: ${({ size }) => (size ? size + 'px' : '24px')};
-    width: ${({ size }) => (size ? size + 'px' : '24px')};
+    height: ${({ size }) => (size ? size + "px" : "24px")};
+    width: ${({ size }) => (size ? size + "px" : "24px")};
   }
 
   @media (max-width: 960px) {
@@ -109,16 +113,16 @@ const IconWrapper = styled.div`
   @media (max-width: 540px) {
     & > img,
     span {
-      height: ${({ size }) => (size ? size - size / 4 + 'px' : '18px')};
-      width: ${({ size }) => (size ? size - size / 4 + 'px' : '18px')};
+      height: ${({ size }) => (size ? size - size / 4 + "px" : "18px")};
+      width: ${({ size }) => (size ? size - size / 4 + "px" : "18px")};
     }
   }
 
   @media (max-width: 340px) {
     & > img,
     span {
-      height: ${({ size }) => (size ? size - size / 3 + 'px' : '16px')};
-      width: ${({ size }) => (size ? size - size / 3 + 'px' : '16px')};
+      height: ${({ size }) => (size ? size - size / 3 + "px" : "16px")};
+      width: ${({ size }) => (size ? size - size / 3 + "px" : "16px")};
     }
   }
 `;
@@ -152,7 +156,7 @@ export default function Option({
       )}
 
       <IconWrapper size={size}>
-        <img src={icon} alt={'Icon'} />
+        <img src={icon} alt={"Icon"} />
       </IconWrapper>
       <Text>{header}</Text>
       {subheader && <SubHeader>{subheader}</SubHeader>}

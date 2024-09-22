@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
-import { useApplicationContext } from '../../context/applicationContext';
-import { usePoolContext } from '../../context/poolContext';
-import * as s from '../../styles/global';
-import { utils } from '../../utils';
-import LongIdo from '../Card/longIdo';
-import PoolRenderer from '../Card/poolRenderer';
+import React, { useState } from "react";
+import { useApplicationContext } from "../../context/applicationContext";
+import { usePoolContext } from "../../context/poolContext";
+import * as s from "../../styles/global";
+import { utils } from "../../utils";
+import LongIdo from "../Card/longIdo";
+import PoolRenderer from "../Card/poolRenderer";
 
 const LongIdoList = () => {
   const [limit, setLimit] = useState(5);
@@ -26,7 +26,10 @@ const LongIdoList = () => {
     <s.Container ai="center">
       <s.Container ai="center">
         {isLockerEnabled ? (
-          <s.Container jc="space-around" style={{ flexWrap: 'wrap', marginTop: 20 }}>
+          <s.Container
+            jc="space-around"
+            style={{ flexWrap: "wrap", marginTop: 20 }}
+          >
             {userPoolAddresses.map((poolAddress, index) => {
               if (index >= limit) {
                 return null;
@@ -39,7 +42,11 @@ const LongIdoList = () => {
             })}
           </s.Container>
         ) : (
-          <s.Container fd="row" jc="space-around" style={{ flexWrap: 'wrap', marginTop: 20 }}>
+          <s.Container
+            fd="row"
+            jc="space-around"
+            style={{ flexWrap: "wrap", marginTop: 20 }}
+          >
             {userPoolAddresses.map((poolAddress, index) => {
               if (index >= limit) {
                 return null;
@@ -60,7 +67,7 @@ const LongIdoList = () => {
             setLoading(false);
           }}
         >
-          {loading ? 'LOADING . . .' : 'LOADMORE'}
+          {loading ? "LOADING . . ." : "LOADMORE"}
         </s.button>
       )}
     </s.Container>

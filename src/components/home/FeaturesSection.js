@@ -1,29 +1,41 @@
-import Grid from '@mui/material/Grid';
-import Typography from '@mui/material/Typography';
-import Box from '@mui/material/Box';
-import Container from '@mui/material/Container';
-import Stack from '@mui/material/Stack';
-import cubes from '../../assets/images/cubes.svg';
+import Grid from "@mui/material/Grid";
+import Typography from "@mui/material/Typography";
+import Box from "@mui/material/Box";
+import Container from "@mui/material/Container";
+import Stack from "@mui/material/Stack";
+import cubes from "../../assets/images/cubes.svg";
 
 // Need to change later features of ELO projects
 const features = [
   {
-    title: 'What you get',
+    title: "What you get",
     description:
-      'If you order foods to our restautant, you will get $ELO as rewards. If you are a customer or investor, you can get more rewards. This means you got cool rewards from us instead of orders.',
+      "If you order foods to our restautant, you will get $ELO as rewards. If you are a customer or investor, you can get more rewards. This means you got cool rewards from us instead of orders.",
   },
   {
-    title: 'Extra services',
-    description: 'We will provide more extra services so that our $ELO has got more valuable',
+    title: "Extra services",
+    description:
+      "We will provide more extra services so that our $ELO has got more valuable",
   },
 ];
 
 const FeaturesSection = () => {
   return (
-    <Box sx={{ bgcolor: 'neutral.main', py: 7, borderTop: 1, borderColor: 'grey.100' }}>
+    <Box
+      sx={{
+        bgcolor: "neutral.main",
+        py: 7,
+        borderTop: 1,
+        borderColor: "grey.100",
+      }}
+    >
       <Container>
-        <Box sx={{ maxWidth: '500px' }}>
-          <Typography variant="body1" color="primary.main" sx={{ mb: 1, fontWeight: 700 }}>
+        <Box sx={{ maxWidth: "500px" }}>
+          <Typography
+            variant="body1"
+            color="primary.main"
+            sx={{ mb: 1, fontWeight: 700 }}
+          >
             Our main features
           </Typography>
           <Typography
@@ -47,14 +59,14 @@ const FeaturesSection = () => {
                     variant="body"
                     component="div"
                     color="text.primary"
-                    sx={{ fontWeight: 700, fontSize: '0.875rem' }}
+                    sx={{ fontWeight: 700, fontSize: "0.875rem" }}
                   >
                     {f.title}
                   </Typography>
                   <Typography
                     variant="caption"
                     color="text.secondary"
-                    sx={{ fontSize: '0.875rem' }}
+                    sx={{ fontSize: "0.875rem" }}
                   >
                     {f.description}
                   </Typography>

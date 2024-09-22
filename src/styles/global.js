@@ -81,14 +81,17 @@ export const BodyWrapper = styled.div`
   max-width: 30rem;
   width: 100%;
   border-radius: 1.2rem;
-  box-shadow: rgba(0, 0, 0, 0.01) 0px 0px 1px, rgba(0, 0, 0, 0.04) 0px 4px 8px, rgba(0, 0, 0, 0.04) 0px 16px 24px,
-  rgba(0, 0, 0, 0.01) 0px 24px 32px;
+  box-shadow:
+    rgba(0, 0, 0, 0.01) 0px 0px 1px,
+    rgba(0, 0, 0, 0.04) 0px 4px 8px,
+    rgba(0, 0, 0, 0.04) 0px 16px 24px,
+    rgba(0, 0, 0, 0.01) 0px 24px 32px;
 
   background-color: #232227;
 
   @media (max-width: 540px) {
     width: 90%;
-  };
+  }
 `;
 
 export const ContentWrapper = styled.div`
@@ -128,7 +131,6 @@ export const Title = styled.h1`
   font-size: 1.4rem;
   text-align: center;
 `;
-
 
 export const Card = styled.div`
   display: ${({ display }) => (display ? display : "flex")};
@@ -188,25 +190,24 @@ export const Text = styled.div`
   line-height: 1.5rem;
   word-break: break-word;
 
-  ${({ small }) =>
-    small ? 'font-size: 0.8rem;' : ''
-  }
+  ${({ small }) => (small ? "font-size: 0.8rem;" : "")}
 
-  ${({ medium }) =>
-    medium ? 'font-size: 1rem;' : ''
-  }
+  ${({ medium }) => (medium ? "font-size: 1rem;" : "")}
 
   ${({ warning }) =>
-    warning ? `padding: .6rem; border-radius: .3rem; background-color: var(--warning);` : ''
-  }
+    warning
+      ? `padding: .6rem; border-radius: .3rem; background-color: var(--warning);`
+      : ""}
 
   ${({ success }) =>
-    success ? `padding: .6rem; border-radius: .3rem; background-color: var(--success);` : ''
-  }
+    success
+      ? `padding: .6rem; border-radius: .3rem; background-color: var(--success);`
+      : ""}
 
   ${({ error }) =>
-    error ? `padding: .6rem; border-radius: .3rem; background-color: var(--error);` : ''
-  }
+    error
+      ? `padding: .6rem; border-radius: .3rem; background-color: var(--error);`
+      : ""}
 
   :first-child {
     margin-top: 0;
@@ -333,16 +334,18 @@ export const Textarea = styled.textarea`
 `;
 
 export const button = styled.button`
-  background-color: ${({ secondary }) => (secondary ? "inherit" : "var(--primary)")};
-  border: ${({ secondary }) => (secondary ? "var(--secondary-color)" : "var(--primary)")} 0.125em solid;
+  background-color: ${({ secondary }) =>
+    secondary ? "inherit" : "var(--primary)"};
+  border: ${({ secondary }) =>
+      secondary ? "var(--secondary-color)" : "var(--primary)"}
+    0.125em solid;
   font-weight: 700;
   padding: 5px 20px;
   border-radius: 20px;
-  color: ${({ secondary }) => (secondary ? "var(--secondary-color)" : "var(--card)")};
+  color: ${({ secondary }) =>
+    secondary ? "var(--secondary-color)" : "var(--card)"};
 
-  ${({ fullWidth }) =>
-    fullWidth ? 'width: 100%;' : ''
-  }
+  ${({ fullWidth }) => (fullWidth ? "width: 100%;" : "")}
 
   :disabled {
     background-color: transparent;
@@ -352,7 +355,8 @@ export const button = styled.button`
     text-shadow: none;
   }
   :hover {
-    border: ${({ secondary }) => (secondary ? "var(--white)" : "none")} 0.125em solid;
+    border: ${({ secondary }) => (secondary ? "var(--white)" : "none")} 0.125em
+      solid;
     color: ${({ secondary }) => (secondary ? "var(--white)" : "none")};
   }
 `;

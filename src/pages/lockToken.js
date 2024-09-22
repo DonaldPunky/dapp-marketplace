@@ -1,6 +1,6 @@
-import React from 'react';
-import LockTokenForm from '../components/Form/lockTokenForm';
-import * as s from '../styles/global';
+import React from "react";
+import LockTokenForm from "../components/Form/lockTokenForm";
+import * as s from "../styles/global";
 
 const LockToken = () => {
   return (

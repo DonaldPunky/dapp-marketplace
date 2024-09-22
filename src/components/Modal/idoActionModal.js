@@ -1,8 +1,8 @@
-import { useWeb3React } from '@web3-react/core';
-import React from 'react';
-import * as s from '../../styles/global';
-import BuyTokenCard from '../Card/buyTokenCard';
-import WithdrawETH from '../Card/withdrawCard';
+import { useWeb3React } from "@web3-react/core";
+import React from "react";
+import * as s from "../../styles/global";
+import BuyTokenCard from "../Card/buyTokenCard";
+import WithdrawETH from "../Card/withdrawCard";
 
 const IDOAction = (props) => {
   const { idoAddress, flex = 1 } = props;

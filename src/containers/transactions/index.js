@@ -1,8 +1,8 @@
-import React, { Fragment } from 'react';
-import Typography from '@mui/material/Typography';
-import Container from '@mui/material/Container';
-import Box from '@mui/material/Box';
-import ERC20Transfers from 'components/ERC20Transfers';
+import React, { Fragment } from "react";
+import Typography from "@mui/material/Typography";
+import Container from "@mui/material/Container";
+import Box from "@mui/material/Box";
+import ERC20Transfers from "components/ERC20Transfers";
 
 export default function Transactions() {
   return (
@@ -12,7 +12,7 @@ export default function Transactions() {
           <Typography
             color="primary.main"
             variant="h4"
-            sx={{ fontWeight: 'bold', mb: 1 }}
+            sx={{ fontWeight: "bold", mb: 1 }}
             component="div"
           >
             Transactions
@@ -24,11 +24,11 @@ export default function Transactions() {
       </Container>
       <Box
         sx={{
-          bgcolor: 'neutral.main',
+          bgcolor: "neutral.main",
           py: 7,
           borderTop: 1,
           borderBottom: 1,
-          borderColor: 'grey.100',
+          borderColor: "grey.100",
           mb: 4,
         }}
       >

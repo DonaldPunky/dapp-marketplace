@@ -1,77 +1,82 @@
-import Grid from '@mui/material/Grid';
-import Stack from '@mui/material/Stack';
-import Typography from '@mui/material/Typography';
-import Card from '@mui/material/Card';
-import CardContent from '@mui/material/CardContent';
-import CardActions from '@mui/material/CardActions';
-import TelegramIcon from '@mui/icons-material/Telegram';
-import TwitterIcon from '@mui/icons-material/Twitter';
-import LanguageIcon from '@mui/icons-material/Language';
-import IconButton from '@mui/material/IconButton';
-import Chip from '@mui/material/Chip';
-import MediumIcon from '../../ui/icons/Medium';
+import Grid from "@mui/material/Grid";
+import Stack from "@mui/material/Stack";
+import Typography from "@mui/material/Typography";
+import Card from "@mui/material/Card";
+import CardContent from "@mui/material/CardContent";
+import CardActions from "@mui/material/CardActions";
+import TelegramIcon from "@mui/icons-material/Telegram";
+import TwitterIcon from "@mui/icons-material/Twitter";
+import LanguageIcon from "@mui/icons-material/Language";
+import IconButton from "@mui/material/IconButton";
+import Chip from "@mui/material/Chip";
+import MediumIcon from "../../ui/icons/Medium";
 
 const data = [
-  { label: 'Swap rate', value: '1 ELO=TBD $' },
-  { label: 'Cap', value: '5,000,000,000' },
-  { label: 'Access', value: 'Private' },
+  { label: "Swap rate", value: "1 ELO=TBD $" },
+  { label: "Cap", value: "5,000,000,000" },
+  { label: "Access", value: "Private" },
 ];
 
 const BSCPadSocialLinks = [
   {
-    label: 'Website',
+    label: "Website",
     icon: <LanguageIcon />,
-    href: 'https://bscpad.com/',
+    href: "https://bscpad.com/",
   },
   {
-    label: 'Twitter',
+    label: "Twitter",
     icon: <TwitterIcon />,
-    href: 'https://twitter.com/bscpad',
+    href: "https://twitter.com/bscpad",
   },
   {
-    label: 'Telegram',
+    label: "Telegram",
     icon: <TelegramIcon />,
-    href: 'https://t.me/bscpad',
+    href: "https://t.me/bscpad",
   },
 ];
 
 const ETHPadSocialLinks = [
   {
-    label: 'Website',
+    label: "Website",
     icon: <LanguageIcon />,
-    href: 'https://ethpad.network/',
+    href: "https://ethpad.network/",
   },
   {
-    label: 'Twitter',
+    label: "Twitter",
     icon: <TwitterIcon />,
-    href: 'https://twitter.com/ethpadofficial',
+    href: "https://twitter.com/ethpadofficial",
   },
   {
-    label: 'Telegram',
+    label: "Telegram",
     icon: <TelegramIcon />,
-    href: 'https://t.me/ethpad',
+    href: "https://t.me/ethpad",
   },
   {
-    label: 'Medium',
+    label: "Medium",
     icon: <MediumIcon />,
-    href: 'https://medium.com/@ethpad',
+    href: "https://medium.com/@ethpad",
   },
 ];
 
 const hostings = [
   {
-    name: 'BSCPad',
+    name: "BSCPad",
     socialLinks: BSCPadSocialLinks,
   },
   {
-    name: 'ETHPad',
+    name: "ETHPad",
     socialLinks: ETHPadSocialLinks,
   },
 ];
 
 const CardLabel = ({ text }) => {
   return (
-    <Typography color="text.secondary" sx={{ fontWeight: 500 }} variant="body1" display="block">
+    <Typography
+      color="text.secondary"
+      sx={{ fontWeight: 500 }}
+      variant="body1"
+      display="block"
+    >
       {text}
     </Typography>
   );
@@ -79,7 +84,10 @@ const CardLabel = ({ text }) => {
 
 const CardValue = ({ text }) => {
   return (
-    <Typography color="text.primary" sx={{ fontWeight: 500, textAlign: 'right' }}>
+    <Typography
+      color="text.primary"
+      sx={{ fontWeight: 500, textAlign: "right" }}
+    >
       {text}
     </Typography>
   );
@@ -95,7 +103,7 @@ const PhaseII = () => {
             sx={{
               borderRadius: 10,
               p: 1,
-              boxShadow: '0 2px 16px rgb(53 69 89 / 5%)',
+              boxShadow: "0 2px 16px rgb(53 69 89 / 5%)",
             }}
           >
             <CardContent>

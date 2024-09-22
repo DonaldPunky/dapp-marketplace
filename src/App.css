@@ -1,26 +1,26 @@
-@import url('https://fonts.googleapis.com/css2?family=Modak&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Modak&family=VT323&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Barlow&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Modak&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Modak&family=VT323&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Barlow&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
 :root {
   --clr-neon: hsl(56, 100%, 52%, 1);
   --clr-bg: hsl(56, 100%, 40%);
-  --primary: #27C498;
+  --primary: #27c498;
   --secondary: #004e38;
   --warning: #ff9c0840;
   --success: #27ae5f54;
   --error: #dc354570;
-  --search: #2D2D2D;
+  --search: #2d2d2d;
   --card: #232227;
   --upper-card: #151516;
-  --unfocus: #6F2232;
-  --disable: #6D6E71;
+  --unfocus: #6f2232;
+  --disable: #6d6e71;
   --background: #151516;
   /* --background: #006FB9; */
   --blue: #1e90ff;
   --white: #ffffff;
-  --text: #FFFFFF;
+  --text: #ffffff;
   --secondary-color: #989b9c;
   --text-secondary: #232227;
   --button: #005987;
@@ -28,33 +28,33 @@
   --globalRadius: "20px";
 }
 
-.alignRight{
+.alignRight {
   float: right;
 }
-.alignLeft{
+.alignLeft {
   float: right;
 }
 
-.m-5{
+.m-5 {
   margin: 5px;
 }
 
-.ml-5{
+.ml-5 {
   margin-left: 5px;
 }
 
-.mr-5{
+.mr-5 {
   margin-right: 5px;
 }
 
-.mr-10{
+.mr-10 {
   margin-right: 10px;
 }
 
 .main {
   margin: 10%;
 }
-.text-collapse{
+.text-collapse {
   overflow: hidden;
   width: 100%;
   text-overflow: ellipsis;
@@ -69,38 +69,34 @@
   text-overflow: ellipsis;
 }
 
-
 .home {
   position: relative;
   z-index: 1;
 }
 
-
-.home::before{
+.home::before {
   content: " ";
   z-index: -1;
-  opacity: .4;
-  width: 100%; 
+  opacity: 0.4;
+  width: 100%;
   position: absolute;
 }
 
-.MuiOutlinedInput-root{
-  color: var(--text)
+.MuiOutlinedInput-root {
+  color: var(--text);
 }
 
-.read-more-button{
-  color: var(--primary)
+.read-more-button {
+  color: var(--primary);
 }
 
-input[type=number] {
-  -webkit-outer-spin-button: 'none';
+input[type="number"] {
+  -webkit-outer-spin-button: "none";
 }
 
-
-.dropdown-menu{
+.dropdown-menu {
   background-color: var(--background);
 }
-
 
 .image-cover {
   width: 150px;
@@ -111,21 +107,20 @@ input[type=number] {
   object-position: center right;
 }
 
-.addButton{
+.addButton {
   max-width: 150px;
 }
 
-.dropdown-item{
+.dropdown-item {
   color: var(--text);
 }
 
-.Fontcard > .dropdown{
+.Fontcard > .dropdown {
   margin: 10px;
-
 }
 
 .Fontcard {
-  box-shadow: 6px 6px 2px 1px rgba(0,0,0,0.4);
+  box-shadow: 6px 6px 2px 1px rgba(0, 0, 0, 0.4);
   transition: 0.3s;
   border-radius: 5px;
   background-color: var(--background);
@@ -133,32 +128,29 @@ input[type=number] {
 }
 
 .Fontcard:hover {
-  box-shadow: 3px 3px 2px 1px rgba(0,0,0,0.6);
+  box-shadow: 3px 3px 2px 1px rgba(0, 0, 0, 0.6);
 }
 
 .right {
   float: right;
 }
 
-
-.navbar-collapse{
+.navbar-collapse {
   text-align: center;
 }
 
-.text-collapse{
+.text-collapse {
   text-overflow: ellipsis;
   overflow: hidden;
   display: -webkit-box;
   -webkit-line-clamp: 0; /* number of lines to show */
-          line-clamp: 0;
+  line-clamp: 0;
   -webkit-box-orient: vertical;
 }
-
 
 button:disabled {
   background: var(--unfocus);
 }
-
 
 .navbar-dark .navbar-toggler-icon {
   color: var(--secondary);
@@ -172,7 +164,7 @@ body {
 * {
   /* font-family: 'VT323', monospace; */
   /* font-family: 'Roboto', sans-serif; */
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
   /* font-family: 'Barlow', sans-serif; */
   letter-spacing: 0em;
   font-size: 20px;
@@ -183,43 +175,60 @@ p {
   margin: 0;
 }
 
-.btn-success{
+.btn-success {
   color: var(--primary);
   background-color: transparent;
-  text-shadow: 0 0 0.125em hsl(0 0% 100% / 0.3), 0 0 0.45em currentColor;
-  box-shadow: inset 0 0 0.5em 0 var(--primary), 0 0 0.5em 0 var(--primary);
-  border: var(--primary) 0.125em solid;
-  
-}
-
-.btn-success:focus{
-  color: var(--primary);
-  background-color: transparent;
-  text-shadow: 0 0 0.125em hsl(0 0% 100% / 0.3), 0 0 0.45em currentColor;
-  box-shadow: inset 0 0 0.5em 0 var(--primary), 0 0 0.5em 0 var(--primary);
-  border: var(--primary) 0.125em solid;
-}
-.btn-success:hover{
-  color: var(--primary);
-  background-color: transparent;
-  text-shadow: 0 0 0.125em hsl(0 0% 100% / 0.3), 0 0 0.45em currentColor;
-  box-shadow: inset 0 0 0.5em 0 var(--primary), 0 0 0.5em 0 var(--primary);
+  text-shadow:
+    0 0 0.125em hsl(0 0% 100% / 0.3),
+    0 0 0.45em currentColor;
+  box-shadow:
+    inset 0 0 0.5em 0 var(--primary),
+    0 0 0.5em 0 var(--primary);
   border: var(--primary) 0.125em solid;
 }
 
-.show>.btn-success.dropdown-toggle:focus{
-  box-shadow: inset 0 0 0.5em 0 var(--primary), 0 0 0.5em 0 var(--primary);
-}
-
-.show>.btn-success.dropdown-toggle{
+.btn-success:focus {
   color: var(--primary);
   background-color: transparent;
-  text-shadow: 0 0 0.125em hsl(0 0% 100% / 0.3), 0 0 0.45em currentColor;
-  box-shadow: inset 0 0 0.5em 0 var(--primary), 0 0 0.5em 0 var(--primary);
+  text-shadow:
+    0 0 0.125em hsl(0 0% 100% / 0.3),
+    0 0 0.45em currentColor;
+  box-shadow:
+    inset 0 0 0.5em 0 var(--primary),
+    0 0 0.5em 0 var(--primary);
+  border: var(--primary) 0.125em solid;
+}
+.btn-success:hover {
+  color: var(--primary);
+  background-color: transparent;
+  text-shadow:
+    0 0 0.125em hsl(0 0% 100% / 0.3),
+    0 0 0.45em currentColor;
+  box-shadow:
+    inset 0 0 0.5em 0 var(--primary),
+    0 0 0.5em 0 var(--primary);
   border: var(--primary) 0.125em solid;
 }
 
-.show>.btn-success.dropdown-toggle:disabled{
+.show > .btn-success.dropdown-toggle:focus {
+  box-shadow:
+    inset 0 0 0.5em 0 var(--primary),
+    0 0 0.5em 0 var(--primary);
+}
+
+.show > .btn-success.dropdown-toggle {
+  color: var(--primary);
+  background-color: transparent;
+  text-shadow:
+    0 0 0.125em hsl(0 0% 100% / 0.3),
+    0 0 0.45em currentColor;
+  box-shadow:
+    inset 0 0 0.5em 0 var(--primary),
+    0 0 0.5em 0 var(--primary);
+  border: var(--primary) 0.125em solid;
+}
+
+.show > .btn-success.dropdown-toggle:disabled {
   background-color: transparent;
   box-shadow: none;
   color: var(--disable);

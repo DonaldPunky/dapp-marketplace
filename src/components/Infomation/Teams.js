@@ -1,6 +1,6 @@
-import React from 'react';
-import * as s from '../../styles/global';
-import profile from '../../assets/profile_js.jpg';
+import React from "react";
+import * as s from "../../styles/global";
+import profile from "../../assets/profile_js.jpg";
 
 const Teams = (props) => {
   return (

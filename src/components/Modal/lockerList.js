@@ -1,10 +1,10 @@
-import { ListItemAvatar } from '@mui/material';
-import BigNumber from 'bignumber.js';
-import React, { useEffect, useState } from 'react';
-import { usePoolContext } from '../../context/poolContext';
-import * as s from '../../styles/global';
-import { utils } from '../../utils';
-import LongLocker from '../Card/longLocker';
+import { ListItemAvatar } from "@mui/material";
+import BigNumber from "bignumber.js";
+import React, { useEffect, useState } from "react";
+import { usePoolContext } from "../../context/poolContext";
+import * as s from "../../styles/global";
+import { utils } from "../../utils";
+import LongLocker from "../Card/longLocker";
 
 const LockerList = (props) => {
   const [limit, setLimit] = useState(5);
@@ -13,10 +13,13 @@ const LockerList = (props) => {
 
   const { tokenAddress, owner, showZero, showUserLockers } = props;
 
-  const { allLocker, allLockerAddress, userLockersAddresses } = usePoolContext();
+  const { allLocker, allLockerAddress, userLockersAddresses } =
+    usePoolContext();
 
   useEffect(() => {
-    setLockersAddresses(showUserLockers ? userLockersAddresses : allLockerAddress);
+    setLockersAddresses(
+      showUserLockers ? userLockersAddresses : allLockerAddress,
+    );
   }, [showUserLockers, userLockersAddresses, allLockerAddress]);
 
   if (!lockersAddresses.length) {
@@ -33,7 +36,10 @@ const LockerList = (props) => {
   return (
     <s.Container ai="center">
       <s.Container ai="center">
-        <s.Container jc="space-around" style={{ flexWrap: 'wrap', marginTop: 20 }}>
+        <s.Container
+          jc="space-around"
+          style={{ flexWrap: "wrap", marginTop: 20 }}
+        >
           {lockersAddresses.map((lockerAddress, index) => {
             if (index >= limit || !ListItemAvatar) {
               return null;
@@ -43,12 +49,15 @@ const LockerList = (props) => {
                 return null;
               }
             }
-            if (owner && owner !== '') {
-              if (allLocker[lockerAddress]?.owner.toLowerCase() !== owner.toLowerCase()) {
+            if (owner && owner !== "") {
+              if (
+                allLocker[lockerAddress]?.owner.toLowerCase() !==
+                owner.toLowerCase()
+              ) {
                 return null;
               }
             }
-            if (tokenAddress && tokenAddress !== '') {
+            if (tokenAddress && tokenAddress !== "") {
               if (
                 allLocker[lockerAddress]?.token.tokenAddress.toLowerCase() !==
                 tokenAddress.toLowerCase()
@@ -75,7 +84,7 @@ const LockerList = (props) => {
             setLoading(false);
           }}
         >
-          {loading ? 'LOADING . . .' : 'LOADMORE'}
+          {loading ? "LOADING . . ." : "LOADMORE"}
         </s.button>
       )}
     </s.Container>

@@ -1,11 +1,11 @@
-import List from '@mui/material/List';
-import ListItem from '@mui/material/ListItem';
-import ListItemButton from '@mui/material/ListItemButton';
-import ListItemText from '@mui/material/ListItemText';
-import { Link, useLocation } from 'react-router-dom';
-import Drawer from '@mui/material/Drawer';
-import Box from '@mui/material/Box';
-import Divider from '@mui/material/Divider';
+import List from "@mui/material/List";
+import ListItem from "@mui/material/ListItem";
+import ListItemButton from "@mui/material/ListItemButton";
+import ListItemText from "@mui/material/ListItemText";
+import { Link, useLocation } from "react-router-dom";
+import Drawer from "@mui/material/Drawer";
+import Box from "@mui/material/Box";
+import Divider from "@mui/material/Divider";
 //import Badge from '@mui/material/Badge';
 //import Stack from '@mui/material/Stack';
 
@@ -23,7 +23,8 @@ const SideDrawer = ({
   handleClickContracts,
 }) => {
   const router = useLocation();
-  const container = window !== undefined ? () => window().document.body : undefined;
+  const container =
+    window !== undefined ? () => window().document.body : undefined;
 
   const handleClickContractsItem = () => {
     onClose();
@@ -42,21 +43,24 @@ const SideDrawer = ({
       sx={{
         zIndex: 10000,
         display: {
-          xs: 'block',
-          sm: 'none',
+          xs: "block",
+          sm: "none",
         },
-        '& .MuiDrawer-paper': {
-          boxSizing: 'border-box',
+        "& .MuiDrawer-paper": {
+          boxSizing: "border-box",
           width: drawerWidth,
           border: 0,
-          boxShadow: 'none',
+          boxShadow: "none",
         },
       }}
       BackdropProps={{
-        style: { backgroundColor: 'rgba(111, 126, 140, 0.2)', backdropFilter: 'blur(2px)' },
+        style: {
+          backgroundColor: "rgba(111, 126, 140, 0.2)",
+          backdropFilter: "blur(2px)",
+        },
       }}
     >
-      <Box sx={{ overflow: 'auto' }}>
+      <Box sx={{ overflow: "auto" }}>
         <List
           sx={{ maxWidth: drawerWidth }}
           component="nav"
@@ -80,7 +84,7 @@ const SideDrawer = ({
             component={Link}
             to={presaleLink.href}
             selected={router.pathname === presaleLink.href}
-            sx={{ display: 'flex', alignItems: 'center', width: '100%' }}
+            sx={{ display: "flex", alignItems: "center", width: "100%" }}
           >
             {/* <Badge 
               badgeContent={
@@ -96,7 +100,10 @@ const SideDrawer = ({
           </ListItemButton>
 
           {comingSoonLink.map((link) => (
-            <ListItem key={link} sx={{ display: 'flex', alignItems: 'center', width: '100%' }}>
+            <ListItem
+              key={link}
+              sx={{ display: "flex", alignItems: "center", width: "100%" }}
+            >
               <ListItemText primary={link} sx={{ opacity: 0.3 }} />
             </ListItem>
           ))}

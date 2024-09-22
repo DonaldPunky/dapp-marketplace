@@ -1,6 +1,6 @@
-import React from 'react';
-import PublishForm from '../components/Form/Publish/publishForm';
-import * as s from '../styles/global';
+import React from "react";
+import PublishForm from "../components/Form/Publish/publishForm";
+import * as s from "../styles/global";
 
 const Publish = () => {
   return (

@@ -1,16 +1,19 @@
-import { useState, useEffect } from 'react';
-import { STORAGE_NETWORK_ID, STORAGE_NETWORK_NAME } from '../../../../constants';
-import { useWeb3React } from '@web3-react/core';
-import { useApplicationContext } from '../../../../context/applicationContext';
-import { isWebUri } from '../../../../utils/url';
-import { saveAppData } from '../../../../utils/storage';
-import { TextField, Stack, Typography, Switch } from '@mui/material';
-import * as s from '../../../../styles/global';
-import styled from 'styled-components';
-import Loader from '../../../../components/Loader';
-import { InjectedConnector } from '@web3-react/injected-connector';
-import { switchInjectedNetwork } from '../../../../utils/utils';
-import SocialLinks from './SocialLinks';
+import { useState, useEffect } from "react";
+import {
+  STORAGE_NETWORK_ID,
+  STORAGE_NETWORK_NAME,
+} from "../../../../constants";
+import { useWeb3React } from "@web3-react/core";
+import { useApplicationContext } from "../../../../context/applicationContext";
+import { isWebUri } from "../../../../utils/url";
+import { saveAppData } from "../../../../utils/storage";
+import { TextField, Stack, Typography, Switch } from "@mui/material";
+import * as s from "../../../../styles/global";
+import styled from "styled-components";
+import Loader from "../../../../components/Loader";
+import { InjectedConnector } from "@web3-react/injected-connector";
+import { switchInjectedNetwork } from "../../../../utils/utils";
+import SocialLinks from "./SocialLinks";
 
 const ContentWrapper = styled.div`
   display: flex;
@@ -24,7 +27,7 @@ const ContentWrapper = styled.div`
     pointer-events: none;
     opacity: 0.6;
     `
-      : ''};
+      : ""};
 `;
 
 export default function Interface() {
@@ -51,9 +54,13 @@ export default function Interface() {
 
   const [projectName, setProjectName] = useState(stateProjectName);
   const [logoUrl, setLogoUrl] = useState(stateLogoUrl);
-  const [disableSourceCopyright, setDisableSourceCopyright] = useState(stateDisableSourceCopyright);
+  const [disableSourceCopyright, setDisableSourceCopyright] = useState(
+    stateDisableSourceCopyright,
+  );
   const [isLockerEnabled, setIsLockerEnabled] = useState(stateIsLockerEnabled);
-  const [isValidLogo, setIsValidLogo] = useState(Boolean(isWebUri(stateLogoUrl)));
+  const [isValidLogo, setIsValidLogo] = useState(
+    Boolean(isWebUri(stateLogoUrl)),
+  );
   //   const [faviconUrl, setFaviconUrl] = useState(stateFavicon)
   //   const [isValidFavicon, setIsValidFavicon] = useState(Boolean(validUrl.isUri(stateFavicon)))
 
@@ -180,7 +187,8 @@ export default function Interface() {
 
   const isStorageNetwork = chainId === STORAGE_NETWORK_ID;
   const canChangeNetwork = connector instanceof InjectedConnector;
-  const canAndShouldSwitchToStorageNetwork = canChangeNetwork && !isStorageNetwork;
+  const canAndShouldSwitchToStorageNetwork =
+    canChangeNetwork && !isStorageNetwork;
 
   const [cannotSaveSettings, setCannotSaveSettings] = useState(true);
 
@@ -188,7 +196,7 @@ export default function Interface() {
     setCannotSaveSettings(
       (!isStorageNetwork && !canChangeNetwork) ||
         (isStorageNetwork && !settingsChanged) ||
-        !isValidLogo
+        !isValidLogo,
       // !isValidFavicon ||
       // !isValidBackground ||
       // !areColorsValid
@@ -227,17 +235,17 @@ export default function Interface() {
       await saveAppData({
         library,
         domain,
-        owner: account || '',
+        owner: account || "",
         data: newSettings,
         onReceipt: () => {
           triggerDomainData();
         },
         onHash: (hash) => {
-          console.log('saveInterfaceSettings hash: ', hash);
+          console.log("saveInterfaceSettings hash: ", hash);
         },
       });
     } catch (error) {
-      console.group('%c saveInterfaceSettings', 'color: red');
+      console.group("%c saveInterfaceSettings", "color: red");
       console.error(error);
       console.groupEnd();
     } finally {
@@ -387,13 +395,17 @@ export default function Interface() {
       </Accordion> */}
 
       <s.button
-        onClick={canAndShouldSwitchToStorageNetwork ? switchToStorage : saveInterfaceSettings}
+        onClick={
+          canAndShouldSwitchToStorageNetwork
+            ? switchToStorage
+            : saveInterfaceSettings
+        }
         disabled={cannotSaveSettings}
       >
         {isLoading ? (
           <Loader />
         ) : isStorageNetwork ? (
-          'Save Interface Settings'
+          "Save Interface Settings"
         ) : (
           `Switch to ${STORAGE_NETWORK_NAME}`
         )}

@@ -1,13 +1,13 @@
-import React, { Fragment } from 'react';
-import Typography from '@mui/material/Typography';
-import Container from '@mui/material/Container';
-import Box from '@mui/material/Box';
-import SwapCard from '../../components/swap/SwapCard';
-import Grid from '@mui/material/Grid';
-import Stack from '@mui/material/Stack';
-import oneInch from '../../assets/images/partners/1inch.svg';
+import React, { Fragment } from "react";
+import Typography from "@mui/material/Typography";
+import Container from "@mui/material/Container";
+import Box from "@mui/material/Box";
+import SwapCard from "../../components/swap/SwapCard";
+import Grid from "@mui/material/Grid";
+import Stack from "@mui/material/Stack";
+import oneInch from "../../assets/images/partners/1inch.svg";
 
-const poweredBy = { src: oneInch, href: 'https://1inch.exchange/#/' };
+const poweredBy = { src: oneInch, href: "https://1inch.exchange/#/" };
 
 export default function Swap() {
   return (
@@ -17,23 +17,27 @@ export default function Swap() {
           <Typography
             color="primary.main"
             variant="h4"
-            sx={{ fontWeight: 'bold', mb: 1, textAlign: 'center' }}
+            sx={{ fontWeight: "bold", mb: 1, textAlign: "center" }}
             component="div"
           >
             Swap
           </Typography>
-          <Typography variant="body1" color="text.secondary" sx={{ textAlign: 'center' }}>
+          <Typography
+            variant="body1"
+            color="text.secondary"
+            sx={{ textAlign: "center" }}
+          >
             Swap your token over ETH and BSC networks
           </Typography>
         </Box>
       </Container>
       <Box
         sx={{
-          bgcolor: 'neutral.main',
+          bgcolor: "neutral.main",
           py: 7,
           borderTop: 1,
           borderBottom: 1,
-          borderColor: 'grey.100',
+          borderColor: "grey.100",
           mb: 4,
         }}
       >
@@ -43,7 +47,12 @@ export default function Swap() {
               <SwapCard chain="eth" />
             </Grid>
           </Grid>
-          <Stack direction="row" spacing={1} alignItems="center" justifyContent="center">
+          <Stack
+            direction="row"
+            spacing={1}
+            alignItems="center"
+            justifyContent="center"
+          >
             <Typography
               variant="caption"
               display="block"

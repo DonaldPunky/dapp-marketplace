@@ -1,11 +1,11 @@
-import { useState, Fragment } from 'react';
-import { NavLink, Link, useLocation } from 'react-router-dom';
-import Stack from '@mui/material/Stack';
-import Menu from '@mui/material/Menu';
-import MenuItem from '@mui/material/MenuItem';
-import Badge from '@mui/material/Badge';
-import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
-import Button from '@mui/material/Button';
+import { useState, Fragment } from "react";
+import { NavLink, Link, useLocation } from "react-router-dom";
+import Stack from "@mui/material/Stack";
+import Menu from "@mui/material/Menu";
+import MenuItem from "@mui/material/MenuItem";
+import Badge from "@mui/material/Badge";
+import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
+import Button from "@mui/material/Button";
 
 //const Navbar = ({mainLinks, presaleLink, bridgeLink, moreMenuLinks, comingSoonLink, handleClickContracts}) => {
 const Navbar = ({
@@ -83,7 +83,11 @@ const Navbar = ({
               key={link}
               badgeContent={
                 <span
-                  style={{ color: 'rgba(255, 255, 255, .8)', fontWeight: 500, letterSpacing: 1 }}
+                  style={{
+                    color: "rgba(255, 255, 255, .8)",
+                    fontWeight: 500,
+                    letterSpacing: 1,
+                  }}
                 >
                   SOON
                 </span>
@@ -110,13 +114,13 @@ const Navbar = ({
             open={openMoreMenu}
             onClose={handleCloseMoreMenu}
             MenuListProps={{
-              'aria-labelledby': 'more-menu',
+              "aria-labelledby": "more-menu",
             }}
             PaperProps={{
               elevation: 0,
               sx: {
-                boxShadow: '0 4px 14px 0 rgb(0 0 0 / 10%)',
-                borderRadius: '15px',
+                boxShadow: "0 4px 14px 0 rgb(0 0 0 / 10%)",
+                borderRadius: "15px",
               },
             }}
           >
@@ -135,7 +139,7 @@ const Navbar = ({
             <MenuItem
               onClick={handleCloseMoreMenu}
               component="a"
-              href={''} // elo whitepaper url
+              href={""} // elo whitepaper url
               target="_blank"
               rel="noopener noreferrer"
             >

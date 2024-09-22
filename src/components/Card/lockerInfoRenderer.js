@@ -1,12 +1,12 @@
-import { useWeb3React } from '@web3-react/core';
-import BigNumber from 'bignumber.js';
-import React, { useState } from 'react';
-import Countdown from 'react-countdown';
-import { useApplicationContext } from '../../context/applicationContext';
-import { usePoolContext } from '../../context/poolContext';
-import { useLockerContract } from '../../hooks/useContract';
-import * as s from '../../styles/global';
-import Loader from '../Loader';
+import { useWeb3React } from "@web3-react/core";
+import BigNumber from "bignumber.js";
+import React, { useState } from "react";
+import Countdown from "react-countdown";
+import { useApplicationContext } from "../../context/applicationContext";
+import { usePoolContext } from "../../context/poolContext";
+import { useLockerContract } from "../../hooks/useContract";
+import * as s from "../../styles/global";
+import Loader from "../Loader";
 
 const LockerInfoRenderer = (props) => {
   const { lockerAddress } = props;
@@ -39,7 +39,7 @@ const LockerInfoRenderer = (props) => {
       triggerUpdateAccountData();
       // TODO: add trigger for update lockerInfo after withdraw
     } catch (error) {
-      console.log('locker withdraw Error');
+      console.log("locker withdraw Error");
     } finally {
       setLoading(false);
     }
@@ -55,7 +55,9 @@ const LockerInfoRenderer = (props) => {
         {/* IDO Information */}
         <s.Container style={{ marginTop: 15 }} fd="row" jc="space-between">
           <s.TextID>Locker name</s.TextID>
-          <s.TextDescriptionEllipsis>{lockerInfo.name}</s.TextDescriptionEllipsis>
+          <s.TextDescriptionEllipsis>
+            {lockerInfo.name}
+          </s.TextDescriptionEllipsis>
         </s.Container>
         <s.Container style={{ marginTop: 15 }} fd="row" jc="space-between">
           <s.TextID>Locker address</s.TextID>
@@ -67,15 +69,19 @@ const LockerInfoRenderer = (props) => {
         </s.Container>
         <s.Container style={{ marginTop: 15 }} fd="row" jc="space-between">
           <s.TextID>Token address</s.TextID>
-          <s.TextDescriptionEllipsis>{lockerInfo.token.tokenAddress}</s.TextDescriptionEllipsis>
+          <s.TextDescriptionEllipsis>
+            {lockerInfo.token.tokenAddress}
+          </s.TextDescriptionEllipsis>
         </s.Container>
         <s.Container style={{ marginTop: 15 }} fd="row" jc="space-between">
           <s.TextID>Locker balance</s.TextID>
           <s.TextDescription>
             {BigNumber(lockerInfo.balance)
-              .dividedBy(BigNumber(10 ** parseInt(lockerInfo.token.tokenDecimals)))
+              .dividedBy(
+                BigNumber(10 ** parseInt(lockerInfo.token.tokenDecimals)),
+              )
               .toFixed(2) +
-              ' $' +
+              " $" +
               lockerInfo.token.tokenSymbol}
           </s.TextDescription>
         </s.Container>
@@ -90,10 +96,11 @@ const LockerInfoRenderer = (props) => {
         <s.Container style={{ marginTop: 15 }} fd="row" jc="space-between">
           <s.TextID>Status</s.TextID>
           {BigNumber(lockerInfo.time).lt(Date.now() / 1000) ? (
-            <s.TextID style={{ color: 'var(--primary)' }}>UNLOCKED</s.TextID>
+            <s.TextID style={{ color: "var(--primary)" }}>UNLOCKED</s.TextID>
           ) : (
             <s.TextID>
-              Unlock in <Countdown date={parseInt(lockerInfo.time) * 1000}></Countdown>
+              Unlock in{" "}
+              <Countdown date={parseInt(lockerInfo.time) * 1000}></Countdown>
             </s.TextID>
           )}
         </s.Container>
@@ -112,7 +119,7 @@ const LockerInfoRenderer = (props) => {
                 withdraw();
               }}
             >
-              {loading ? <Loader /> : 'WITHDRAW'}
+              {loading ? <Loader /> : "WITHDRAW"}
             </s.button>
           </s.Container>
         ) : null}

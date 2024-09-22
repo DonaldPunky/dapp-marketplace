@@ -1,40 +1,42 @@
-import { withStyles } from '@material-ui/core/styles';
-import { DateTimePicker, LocalizationProvider } from '@mui/x-date-pickers';
-import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
-import { TextField, InputAdornment } from '@mui/material';
-import BigNumber from 'bignumber.js';
-import React, { useEffect, useState } from 'react';
-import { Badge } from 'react-bootstrap';
-import { useNavigate } from 'react-router-dom';
-import * as s from '../../styles/global';
-import { utils } from '../../utils';
-import { useApplicationContext } from '../../context/applicationContext';
-import { useWeb3React } from '@web3-react/core';
-import { useTokenContract } from '../../hooks/useContract';
-import Loader from '../Loader';
+import { withStyles } from "@material-ui/core/styles";
+import { DateTimePicker, LocalizationProvider } from "@mui/x-date-pickers";
+import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
+import { TextField, InputAdornment } from "@mui/material";
+import BigNumber from "bignumber.js";
+import React, { useEffect, useState } from "react";
+import { Badge } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
+import * as s from "../../styles/global";
+import { utils } from "../../utils";
+import { useApplicationContext } from "../../context/applicationContext";
+import { useWeb3React } from "@web3-react/core";
+import { useTokenContract } from "../../hooks/useContract";
+import Loader from "../Loader";
 
 const styles = {
   root: {
     border: 0,
     borderRadius: 10,
-    color: 'white',
-    padding: '20px',
+    color: "white",
+    padding: "20px",
   },
 };
 
 const LockTokenForm = () => {
-  const [tokenAddress, setTokenAddress] = useState('');
-  const [tokenAddressForChecking, setTokenAddressForChecking] = useState('');
-  const [name, setName] = useState('');
-  const [tokenApprove, setTokenApprove] = useState('0');
-  const [tokenName, setTokenName] = useState('');
-  const [fee, setFee] = useState('0');
-  const [totalSupply, setTotalSupply] = useState('');
-  const [tokenSymbol, setTokenSymbol] = useState('');
+  const [tokenAddress, setTokenAddress] = useState("");
+  const [tokenAddressForChecking, setTokenAddressForChecking] = useState("");
+  const [name, setName] = useState("");
+  const [tokenApprove, setTokenApprove] = useState("0");
+  const [tokenName, setTokenName] = useState("");
+  const [fee, setFee] = useState("0");
+  const [totalSupply, setTotalSupply] = useState("");
+  const [tokenSymbol, setTokenSymbol] = useState("");
   const [decimals, setDecimals] = useState(-1);
-  const [withdrawer, setWithdrawer] = useState('');
-  const [withdrawTime, setWithdrawTime] = useState(parseInt(Date.now() / 1000 + 60));
-  const [tokenDistributed, setTokenDistributed] = useState('0');
+  const [withdrawer, setWithdrawer] = useState("");
+  const [withdrawTime, setWithdrawTime] = useState(
+    parseInt(Date.now() / 1000 + 60),
+  );
+  const [tokenDistributed, setTokenDistributed] = useState("0");
   const [tokenDistributedInput, setTokenDistributedInput] = useState(0);
   const [tokenLoading, setTokenLoading] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -57,7 +59,7 @@ const LockTokenForm = () => {
     if (decimals > 0) {
       setDistributed();
     } else {
-      setTokenDistributed('0');
+      setTokenDistributed("0");
     }
   }, [tokenDistributedInput, decimals]);
 
@@ -72,7 +74,12 @@ const LockTokenForm = () => {
           setTotalSupply(Number(await tokenContractForChecking?.totalSupply()));
           setTokenSymbol(await tokenContractForChecking?.symbol());
           setTokenApprove(
-            Number(await tokenContractForChecking?.allowance(account, TokenLockerFactoryAddress))
+            Number(
+              await tokenContractForChecking?.allowance(
+                account,
+                TokenLockerFactoryAddress,
+              ),
+            ),
           );
 
           setTokenAddress(tokenAddressForChecking);
@@ -82,7 +89,7 @@ const LockTokenForm = () => {
           await utils.timeout(100);
         }
       } catch (error) {
-        console.log('checkAndSetTokensDetails Error: ', error);
+        console.log("checkAndSetTokensDetails Error: ", error);
         setDecimals(-1);
       } finally {
         setTokenLoading(false);
@@ -92,12 +99,12 @@ const LockTokenForm = () => {
     if (utils.isAddress(tokenAddressForChecking)) {
       checkAndSetTokensDetails();
     } else {
-      setTokenAddress('');
-      setTokenName('');
-      setTotalSupply('');
-      setTokenSymbol('');
-      setTokenApprove('0');
-      if (tokenAddressForChecking !== '') {
+      setTokenAddress("");
+      setTokenName("");
+      setTotalSupply("");
+      setTokenSymbol("");
+      setTokenApprove("0");
+      if (tokenAddressForChecking !== "") {
         // TODO: show user Error address is not correct
       }
     }
@@ -109,7 +116,7 @@ const LockTokenForm = () => {
         const lockerFee = await TokenLockerFactoryContract.fee();
         setFee(lockerFee.toString());
       } else {
-        setFee('0');
+        setFee("0");
       }
     };
     fethcLockerFee();
@@ -124,7 +131,7 @@ const LockTokenForm = () => {
       setTokenDistributed(
         BigNumber(tokenDistributedInput)
           .times(10 ** decimals)
-          .toFixed(0)
+          .toFixed(0),
       );
     }
   };
@@ -136,9 +143,13 @@ const LockTokenForm = () => {
     setLoading(true);
 
     try {
-      const tx = await tokenContract.approve(TokenLockerFactoryAddress, amount, {
-        from: account,
-      });
+      const tx = await tokenContract.approve(
+        TokenLockerFactoryAddress,
+        amount,
+        {
+          from: account,
+        },
+      );
 
       await tx.wait();
 
@@ -163,14 +174,18 @@ const LockTokenForm = () => {
         {
           from: account,
           value: fee,
-        }
+        },
       );
 
       const receipt = await tx.wait();
       triggerUpdateAccountData();
-      const LockerCreatedIndex = receipt?.events?.findIndex?.((i) => i?.event === 'LockerCreated');
+      const LockerCreatedIndex = receipt?.events?.findIndex?.(
+        (i) => i?.event === "LockerCreated",
+      );
       if (LockerCreatedIndex || LockerCreatedIndex === 0) {
-        navigate(`../locker/${receipt.events[LockerCreatedIndex].args.lockerAddress}`);
+        navigate(
+          `../locker/${receipt.events[LockerCreatedIndex].args.lockerAddress}`,
+        );
       }
     } catch (error) {
       console.log(error);
@@ -192,29 +207,34 @@ const LockTokenForm = () => {
       <s.Container style={{ marginBottom: 20 }}>
         {tokenLoading ? (
           <Badge bg="secondary">Token Address Checking...</Badge>
-        ) : decimals > 0 && tokenName !== '' && tokenSymbol !== '' && totalSupply !== '' ? (
-          <s.Container fd="row" style={{ flexWrap: 'wrap' }}>
-            <Badge bg="success">{'Name: ' + tokenName}</Badge>
+        ) : decimals > 0 &&
+          tokenName !== "" &&
+          tokenSymbol !== "" &&
+          totalSupply !== "" ? (
+          <s.Container fd="row" style={{ flexWrap: "wrap" }}>
+            <Badge bg="success">{"Name: " + tokenName}</Badge>
             <s.SpacerXSmall />
-            <Badge bg="success">{'Decimal: ' + decimals}</Badge>
+            <Badge bg="success">{"Decimal: " + decimals}</Badge>
             <s.SpacerXSmall />
             <Badge bg="success">
-              {'Total supply: ' +
+              {"Total supply: " +
                 BigNumber(totalSupply)
                   .dividedBy(10 ** decimals)
                   .toFormat()}
             </Badge>
             <s.SpacerXSmall />
-            <Badge bg="success">{'Symbol: ' + tokenSymbol}</Badge>
+            <Badge bg="success">{"Symbol: " + tokenSymbol}</Badge>
           </s.Container>
         ) : (
-          tokenAddress !== '' && <Badge bg="danger">{'Contract not valid'}</Badge>
+          tokenAddress !== "" && (
+            <Badge bg="danger">{"Contract not valid"}</Badge>
+          )
         )}
       </s.Container>
       <TextField
         fullWidth
         id="name"
-        label={'Locker name'}
+        label={"Locker name"}
         onChange={(e) => {
           e.preventDefault();
           setName(e.target.value);
@@ -224,7 +244,7 @@ const LockTokenForm = () => {
       <TextField
         fullWidth
         id="address"
-        label={'Token address'}
+        label={"Token address"}
         onChange={(e) => {
           e.preventDefault();
           setTokenAddressForChecking(e.target.value);
@@ -236,19 +256,21 @@ const LockTokenForm = () => {
         id="amount"
         label="Lock amount"
         InputProps={{
-          endAdornment: <InputAdornment position="end">{tokenSymbol || ''}</InputAdornment>,
+          endAdornment: (
+            <InputAdornment position="end">{tokenSymbol || ""}</InputAdornment>
+          ),
         }}
         onWheel={(e) => {
           e.target.blur();
         }}
-        type={'number'}
+        type={"number"}
         onChange={async (e) => {
           e.preventDefault();
           const val = BigNumber(e.target.value).absoluteValue();
           if (!isNaN(val)) {
             setTokenDistributedInput(val);
           } else {
-            setTokenDistributedInput('0');
+            setTokenDistributedInput("0");
           }
         }}
       />
@@ -270,7 +292,7 @@ const LockTokenForm = () => {
       <LocalizationProvider dateAdapter={AdapterDateFns}>
         <DateTimePicker
           renderInput={(props) => <TextField fullWidth {...props} />}
-          id={'address'}
+          id={"address"}
           label="Withdraw Date"
           value={new Date(withdrawTime * 1000)}
           onChange={(e) => {
@@ -280,7 +302,8 @@ const LockTokenForm = () => {
       </LocalizationProvider>
 
       <s.Container ai="center">
-        {BigNumber(tokenApprove) >= BigNumber(tokenDistributed) && tokenDistributed !== '0' ? (
+        {BigNumber(tokenApprove) >= BigNumber(tokenDistributed) &&
+        tokenDistributed !== "0" ? (
           <s.button
             disabled={
               loading ||
@@ -295,22 +318,27 @@ const LockTokenForm = () => {
               createLocker();
             }}
           >
-            {loading ? <Loader /> : 'LOCK'}
+            {loading ? <Loader /> : "LOCK"}
           </s.button>
         ) : (
           <s.button
-            disabled={loading || !tokenAddress || tokenDistributed <= 0 || decimals <= 0}
+            disabled={
+              loading || !tokenAddress || tokenDistributed <= 0 || decimals <= 0
+            }
             style={{ marginTop: 20 }}
             onClick={(e) => {
               e.preventDefault();
               approveToken(tokenDistributed);
             }}
           >
-            {loading ? <Loader /> : 'APPROVE TOKEN'}
+            {loading ? <Loader /> : "APPROVE TOKEN"}
           </s.button>
         )}
       </s.Container>
-      {'Fee : ' + library?.web3?.utils?.fromWei?.(fee) + ' ' + baseCurrencySymbol}
+      {"Fee : " +
+        library?.web3?.utils?.fromWei?.(fee) +
+        " " +
+        baseCurrencySymbol}
     </s.Card>
   );
 };

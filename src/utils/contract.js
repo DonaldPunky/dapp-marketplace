@@ -1,12 +1,19 @@
-import TokenLockerFactory from '../contracts/TokenLockerFactory.json';
-import IDOFactory from '../contracts/IDOFactory.json';
+import TokenLockerFactory from "../contracts/TokenLockerFactory.json";
+import IDOFactory from "../contracts/IDOFactory.json";
 
 export const getContractInstance = (web3, address, abi) => {
-  return new web3.eth.Contract(abi, address)
-}
+  return new web3.eth.Contract(abi, address);
+};
 
 const deployContract = async (params) => {
-  const { abi, byteCode, library, onDeploy = () => {}, onHash = () => {}, deployArguments } = params;
+  const {
+    abi,
+    byteCode,
+    library,
+    onDeploy = () => {},
+    onHash = () => {},
+    deployArguments,
+  } = params;
 
   let contract;
   let accounts;
@@ -16,7 +23,7 @@ const deployContract = async (params) => {
 
     contract = new web3.eth.Contract(abi);
 
-    accounts = await window.ethereum.request({ method: 'eth_accounts' });
+    accounts = await window.ethereum.request({ method: "eth_accounts" });
 
     const transaction = contract.deploy({
       data: byteCode,
@@ -32,15 +39,19 @@ const deployContract = async (params) => {
         gas: gasLimit,
         gasPrice,
       })
-      .on('transactionHash', (hash) => onHash(hash))
-      .on('receipt', (receipt) => onDeploy(receipt))
-      .on('error', (error) => console.error(error));
+      .on("transactionHash", (hash) => onHash(hash))
+      .on("receipt", (receipt) => onDeploy(receipt))
+      .on("error", (error) => console.error(error));
   } catch (error) {
     throw error;
   }
-}
+};
 
-export const deployIDOFactory = async ({ library, onHash, FeeTokenAddress }) => {
+export const deployIDOFactory = async ({
+  library,
+  onHash,
+  FeeTokenAddress,
+}) => {
   const { abi, bytecode } = IDOFactory;
 
   return deployContract({
@@ -50,7 +61,7 @@ export const deployIDOFactory = async ({ library, onHash, FeeTokenAddress }) => 
     library,
     onHash,
   });
-}
+};
 
 export const deployLockerFactory = async ({ library, onHash }) => {
   const { abi, bytecode } = TokenLockerFactory;
@@ -62,7 +73,7 @@ export const deployLockerFactory = async ({ library, onHash }) => {
     library,
     onHash,
   });
-}
+};
 
 export const deployLaunchpadContracts = async ({
   chainId,
@@ -70,9 +81,8 @@ export const deployLaunchpadContracts = async ({
   FeeTokenAddress,
   onIDOFactoryHash,
   onLockerFactoryHash,
-  onSuccessfulDeploy
+  onSuccessfulDeploy,
 }) => {
-
   try {
     const IDOFactory = await deployIDOFactory({
       onHash: onIDOFactoryHash,
@@ -85,7 +95,7 @@ export const deployLaunchpadContracts = async ({
       library,
     });
 
-    if (typeof onSuccessfulDeploy === 'function') {
+    if (typeof onSuccessfulDeploy === "function") {
       onSuccessfulDeploy({
         chainId,
         FeeTokenAddress,
@@ -93,33 +103,43 @@ export const deployLaunchpadContracts = async ({
         TokenLockerFactoryAddress: LockerFactory.options.address,
       });
     }
-
   } catch (error) {
     throw error;
   }
-}
+};
 
-export const getDeployedLaunchpadContracts = () => JSON.parse(localStorage.getItem("deployedLaunchpadContracts")) || null;
+export const getDeployedLaunchpadContracts = () =>
+  JSON.parse(localStorage.getItem("deployedLaunchpadContracts")) || null;
 
-export const setDeployedLaunchpadContracts = ({ chainId, FeeTokenAddress, IDOFactoryAddress, TokenLockerFactoryAddress }) => {
-
+export const setDeployedLaunchpadContracts = ({
+  chainId,
+  FeeTokenAddress,
+  IDOFactoryAddress,
+  TokenLockerFactoryAddress,
+}) => {
   const deployedLaunchpadContracts = getDeployedLaunchpadContracts();
 
-  localStorage.setItem("deployedLaunchpadContracts", JSON.stringify({
-    ...deployedLaunchpadContracts,
-    [chainId]: {
-      FeeTokenAddress,
-      IDOFactoryAddress,
-      TokenLockerFactoryAddress
-    }
-  }));
-}
+  localStorage.setItem(
+    "deployedLaunchpadContracts",
+    JSON.stringify({
+      ...deployedLaunchpadContracts,
+      [chainId]: {
+        FeeTokenAddress,
+        IDOFactoryAddress,
+        TokenLockerFactoryAddress,
+      },
+    }),
+  );
+};
 
 export const removeDeployedLaunchpadContracts = (chainId) => {
   const deployedLaunchpadContracts = getDeployedLaunchpadContracts();
 
-  localStorage.setItem("deployedLaunchpadContracts", JSON.stringify({
-    ...deployedLaunchpadContracts,
-    [chainId]: null
-  }));
-}
+  localStorage.setItem(
+    "deployedLaunchpadContracts",
+    JSON.stringify({
+      ...deployedLaunchpadContracts,
+      [chainId]: null,
+    }),
+  );
+};

@@ -1,20 +1,23 @@
-import { useWeb3React } from '@web3-react/core';
-import BigNumber from 'bignumber.js';
-import React, { useState } from 'react';
-import Countdown from 'react-countdown';
-import { useApplicationContext } from '../../context/applicationContext';
-import { usePoolContext } from '../../context/poolContext';
-import { useIDOPoolContract } from '../../hooks/useContract';
-import * as s from '../../styles/global';
-import { utils } from '../../utils';
+import { useWeb3React } from "@web3-react/core";
+import BigNumber from "bignumber.js";
+import React, { useState } from "react";
+import Countdown from "react-countdown";
+import { useApplicationContext } from "../../context/applicationContext";
+import { usePoolContext } from "../../context/poolContext";
+import { useIDOPoolContract } from "../../hooks/useContract";
+import * as s from "../../styles/global";
+import { utils } from "../../utils";
 
 const WithdrawETH = (props) => {
   const { account, library } = useWeb3React();
   const [loading, setLoading] = useState(false);
   const { idoAddress } = props;
 
-  const { triggerUpdateAccountData, baseCurrencySymbol, TokenLockerFactoryContract } =
-    useApplicationContext();
+  const {
+    triggerUpdateAccountData,
+    baseCurrencySymbol,
+    TokenLockerFactoryContract,
+  } = useApplicationContext();
 
   const idoInfo = usePoolContext().allPools[idoAddress];
   const IDOPoolContract = useIDOPoolContract(idoAddress);
@@ -34,7 +37,8 @@ const WithdrawETH = (props) => {
   const withdrawETH = async () => {
     setLoading(true); // TODO: add action loader to the appropriate button
     try {
-      const isNeedLocker = parseInt(idoInfo.claim) > parseInt(Date.now() / 1000);
+      const isNeedLocker =
+        parseInt(idoInfo.claim) > parseInt(Date.now() / 1000);
 
       const tx = await IDOPoolContract.withdrawETH({
         from: account,
@@ -45,9 +49,9 @@ const WithdrawETH = (props) => {
 
       triggerUpdateAccountData();
       // TODO: add trigger for update IDOInfo after actions
-      console.log('withdrawETH receipt', receipt);
+      console.log("withdrawETH receipt", receipt);
     } catch (err) {
-      console.log('withdrawETH Error: ', err);
+      console.log("withdrawETH Error: ", err);
     } finally {
       setLoading(false);
     }
@@ -64,9 +68,9 @@ const WithdrawETH = (props) => {
 
       triggerUpdateAccountData();
       // TODO: add trigger for update IDOInfo after actions
-      console.log('withdrawToken receipt', receipt);
+      console.log("withdrawToken receipt", receipt);
     } catch (err) {
-      console.log('withdrawToken Error: ', err);
+      console.log("withdrawToken Error: ", err);
     } finally {
       setLoading(false);
     }
@@ -83,9 +87,9 @@ const WithdrawETH = (props) => {
 
       triggerUpdateAccountData();
       // TODO: add trigger for update IDOInfo after actions
-      console.log('withdrawUnsoldToken receipt', receipt);
+      console.log("withdrawUnsoldToken receipt", receipt);
     } catch (err) {
-      console.log('withdrawUnsoldToken Error: ', err);
+      console.log("withdrawUnsoldToken Error: ", err);
     } finally {
       setLoading(false);
     }
@@ -119,14 +123,16 @@ const WithdrawETH = (props) => {
           <s.TextID>Total invested</s.TextID>
           <s.TextDescription>
             {BigNumber(library.web3.utils.fromWei(idoInfo.balance)).toFixed(2) +
-              ' ' +
+              " " +
               baseCurrencySymbol}
           </s.TextDescription>
         </s.Container>
         <s.button
           disabled={
             !hasEnded ||
-            BigNumber(idoInfo.totalInvestedETH).lt(BigNumber(idoInfo.softCap)) ||
+            BigNumber(idoInfo.totalInvestedETH).lt(
+              BigNumber(idoInfo.softCap),
+            ) ||
             idoInfo.balance == 0
           }
           onClick={(e) => {
@@ -144,7 +150,7 @@ const WithdrawETH = (props) => {
             {BigNumber(idoInfo.unsold)
               .dividedBy(10 ** idoInfo.tokenDecimals)
               .toFixed(2) +
-              ' ' +
+              " " +
               idoInfo.tokenSymbol}
           </s.TextDescription>
         </s.Container>
@@ -152,9 +158,11 @@ const WithdrawETH = (props) => {
           <s.button
             disabled={
               !hasEnded ||
-              !BigNumber(idoInfo.totalInvestedETH).lt(BigNumber(idoInfo.softCap)) ||
+              !BigNumber(idoInfo.totalInvestedETH).lt(
+                BigNumber(idoInfo.softCap),
+              ) ||
               !idoInfo.unsold ||
-              idoInfo.unsold == '0'
+              idoInfo.unsold == "0"
             }
             onClick={(e) => {
               e.preventDefault();
@@ -165,7 +173,12 @@ const WithdrawETH = (props) => {
           </s.button>
         ) : (
           <s.button
-            disabled={!hasEnded || idoInfo.balance > 0 || !idoInfo.unsold || idoInfo.unsold == '0'}
+            disabled={
+              !hasEnded ||
+              idoInfo.balance > 0 ||
+              !idoInfo.unsold ||
+              idoInfo.unsold == "0"
+            }
             onClick={(e) => {
               e.preventDefault();
               withdrawUnsoldToken();

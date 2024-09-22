@@ -32,12 +32,10 @@ import acc_4 from "../assets/images/parts/acc/4.png";
 import acc_5 from "../assets/images/parts/acc/5.png";
 import acc_6 from "../assets/images/parts/acc/6.png";
 
-
-
 export const parts = {
   body: [b_0, b_1, b_2],
   eyes: [e_0, e_1, e_2, e_3],
   head: [h_0, h_1, h_2, h_3, h_4, h_5, h_6],
   shirt: [s_0, s_1, s_2, s_3, s_4, s_5, s_6],
-  accessory: [acc_0, acc_1, acc_2, acc_3, acc_4, acc_5, acc_6]
+  accessory: [acc_0, acc_1, acc_2, acc_3, acc_4, acc_5, acc_6],
 };
