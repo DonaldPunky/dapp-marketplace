@@ -1,8 +1,8 @@
-import { TextField } from '@mui/material';
-import React from 'react';
-import { FaImage } from 'react-icons/fa';
-import { useStoreContext } from '../../../../context/store';
-import * as s from '../../../../styles/global';
+import { TextField } from "@mui/material";
+import React from "react";
+import { FaImage } from "react-icons/fa";
+import { useStoreContext } from "../../../../context/store";
+import * as s from "../../../../styles/global";
 export default function ProjectInfo() {
   const context = useStoreContext();
 
@@ -12,14 +12,14 @@ export default function ProjectInfo() {
       <s.Container ai="center">
         <div
           style={{
-            display: 'flex',
+            display: "flex",
             width: 140,
             height: 140,
             borderRadius: 20,
             margin: 20,
-            backgroundColor: 'var(--upper-card)',
-            alignItems: 'center',
-            justifyContent: 'center',
+            backgroundColor: "var(--upper-card)",
+            alignItems: "center",
+            justifyContent: "center",
           }}
         >
           <s.iconUpload
@@ -31,7 +31,7 @@ export default function ProjectInfo() {
               context.icon[1](file);
             }}
           ></s.iconUpload>
-          {context.icon[0] !== '' ? (
+          {context.icon[0] !== "" ? (
             <img
               style={{ width: 100, height: 100, borderRadius: 20 }}
               src={URL.createObjectURL(context.icon[0])}
