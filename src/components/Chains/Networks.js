@@ -1,12 +1,12 @@
-import { useState, useEffect } from "react";
-import MenuItem from "@mui/material/MenuItem";
-import Menu from "@mui/material/Menu";
-import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
-import Chip from "@mui/material/Chip";
-import { EthereumLogo, BinanceLogo } from "../ui/NetworkLogos";
-import ListItemText from "@mui/material/ListItemText";
-import ListItemIcon from "@mui/material/ListItemIcon";
-import { useChain, useMoralis } from "react-moralis";
+import { useState, useEffect } from 'react';
+import MenuItem from '@mui/material/MenuItem';
+import Menu from '@mui/material/Menu';
+import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
+import Chip from '@mui/material/Chip';
+import { EthereumLogo, BinanceLogo } from '../ui/NetworkLogos';
+import ListItemText from '@mui/material/ListItemText';
+import ListItemIcon from '@mui/material/ListItemIcon';
+import { useChain, useMoralis } from 'react-moralis';
 
 //main net
 // const menuItems = [
@@ -27,15 +27,15 @@ import { useChain, useMoralis } from "react-moralis";
 //testnet
 const menuItems = [
   {
-    key: "0x3",
-    value: "Ropsten Testnet ",
-    symbol: "ETH",
+    key: '0x3',
+    value: 'Ropsten Testnet ',
+    symbol: 'ETH',
     icon: <EthereumLogo />,
   },
   {
-    key: "0x61",
-    value: "BSC Mainnet",
-    symbol: "BSC",
+    key: '0x61',
+    value: 'BSC Mainnet',
+    symbol: 'BSC',
     icon: <BinanceLogo />,
   },
 ];
@@ -68,7 +68,7 @@ export default function Networks() {
 
   const handleChipIcon = () => {
     if (selected) {
-      return <div style={{ marginLeft: "5px" }}>{selected.icon}</div>;
+      return <div style={{ marginLeft: '5px' }}>{selected.icon}</div>;
     } else {
       return <KeyboardArrowDownIcon />;
     }
@@ -77,10 +77,10 @@ export default function Networks() {
   if (!isAuthenticated) return null;
 
   return (
-    <div style={{ minWidth: "100px", textAlign: "right" }}>
+    <div style={{ minWidth: '100px', textAlign: 'right' }}>
       <Chip
         icon={handleChipIcon()}
-        label={selected?.symbol || "Network"}
+        label={selected?.symbol || 'Network'}
         onClick={handleClickListItem}
         sx={{ fontWeight: 500 }}
       />
@@ -90,14 +90,14 @@ export default function Networks() {
         open={open}
         onClose={handleClose}
         MenuListProps={{
-          "aria-labelledby": "lock-button",
-          role: "listbox",
+          'aria-labelledby': 'lock-button',
+          role: 'listbox',
         }}
         PaperProps={{
           elevation: 0,
           sx: {
-            boxShadow: "0 4px 14px 0 rgb(0 0 0 / 10%)",
-            borderRadius: "15px",
+            boxShadow: '0 4px 14px 0 rgb(0 0 0 / 10%)',
+            borderRadius: '15px',
             mt: 1,
           },
         }}

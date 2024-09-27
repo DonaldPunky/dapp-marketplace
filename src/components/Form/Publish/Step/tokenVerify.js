@@ -1,11 +1,11 @@
-import { TextField } from "@mui/material";
-import { useWeb3React } from "@web3-react/core";
-import BigNumber from "bignumber.js";
-import React, { useEffect, useState } from "react";
-import { Badge } from "react-bootstrap";
-import { useStoreContext } from "../../../../context/store";
-import * as s from "../../../../styles/global";
-import { utils } from "../../../../utils";
+import { TextField } from '@mui/material';
+import { useWeb3React } from '@web3-react/core';
+import BigNumber from 'bignumber.js';
+import React, { useEffect, useState } from 'react';
+import { Badge } from 'react-bootstrap';
+import { useStoreContext } from '../../../../context/store';
+import * as s from '../../../../styles/global';
+import { utils } from '../../../../utils';
 
 export default function TokenVerify() {
   const { library } = useWeb3React();
@@ -40,9 +40,9 @@ export default function TokenVerify() {
           e.preventDefault();
           address[1](e.target.value);
         }}
-        value={tokenInformation?.[0]?.tokenAddress || address[0] || ""}
-        name={"tokenAddress"}
-        label={"Token address"}
+        value={tokenInformation?.[0]?.tokenAddress || address[0] || ''}
+        name={'tokenAddress'}
+        label={'Token address'}
         fullWidth
       />
       {loading ? (
@@ -51,7 +51,7 @@ export default function TokenVerify() {
           <Badge bg="secondary">Token Address Checking...</Badge>
         </s.Container>
       ) : (
-        <s.TextIDWarning fullWidth>{tokenError["token"]}</s.TextIDWarning>
+        <s.TextIDWarning fullWidth>{tokenError['token']}</s.TextIDWarning>
       )}
       {tokenInformation[0] && (
         <s.Container>
@@ -59,9 +59,7 @@ export default function TokenVerify() {
           <s.TextID>Name</s.TextID>
           <s.TextDescription>{tokenInformation[0].tokenName}</s.TextDescription>
           <s.TextID>Decimals</s.TextID>
-          <s.TextDescription>
-            {tokenInformation[0].tokenDecimals}
-          </s.TextDescription>
+          <s.TextDescription>{tokenInformation[0].tokenDecimals}</s.TextDescription>
           <s.TextID>Total supply</s.TextID>
           <s.TextDescription>
             {BigNumber(tokenInformation[0].totalSupply)

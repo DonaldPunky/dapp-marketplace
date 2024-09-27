@@ -1,18 +1,15 @@
-import { useState, useEffect } from "react";
-import {
-  STORAGE_NETWORK_ID,
-  STORAGE_NETWORK_NAME,
-} from "../../../../constants";
-import { useWeb3React } from "@web3-react/core";
-import { useApplicationContext } from "../../../../context/applicationContext";
-import { isWebUri } from "../../../../utils/url";
-import { saveAppData } from "../../../../utils/storage";
-import { TextField, Typography } from "@mui/material";
-import * as s from "../../../../styles/global";
-import styled from "styled-components";
-import Loader from "../../../../components/Loader";
-import { InjectedConnector } from "@web3-react/injected-connector";
-import { switchInjectedNetwork } from "../../../../utils/utils";
+import { useState, useEffect } from 'react';
+import { STORAGE_NETWORK_ID, STORAGE_NETWORK_NAME } from '../../../../constants';
+import { useWeb3React } from '@web3-react/core';
+import { useApplicationContext } from '../../../../context/applicationContext';
+import { isWebUri } from '../../../../utils/url';
+import { saveAppData } from '../../../../utils/storage';
+import { TextField, Typography } from '@mui/material';
+import * as s from '../../../../styles/global';
+import styled from 'styled-components';
+import Loader from '../../../../components/Loader';
+import { InjectedConnector } from '@web3-react/injected-connector';
+import { switchInjectedNetwork } from '../../../../utils/utils';
 
 const ContentWrapper = styled.div`
   display: flex;
@@ -26,7 +23,7 @@ const ContentWrapper = styled.div`
     pointer-events: none;
     opacity: 0.6;
     `
-      : ""};
+      : ''};
 `;
 
 export default function IPFS() {
@@ -42,13 +39,11 @@ export default function IPFS() {
   } = domainSettings;
 
   const [ipfsInfuraDedicatedGateway, setIpfsInfuraDedicatedGateway] = useState(
-    stateIpfsInfuraDedicatedGateway,
+    stateIpfsInfuraDedicatedGateway
   );
-  const [ipfsInfuraProjectId, setIpfsInfuraProjectId] = useState(
-    stateIpfsInfuraProjectId,
-  );
+  const [ipfsInfuraProjectId, setIpfsInfuraProjectId] = useState(stateIpfsInfuraProjectId);
   const [ipfsInfuraProjectSecret, setIpfsInfuraProjectSecret] = useState(
-    stateIpfsInfuraProjectSecret,
+    stateIpfsInfuraProjectSecret
   );
 
   const currentStrSettings = JSON.stringify({
@@ -76,15 +71,13 @@ export default function IPFS() {
 
   const isStorageNetwork = chainId === STORAGE_NETWORK_ID;
   const canChangeNetwork = connector instanceof InjectedConnector;
-  const canAndShouldSwitchToStorageNetwork =
-    canChangeNetwork && !isStorageNetwork;
+  const canAndShouldSwitchToStorageNetwork = canChangeNetwork && !isStorageNetwork;
 
   const [cannotSaveSettings, setCannotSaveSettings] = useState(true);
 
   useEffect(() => {
     setCannotSaveSettings(
-      (!isStorageNetwork && !canChangeNetwork) ||
-        (isStorageNetwork && !settingsChanged),
+      (!isStorageNetwork && !canChangeNetwork) || (isStorageNetwork && !settingsChanged)
     );
   }, [settingsChanged, isStorageNetwork, canChangeNetwork]);
 
@@ -101,17 +94,17 @@ export default function IPFS() {
       await saveAppData({
         library,
         domain,
-        owner: account || "",
+        owner: account || '',
         data: newSettings,
         onReceipt: () => {
           triggerDomainData();
         },
         onHash: (hash) => {
-          console.log("saveIPFSSettings hash: ", hash);
+          console.log('saveIPFSSettings hash: ', hash);
         },
       });
     } catch (error) {
-      console.group("%c saveIPFSSettings", "color: red");
+      console.group('%c saveIPFSSettings', 'color: red');
       console.error(error);
       console.groupEnd();
     } finally {
@@ -143,9 +136,7 @@ export default function IPFS() {
         onChange={(e) => {
           setIpfsInfuraDedicatedGateway(e.target.value);
         }}
-        error={Boolean(
-          ipfsInfuraDedicatedGateway && !isWebUri(ipfsInfuraDedicatedGateway),
-        )}
+        error={Boolean(ipfsInfuraDedicatedGateway && !isWebUri(ipfsInfuraDedicatedGateway))}
       />
 
       <s.SpacerSmall />
@@ -171,17 +162,13 @@ export default function IPFS() {
       <s.SpacerSmall />
 
       <s.button
-        onClick={
-          canAndShouldSwitchToStorageNetwork
-            ? switchToStorage
-            : saveIPFSSettings
-        }
+        onClick={canAndShouldSwitchToStorageNetwork ? switchToStorage : saveIPFSSettings}
         disabled={cannotSaveSettings}
       >
         {isLoading ? (
           <Loader />
         ) : isStorageNetwork ? (
-          "Save Infura IPFS Settings"
+          'Save Infura IPFS Settings'
         ) : (
           `Switch to ${STORAGE_NETWORK_NAME}`
         )}

@@ -1,9 +1,9 @@
-import React from "react";
-import styled from "styled-components";
-import Option from "./Option";
-import { SUPPORTED_WALLETS } from "../../constants";
-import { injected } from "../../connectors";
-import Loader from "../Loader";
+import React from 'react';
+import styled from 'styled-components';
+import Option from './Option';
+import { SUPPORTED_WALLETS } from '../../constants';
+import { injected } from '../../connectors';
+import Loader from '../Loader';
 
 const PendingSection = styled.div`
   display: flex;
@@ -27,8 +27,8 @@ const LoadingMessage = styled.div`
   justify-content: flex-start;
   border-radius: 12px;
   margin-bottom: 20px;
-  color: ${({ error }) => (error ? "#FD4040" : "inherit")};
-  border: 1px solid ${({ error }) => (error ? "#FD4040" : "#565A69")};
+  color: ${({ error }) => (error ? '#FD4040' : 'inherit')};
+  border: 1px solid ${({ error }) => (error ? '#FD4040' : '#565A69')};
 
   & > * {
     padding: 1rem;
@@ -64,12 +64,7 @@ const LoadingWrapper = styled.div`
   justify-content: center;
 `;
 
-export default function PendingView({
-  connector,
-  error = false,
-  setPendingError,
-  tryActivation,
-}) {
+export default function PendingView({ connector, error = false, setPendingError, tryActivation }) {
   const isMetamask = window?.ethereum?.isMetaMask;
 
   return (
@@ -100,10 +95,10 @@ export default function PendingView({
         const option = SUPPORTED_WALLETS[key];
         if (option.connector === connector) {
           if (option.connector === injected) {
-            if (isMetamask && option.name !== "MetaMask") {
+            if (isMetamask && option.name !== 'MetaMask') {
               return null;
             }
-            if (!isMetamask && option.name === "MetaMask") {
+            if (!isMetamask && option.name === 'MetaMask') {
               return null;
             }
           }
@@ -115,7 +110,7 @@ export default function PendingView({
               color={option.color}
               header={option.name}
               subheader={option.description}
-              icon={require("../../assets/images/" + option.iconName)}
+              icon={require('../../assets/images/' + option.iconName)}
             />
           );
         }

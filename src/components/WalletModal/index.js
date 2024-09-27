@@ -1,33 +1,33 @@
 // import { AbstractConnector } from '@web3-react/abstract-connector'
-import { UnsupportedChainIdError, useWeb3React } from "@web3-react/core";
-import { InjectedConnector } from "@web3-react/injected-connector";
-import { WalletConnectConnector } from "@web3-react/walletconnect-connector";
-import React, { useEffect, useState } from "react";
+import { UnsupportedChainIdError, useWeb3React } from '@web3-react/core';
+import { InjectedConnector } from '@web3-react/injected-connector';
+import { WalletConnectConnector } from '@web3-react/walletconnect-connector';
+import React, { useEffect, useState } from 'react';
 // import { isMobile } from '../../utils/utils';
-import styled from "styled-components";
-import { CURRENCY } from "../../assets/images";
-import MetamaskIcon from "../../assets/images/metamask.png";
-import { ReactComponent as Close } from "../../assets/images/x.svg";
+import styled from 'styled-components';
+import { CURRENCY } from '../../assets/images';
+import MetamaskIcon from '../../assets/images/metamask.png';
+import { ReactComponent as Close } from '../../assets/images/x.svg';
 import {
   //   Network,
   injected,
   SUPPORTED_NETWORKS,
   //   newWalletlink,
   newWalletConnect,
-} from "../../connectors";
-import { SUPPORTED_WALLETS, WALLET_NAMES } from "../../constants";
-import usePrevious from "../../hooks/usePrevious";
+} from '../../connectors';
+import { SUPPORTED_WALLETS, WALLET_NAMES } from '../../constants';
+import usePrevious from '../../hooks/usePrevious';
 // import useWindowSize from '../../hooks/useWindowSize';
 // import useWordpressInfo from 'hooks/useWordpressInfo'
 // import AccountDetails from '../AccountDetails'
-import { networks } from "../../constants/networksInfo";
-import { Dialog, useMediaQuery } from "@mui/material";
-import { useTheme } from "@mui/material/styles";
-import { isMobile, switchInjectedNetwork } from "../../utils/utils";
+import { networks } from '../../constants/networksInfo';
+import { Dialog, useMediaQuery } from '@mui/material';
+import { useTheme } from '@mui/material/styles';
+import { isMobile, switchInjectedNetwork } from '../../utils/utils';
 
-import * as s from "../../styles/global";
-import Option from "./Option";
-import PendingView from "./PendingView";
+import * as s from '../../styles/global';
+import Option from './Option';
+import PendingView from './PendingView';
 // import { useIsDarkMode } from 'state/user/hooks'
 
 const CloseIcon = styled.div`
@@ -58,7 +58,7 @@ const HeaderRow = styled.div`
   flex-flow: row nowrap;
   padding: 1rem 1rem;
   font-weight: 500;
-  color: "inherit";
+  color: 'inherit';
   @media (max-width: 960px) {
     padding: 1rem;
   }
@@ -199,7 +199,7 @@ const Options = styled.div`
   border: 1px solid #232227;
   box-shadow: inset 0 0 0.2rem #232227;
 
-  ${({ disabled }) => (disabled ? "pointer-events: none; opacity: 0.6" : "")};
+  ${({ disabled }) => (disabled ? 'pointer-events: none; opacity: 0.6' : '')};
 `;
 
 const HoverText = styled.div`
@@ -209,9 +209,9 @@ const HoverText = styled.div`
 `;
 
 const WALLET_VIEWS = {
-  OPTIONS: "options",
-  ACCOUNT: "account",
-  PENDING: "pending",
+  OPTIONS: 'options',
+  ACCOUNT: 'account',
+  PENDING: 'pending',
 };
 
 export default function WalletModal(props) {
@@ -219,11 +219,10 @@ export default function WalletModal(props) {
   //   const { height } = useWindowSize();
 
   const theme = useTheme();
-  const fullScreen = useMediaQuery(theme.breakpoints.down("sm"));
+  const fullScreen = useMediaQuery(theme.breakpoints.down('sm'));
 
   // important that these are destructed from the account-specific web3-react context
-  const { active, chainId, account, connector, activate, deactivate, error } =
-    useWeb3React();
+  const { active, chainId, account, connector, activate, deactivate, error } = useWeb3React();
   //   const isDark = useIsDarkMode()
   //   const wordpressData = useWordpressInfo()
   const [availableNetworks, setAvailableNetworks] = useState([]);
@@ -231,21 +230,19 @@ export default function WalletModal(props) {
 
   useEffect(
     () => {
-      const networks = Object.values(SUPPORTED_NETWORKS).filter(
-        ({ chainId }) => {
-          //   if (wordpressData?.wpNetworkIds?.length) {
-          //     return wordpressData.wpNetworkIds.includes(chainId)
-          //   }
+      const networks = Object.values(SUPPORTED_NETWORKS).filter(({ chainId }) => {
+        //   if (wordpressData?.wpNetworkIds?.length) {
+        //     return wordpressData.wpNetworkIds.includes(chainId)
+        //   }
 
-          return true;
-        },
-      );
+        return true;
+      });
 
       setAvailableNetworks(networks);
     },
     [
       // wordpressData
-    ],
+    ]
   );
 
   useEffect(() => {
@@ -281,20 +278,11 @@ export default function WalletModal(props) {
   useEffect(() => {
     if (
       isOpen &&
-      ((active && !activePrevious) ||
-        (connector && connector !== connectorPrevious && !error))
+      ((active && !activePrevious) || (connector && connector !== connectorPrevious && !error))
     ) {
       setWalletView(WALLET_VIEWS.ACCOUNT);
     }
-  }, [
-    setWalletView,
-    active,
-    error,
-    connector,
-    isOpen,
-    activePrevious,
-    connectorPrevious,
-  ]);
+  }, [setWalletView, active, error, connector, isOpen, activePrevious, connectorPrevious]);
 
   const tryActivation = async (connector) => {
     setPendingWallet(connector); // set wallet for pending view
@@ -331,10 +319,10 @@ export default function WalletModal(props) {
         id={`connect-network-${chainId}`}
         key={chainId}
         active={currentChainId === Number(chainId)}
-        color={networks[chainId]?.color || ""}
+        color={networks[chainId]?.color || ''}
         header={networks[chainId].name}
         subheader={null}
-        icon={CURRENCY[chainId] ?? ""}
+        icon={CURRENCY[chainId] ?? ''}
         size={45}
       />
     ));
@@ -368,8 +356,7 @@ export default function WalletModal(props) {
           return (
             <Option
               onClick={() => {
-                (currentChainId !== chainId ||
-                  option.connector !== connector) &&
+                (currentChainId !== chainId || option.connector !== connector) &&
                   !option.href &&
                   tryActivation(option.connector);
               }}
@@ -381,7 +368,7 @@ export default function WalletModal(props) {
               header={option.name}
               subheader={null}
               size={45}
-              icon={require("../../assets/images/" + option.iconName)}
+              icon={require('../../assets/images/' + option.iconName)}
             />
           );
         }
@@ -397,10 +384,10 @@ export default function WalletModal(props) {
               <Option
                 id={`connect-${key}`}
                 key={key}
-                color={"#E8831D"}
-                header={"Install Metamask"}
+                color={'#E8831D'}
+                header={'Install Metamask'}
                 subheader={null}
-                link={"https://metamask.io/"}
+                link={'https://metamask.io/'}
                 icon={MetamaskIcon}
                 size={45}
               />
@@ -436,7 +423,7 @@ export default function WalletModal(props) {
             link={option.href}
             header={option.name}
             subheader={null} //use option.descriptio to bring back multi-line
-            icon={require("../../assets/images/" + option.iconName)}
+            icon={require('../../assets/images/' + option.iconName)}
             size={45}
           />
         )
@@ -453,7 +440,7 @@ export default function WalletModal(props) {
       .filter(
         (k) =>
           SUPPORTED_WALLETS[k].connector === connector &&
-          (connector !== injected || isMetaMask === (k === "METAMASK")),
+          (connector !== injected || isMetaMask === (k === 'METAMASK'))
       )
       .map((k) => SUPPORTED_WALLETS[k].name)[0];
     return <WalletName>Connected with {name}</WalletName>;
@@ -467,18 +454,13 @@ export default function WalletModal(props) {
             <CloseColor />
           </CloseIcon>
           <HeaderRow>
-            {error instanceof UnsupportedChainIdError
-              ? "Wrong Network"
-              : "Error connecting"}
+            {error instanceof UnsupportedChainIdError ? 'Wrong Network' : 'Error connecting'}
           </HeaderRow>
           <ContentWrapper>
             {error instanceof UnsupportedChainIdError ? (
-              <h5>
-                Please switch your network or connect to the appropriate
-                network.
-              </h5>
+              <h5>Please switch your network or connect to the appropriate network.</h5>
             ) : (
-              "Error connecting. Try refreshing the page."
+              'Error connecting. Try refreshing the page.'
             )}
           </ContentWrapper>
         </UpperSection>
@@ -501,10 +483,10 @@ export default function WalletModal(props) {
                     <s.button
                       secondary
                       style={{
-                        padding: "4px 6px",
-                        fontSize: ".825rem",
+                        padding: '4px 6px',
+                        fontSize: '.825rem',
                         fontWeight: 400,
-                        marginRight: "8px",
+                        marginRight: '8px',
                       }}
                       onClick={() => {
                         deactivate();
@@ -515,8 +497,8 @@ export default function WalletModal(props) {
                     <s.button
                       secondary
                       style={{
-                        padding: "4px 6px",
-                        fontSize: ".825rem",
+                        padding: '4px 6px',
+                        fontSize: '.825rem',
                         fontWeight: 400,
                       }}
                       onClick={() => {
@@ -574,7 +556,7 @@ export default function WalletModal(props) {
           ) : (
             <>
               {!Boolean(hasWallet) ? (
-                "No connection methods available"
+                'No connection methods available'
               ) : (
                 <OptionsWrapped>
                   {availableNetworks.length > 1 ? (
@@ -585,17 +567,13 @@ export default function WalletModal(props) {
                       </div>
                       <div className="column">
                         <Title>2. Choose Wallet</Title>
-                        <Options disabled={!currentChainId}>
-                          {availableWallets}
-                        </Options>
+                        <Options disabled={!currentChainId}>{availableWallets}</Options>
                       </div>
                     </>
                   ) : (
                     <div className="column">
                       <Title>Choose Wallet</Title>
-                      <Options disabled={!currentChainId}>
-                        {availableWallets}
-                      </Options>
+                      <Options disabled={!currentChainId}>{availableWallets}</Options>
                     </div>
                   )}
                 </OptionsWrapped>

@@ -1,21 +1,18 @@
-import { useState, useEffect, Fragment } from "react";
-import { ethers } from "ethers";
-import { useWeb3React } from "@web3-react/core";
-import Grid from "@mui/material/Grid";
-import Stack from "@mui/material/Stack";
-import Typography from "@mui/material/Typography";
-import Card from "@mui/material/Card";
-import CardContent from "@mui/material/CardContent";
-import CardActions from "@mui/material/CardActions";
-import PRESALE_ABI from "../../../contracts/presale.json";
-import Alert from "../../ui/Alert";
-import Chip from "@mui/material/Chip";
-import Divider from "@mui/material/Divider";
+import { useState, useEffect, Fragment } from 'react';
+import { ethers } from 'ethers';
+import { useWeb3React } from '@web3-react/core';
+import Grid from '@mui/material/Grid';
+import Stack from '@mui/material/Stack';
+import Typography from '@mui/material/Typography';
+import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
+import CardActions from '@mui/material/CardActions';
+import PRESALE_ABI from '../../../contracts/presale.json';
+import Alert from '../../ui/Alert';
+import Chip from '@mui/material/Chip';
+import Divider from '@mui/material/Divider';
 
-const PresaleContractAddress = [
-  "",
-  "0xfA0Ae53f2c064975DeEEC123f21107680351CC04",
-];
+const PresaleContractAddress = ['', '0xfA0Ae53f2c064975DeEEC123f21107680351CC04'];
 
 // 0: ropsten, 1: bsc testnet
 let chainindex = 0;
@@ -32,12 +29,7 @@ const netChainId = [
 
 const CardLabel = ({ text }) => {
   return (
-    <Typography
-      color="text.secondary"
-      sx={{ fontWeight: 500 }}
-      variant="body1"
-      display="block"
-    >
+    <Typography color="text.secondary" sx={{ fontWeight: 500 }} variant="body1" display="block">
       {text}
     </Typography>
   );
@@ -45,10 +37,7 @@ const CardLabel = ({ text }) => {
 
 const CardValue = ({ text }) => {
   return (
-    <Typography
-      color="text.primary"
-      sx={{ fontWeight: 500, textAlign: "right" }}
-    >
+    <Typography color="text.primary" sx={{ fontWeight: 500, textAlign: 'right' }}>
       {text}
     </Typography>
   );
@@ -57,7 +46,7 @@ const CardValue = ({ text }) => {
 const Ended = () => {
   const [buyerInfo, setBuyerInfo] = useState([]);
   const [status, setStatus] = useState([]);
-  const [alertMsg, setAlertMsg] = useState("");
+  const [alertMsg, setAlertMsg] = useState('');
   const [openAlert, setOpenAlert] = useState(false);
 
   const { account, library } = useWeb3React();
@@ -81,7 +70,7 @@ const Ended = () => {
       getInfo();
     } else {
       setOpenAlert(true);
-      setAlertMsg("Selected chain is unrecognized");
+      setAlertMsg('Selected chain is unrecognized');
     }
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -102,23 +91,19 @@ const Ended = () => {
 
     if (!account) {
       setOpenAlert(true);
-      setAlertMsg("Wallet is unconnected");
+      setAlertMsg('Wallet is unconnected');
       return null;
     }
 
     const signer = await library.getSigner();
 
-    presalecontract = getContract(
-      PRESALE_ABI,
-      PresaleContractAddress[chainindex],
-      signer,
-    );
+    presalecontract = getContract(PRESALE_ABI, PresaleContractAddress[chainindex], signer);
 
-    let chainSuffix = "";
+    let chainSuffix = '';
     if (parseInt(library.provider.chainId) === netChainId[0]) {
-      chainSuffix = "ETH";
+      chainSuffix = 'ETH';
     } else {
-      chainSuffix = "BNB";
+      chainSuffix = 'BNB';
     }
 
     let tokeninfoarr;
@@ -126,7 +111,7 @@ const Ended = () => {
       tokeninfoarr = await presalecontract.tokeninfo();
     } catch (error) {
       setOpenAlert(true);
-      setAlertMsg("Get Token Information Error");
+      setAlertMsg('Get Token Information Error');
       return null;
     }
 
@@ -135,25 +120,20 @@ const Ended = () => {
       status = await presalecontract.status();
     } catch (error) {
       setOpenAlert(true);
-      setAlertMsg("Get Status Information Error");
+      setAlertMsg('Get Status Information Error');
       return null;
     }
 
     setStatus([
       {
-        id: "Raised Amount",
-        val:
-          ethers.utils.formatUnits(status.raised_amount, 18).toString() +
-          " " +
-          chainSuffix,
+        id: 'Raised Amount',
+        val: ethers.utils.formatUnits(status.raised_amount, 18).toString() + ' ' + chainSuffix,
       },
       {
-        id: "Sold Amount",
+        id: 'Sold Amount',
         val:
-          ethers.utils
-            .formatUnits(status.sold_amount, tokeninfoarr.decimal)
-            .toString() +
-          " " +
+          ethers.utils.formatUnits(status.sold_amount, tokeninfoarr.decimal).toString() +
+          ' ' +
           tokeninfoarr.symbol,
       },
     ]);
@@ -162,23 +142,17 @@ const Ended = () => {
       const buyerInfo = await presalecontract.buyers(account);
       setBuyerInfo([
         {
-          id: "Invested",
-          val:
-            ethers.utils.formatUnits(buyerInfo.base, 18).toString() +
-            " " +
-            chainSuffix,
+          id: 'Invested',
+          val: ethers.utils.formatUnits(buyerInfo.base, 18).toString() + ' ' + chainSuffix,
         },
         {
-          id: "ELO Amount",
-          val:
-            ethers.utils.formatUnits(buyerInfo.sale, 18).toString() +
-            " " +
-            tokeninfoarr.symbol,
+          id: 'ELO Amount',
+          val: ethers.utils.formatUnits(buyerInfo.sale, 18).toString() + ' ' + tokeninfoarr.symbol,
         },
       ]);
     } catch (error) {
       setOpenAlert(true);
-      setAlertMsg("Get Buyers Information Error");
+      setAlertMsg('Get Buyers Information Error');
       return null;
     }
   };
@@ -193,7 +167,7 @@ const Ended = () => {
             sx={{
               borderRadius: 10,
               p: 1,
-              boxShadow: "0 2px 16px rgb(53 69 89 / 5%)",
+              boxShadow: '0 2px 16px rgb(53 69 89 / 5%)',
             }}
           >
             <CardContent>
@@ -228,15 +202,14 @@ const Ended = () => {
                 </Stack>
               ))}
             </CardContent>
-            <CardActions sx={{ justifyContent: "center" }}>
+            <CardActions sx={{ justifyContent: 'center' }}>
               <Typography
                 color="text.secondary"
                 variant="caption"
                 display="block"
                 sx={{ fontWeight: 500 }}
               >
-                All ELO purchased can be claimed after the end of the vesting
-                period
+                All ELO purchased can be claimed after the end of the vesting period
               </Typography>
             </CardActions>
           </Card>

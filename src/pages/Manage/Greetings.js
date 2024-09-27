@@ -1,15 +1,15 @@
-import React, { useEffect, useState } from "react";
-import styled from "styled-components";
-import { FaRegHandPeace } from "react-icons/fa";
-import * as s from "../../styles/global";
-import { useApplicationContext } from "../../context/applicationContext";
-import { useWeb3React } from "@web3-react/core";
-import { STORAGE_NETWORK_ID, STORAGE_NETWORK_NAME } from "../../constants";
-import { InjectedConnector } from "@web3-react/injected-connector";
-import { switchInjectedNetwork } from "../../utils/utils";
-import { WalletConnectConnector } from "@web3-react/walletconnect-connector";
-import Loader from "../../components/Loader";
-import { saveAppData } from "../../utils/storage";
+import React, { useEffect, useState } from 'react';
+import styled from 'styled-components';
+import { FaRegHandPeace } from 'react-icons/fa';
+import * as s from '../../styles/global';
+import { useApplicationContext } from '../../context/applicationContext';
+import { useWeb3React } from '@web3-react/core';
+import { STORAGE_NETWORK_ID, STORAGE_NETWORK_NAME } from '../../constants';
+import { InjectedConnector } from '@web3-react/injected-connector';
+import { switchInjectedNetwork } from '../../utils/utils';
+import { WalletConnectConnector } from '@web3-react/walletconnect-connector';
+import Loader from '../../components/Loader';
+import { saveAppData } from '../../utils/storage';
 
 const Span = styled.span`
   ${({ block }) =>
@@ -18,8 +18,8 @@ const Span = styled.span`
     display: block;
     margin: 0.7rem 0;
   `
-      : ""}
-  ${({ bold }) => (bold ? "font-weight: 600" : "")}
+      : ''}
+  ${({ bold }) => (bold ? 'font-weight: 600' : '')}
 `;
 
 const ButtonBlock = styled.div`
@@ -61,17 +61,17 @@ export default function Greetings() {
       await saveAppData({
         library,
         domain,
-        owner: account || "",
+        owner: account || '',
         data: {},
         onReceipt: () => {
           triggerDomainData();
         },
         onHash: (hash) => {
-          console.log("saveDomainOwner hash: ", hash);
+          console.log('saveDomainOwner hash: ', hash);
         },
       });
     } catch (error) {
-      console.group("%c saveDomainOwner", "color: red");
+      console.group('%c saveDomainOwner', 'color: red');
       console.error(error);
       console.groupEnd();
     } finally {
@@ -104,11 +104,8 @@ export default function Greetings() {
       </s.IconWrapper>
 
       <s.Text>
-        <s.Title>
-          Hello! Let's connect this domain to your wallet address
-        </s.Title>
-        Set your address as the owner of this domain: <Span bold>{domain}</Span>
-        ?
+        <s.Title>Hello! Let's connect this domain to your wallet address</s.Title>
+        Set your address as the owner of this domain: <Span bold>{domain}</Span>?
         <Span block bold>
           {account}
         </Span>
@@ -116,33 +113,21 @@ export default function Greetings() {
       </s.Text>
 
       <s.Text warning>
-        If you want to change the address, switch to another address. If you
-        can't switch, just disconnect your wallet and connect it to the new
-        address.
+        If you want to change the address, switch to another address. If you can't switch, just
+        disconnect your wallet and connect it to the new address.
       </s.Text>
 
-      {!onStorageNetwork && (
-        <s.Text warning>You have to be on {STORAGE_NETWORK_NAME}</s.Text>
-      )}
+      {!onStorageNetwork && <s.Text warning>You have to be on {STORAGE_NETWORK_NAME}</s.Text>}
 
       <ButtonBlock>
-        <ActionButton
-          disabled={isSavingDomainOwner}
-          secondary
-          onClick={deactivate}
-        >
+        <ActionButton disabled={isSavingDomainOwner} secondary onClick={deactivate}>
           Disconnect
         </ActionButton>
         {!onStorageNetwork ? (
-          <ActionButton onClick={switchToStorage}>
-            Switch to {STORAGE_NETWORK_NAME}
-          </ActionButton>
+          <ActionButton onClick={switchToStorage}>Switch to {STORAGE_NETWORK_NAME}</ActionButton>
         ) : (
-          <ActionButton
-            disabled={isSavingDomainOwner}
-            onClick={saveDomainOwner}
-          >
-            {isSavingDomainOwner ? <Loader /> : "Set Owner"}
+          <ActionButton disabled={isSavingDomainOwner} onClick={saveDomainOwner}>
+            {isSavingDomainOwner ? <Loader /> : 'Set Owner'}
           </ActionButton>
         )}
       </ButtonBlock>

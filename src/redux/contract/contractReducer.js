@@ -4,17 +4,17 @@ const initialState = {
   TokenLockerFactory: null,
   web3: null,
   error: false,
-  errorMsg: "",
+  errorMsg: '',
 };
 
 const contractReducer = (state = initialState, action) => {
   switch (action.type) {
-    case "CHECK_CONTRACT_REQUEST":
+    case 'CHECK_CONTRACT_REQUEST':
       return {
         ...initialState,
         loading: true,
       };
-    case "CHECK_CONTRACT_SUCCESS":
+    case 'CHECK_CONTRACT_SUCCESS':
       return {
         ...initialState,
         loading: false,
@@ -23,7 +23,7 @@ const contractReducer = (state = initialState, action) => {
         TokenLockerFactory: action.payload.TokenLockerFactory,
         web3: action.payload.web3,
       };
-    case "CHECK_CONTRACT_FAILED":
+    case 'CHECK_CONTRACT_FAILED':
       return {
         ...initialState,
         loading: false,

@@ -1,6 +1,6 @@
-import React, { useState } from "react";
-import styled from "styled-components";
-import { FaTimes, FaAngleDown } from "react-icons/fa";
+import React, { useState } from 'react';
+import styled from 'styled-components';
+import { FaTimes, FaAngleDown } from 'react-icons/fa';
 import {
   TextField,
   Accordion,
@@ -9,9 +9,9 @@ import {
   List,
   ListItem,
   Divider,
-} from "@mui/material";
-import * as s from "../../../../styles/global";
-import { isWebUri } from "../../../../utils/url";
+} from '@mui/material';
+import * as s from '../../../../styles/global';
+import { isWebUri } from '../../../../utils/url';
 
 const Overflow = styled.span`
   overflow-x: auto;
@@ -36,13 +36,11 @@ const NewItemWrapper = styled.div`
 `;
 
 export default function SocialLinks({ socialLinks, setSocialLinks }) {
-  const [newLink, setNewItem] = useState("");
+  const [newLink, setNewItem] = useState('');
   const [linkError, setLinkError] = useState(false);
 
   const onRemove = (targetIndex) => {
-    setSocialLinks((prevItems) =>
-      prevItems.filter((_, index) => index !== targetIndex),
-    );
+    setSocialLinks((prevItems) => prevItems.filter((_, index) => index !== targetIndex));
   };
 
   const onNewItemChange = (event) => {
@@ -53,7 +51,7 @@ export default function SocialLinks({ socialLinks, setSocialLinks }) {
   const onAdd = () => {
     if (isWebUri(newLink)) {
       setSocialLinks((prevLinks) => [...prevLinks, newLink]);
-      setNewItem("");
+      setNewItem('');
     } else {
       setLinkError(true);
     }
@@ -73,13 +71,9 @@ export default function SocialLinks({ socialLinks, setSocialLinks }) {
         {socialLinks?.length > 0 &&
           socialLinks?.map((link, index) => (
             <React.Fragment key={index}>
-              <ListItem style={{ justifyContent: "space-between" }}>
+              <ListItem style={{ justifyContent: 'space-between' }}>
                 <Overflow>{link}</Overflow>
-                <RemoveButton
-                  type="button"
-                  onClick={() => onRemove(index)}
-                  title="Remove item"
-                >
+                <RemoveButton type="button" onClick={() => onRemove(index)} title="Remove item">
                   <FaTimes />
                 </RemoveButton>
               </ListItem>

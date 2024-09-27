@@ -1,11 +1,11 @@
-import { TextField } from "@mui/material";
-import React, { useState } from "react";
-import { useSelector } from "react-redux";
-import * as s from "../styles/global";
-import { utils } from "../utils";
+import { TextField } from '@mui/material';
+import React, { useState } from 'react';
+import { useSelector } from 'react-redux';
+import * as s from '../styles/global';
+import { utils } from '../utils';
 
 const Token = (props) => {
-  const [address, setAddress] = useState("");
+  const [address, setAddress] = useState('');
   const contract = useSelector((state) => state.contract);
   const [showZero, setShowZero] = useState(0);
 
@@ -23,7 +23,7 @@ const Token = (props) => {
       <s.SpacerMedium />
       <TextField
         fullWidth
-        label={"Search by token address "}
+        label={'Search by token address '}
         onChange={async (e) => {
           e.preventDefault();
           utils.typewatch(setAddress(e.target.value), 2000);

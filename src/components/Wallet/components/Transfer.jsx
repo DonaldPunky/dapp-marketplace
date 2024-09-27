@@ -1,43 +1,43 @@
-import { CreditCardOutlined } from "@ant-design/icons";
-import { Button, Input } from "antd";
-import Text from "antd/lib/typography/Text";
-import { useEffect, useState } from "react";
-import { useMoralis } from "react-moralis";
-import AddressInput from "../../AddressInput";
-import AssetSelector from "./AssetSelector";
+import { CreditCardOutlined } from '@ant-design/icons';
+import { Button, Input } from 'antd';
+import Text from 'antd/lib/typography/Text';
+import { useEffect, useState } from 'react';
+import { useMoralis } from 'react-moralis';
+import AddressInput from '../../AddressInput';
+import AssetSelector from './AssetSelector';
 
 const styles = {
   card: {
-    alignItems: "center",
-    width: "100%",
+    alignItems: 'center',
+    width: '100%',
   },
   header: {
-    textAlign: "center",
+    textAlign: 'center',
   },
   input: {
-    width: "100%",
-    outline: "none",
-    fontSize: "16px",
-    whiteSpace: "nowrap",
-    overflow: "hidden",
-    textverflow: "ellipsis",
-    appearance: "textfield",
-    color: "#041836",
-    fontWeight: "700",
-    border: "none",
-    backgroundColor: "transparent",
+    width: '100%',
+    outline: 'none',
+    fontSize: '16px',
+    whiteSpace: 'nowrap',
+    overflow: 'hidden',
+    textverflow: 'ellipsis',
+    appearance: 'textfield',
+    color: '#041836',
+    fontWeight: '700',
+    border: 'none',
+    backgroundColor: 'transparent',
   },
   select: {
-    marginTop: "20px",
-    display: "flex",
-    alignItems: "center",
+    marginTop: '20px',
+    display: 'flex',
+    alignItems: 'center',
   },
-  textWrapper: { maxWidth: "80px", width: "100%" },
+  textWrapper: { maxWidth: '80px', width: '100%' },
   row: {
-    display: "flex",
-    alignItems: "center",
-    gap: "10px",
-    flexDirection: "row",
+    display: 'flex',
+    alignItems: 'center',
+    gap: '10px',
+    flexDirection: 'row',
   },
 };
 
@@ -56,7 +56,7 @@ function Transfer() {
   async function transfer() {
     const { amount, receiver, asset } = tx;
     const options = {
-      type: "erc20",
+      type: 'erc20',
       amount: Moralis.Units.Token(amount, asset.decimals),
       receiver,
       contractAddress: asset.token_address,
@@ -102,13 +102,13 @@ function Transfer() {
           <div style={styles.textWrapper}>
             <Text strong>Asset:</Text>
           </div>
-          <AssetSelector setAsset={setAsset} style={{ width: "100%" }} />
+          <AssetSelector setAsset={setAsset} style={{ width: '100%' }} />
         </div>
         <Button
           type="primary"
           size="large"
           loading={isPending}
-          style={{ width: "100%", marginTop: "25px" }}
+          style={{ width: '100%', marginTop: '25px' }}
           onClick={() => transfer()}
           disabled={!tx}
         >

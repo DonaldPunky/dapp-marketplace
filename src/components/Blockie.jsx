@@ -1,5 +1,5 @@
-import Blockies from "react-blockies";
-import { useMoralisDapp } from "../providers/MoralisDappProvider/MoralisDappProvider";
+import Blockies from 'react-blockies';
+import { useMoralisDapp } from '../providers/MoralisDappProvider/MoralisDappProvider';
 
 /**
  * Shows a blockie image for the provided wallet address
@@ -13,11 +13,7 @@ function Blockie(props) {
 
   return (
     <Blockies
-      seed={
-        props.currentWallet
-          ? walletAddress.toLowerCase()
-          : props.address.toLowerCase()
-      }
+      seed={props.currentWallet ? walletAddress.toLowerCase() : props.address.toLowerCase()}
       className="identicon"
       {...props}
     />

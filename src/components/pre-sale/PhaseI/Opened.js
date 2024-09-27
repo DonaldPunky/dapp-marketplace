@@ -1,25 +1,22 @@
-import { useState, useEffect, Fragment } from "react";
-import { ethers } from "ethers";
-import { useWeb3React } from "@web3-react/core";
-import Grid from "@mui/material/Grid";
-import Stack from "@mui/material/Stack";
-import Typography from "@mui/material/Typography";
-import Card from "@mui/material/Card";
-import CardContent from "@mui/material/CardContent";
-import CardActions from "@mui/material/CardActions";
-import Button from "@mui/material/Button";
-import PRESALE_ABI from "../../../contracts/presale.json";
-import TextField from "@mui/material/TextField";
-import InputAdornment from "@mui/material/InputAdornment";
-import Alert from "../../ui/Alert";
-import Chip from "@mui/material/Chip";
-import Divider from "@mui/material/Divider";
-import moment from "moment";
+import { useState, useEffect, Fragment } from 'react';
+import { ethers } from 'ethers';
+import { useWeb3React } from '@web3-react/core';
+import Grid from '@mui/material/Grid';
+import Stack from '@mui/material/Stack';
+import Typography from '@mui/material/Typography';
+import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
+import CardActions from '@mui/material/CardActions';
+import Button from '@mui/material/Button';
+import PRESALE_ABI from '../../../contracts/presale.json';
+import TextField from '@mui/material/TextField';
+import InputAdornment from '@mui/material/InputAdornment';
+import Alert from '../../ui/Alert';
+import Chip from '@mui/material/Chip';
+import Divider from '@mui/material/Divider';
+import moment from 'moment';
 
-const PresaleContractAddress = [
-  "",
-  "0xBb569C738f56348B21a84D520f679fe41Fd01cc5",
-];
+const PresaleContractAddress = ['', '0xBb569C738f56348B21a84D520f679fe41Fd01cc5'];
 
 // 0: ropsten, 1: bsc testnet
 let chainindex = 0;
@@ -36,12 +33,7 @@ const netChainId = [
 
 const CardLabel = ({ text }) => {
   return (
-    <Typography
-      color="text.secondary"
-      sx={{ fontWeight: 500 }}
-      variant="body1"
-      display="block"
-    >
+    <Typography color="text.secondary" sx={{ fontWeight: 500 }} variant="body1" display="block">
       {text}
     </Typography>
   );
@@ -49,10 +41,7 @@ const CardLabel = ({ text }) => {
 
 const CardValue = ({ text }) => {
   return (
-    <Typography
-      color="text.primary"
-      sx={{ fontWeight: 500, textAlign: "right" }}
-    >
+    <Typography color="text.primary" sx={{ fontWeight: 500, textAlign: 'right' }}>
       {text}
     </Typography>
   );
@@ -64,8 +53,8 @@ const Opened = () => {
   const [presaleInfo, setPresaleInfo] = useState([]);
   const [buyerInfo, setBuyerInfo] = useState([]);
   const [status, setStatus] = useState([]);
-  const [presaleState, setPresaleState] = useState("");
-  const [alertMsg, setAlertMsg] = useState("");
+  const [presaleState, setPresaleState] = useState('');
+  const [alertMsg, setAlertMsg] = useState('');
   const [openAlert, setOpenAlert] = useState(false);
 
   const { account, library } = useWeb3React();
@@ -90,7 +79,7 @@ const Opened = () => {
       getInfo();
     } else {
       setOpenAlert(true);
-      setAlertMsg("Selected chain is unrecognized");
+      setAlertMsg('Selected chain is unrecognized');
     }
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -102,7 +91,7 @@ const Opened = () => {
     setPresaleInfo([]);
     setStatus([]);
     setBuyerInfo([]);
-    setPresaleState("");
+    setPresaleState('');
   };
 
   const getContract = (abi, address, signer = null) => {
@@ -115,23 +104,19 @@ const Opened = () => {
 
     if (!account) {
       setOpenAlert(true);
-      setAlertMsg("Wallet is unconnected");
+      setAlertMsg('Wallet is unconnected');
       return null;
     }
 
     const signer = await library.getSigner();
 
-    presalecontract = getContract(
-      PRESALE_ABI,
-      PresaleContractAddress[chainindex],
-      signer,
-    );
+    presalecontract = getContract(PRESALE_ABI, PresaleContractAddress[chainindex], signer);
 
-    let chainSuffix = "";
+    let chainSuffix = '';
     if (parseInt(library.provider.chainId) === netChainId[0]) {
-      chainSuffix = "ETH";
+      chainSuffix = 'ETH';
     } else {
-      chainSuffix = "BNB";
+      chainSuffix = 'BNB';
     }
 
     let tokenrate;
@@ -139,7 +124,7 @@ const Opened = () => {
       tokenrate = await presalecontract.token_rate();
     } catch (error) {
       setOpenAlert(true);
-      setAlertMsg("Get token rate Information Error");
+      setAlertMsg('Get token rate Information Error');
       return null;
     }
 
@@ -148,49 +133,37 @@ const Opened = () => {
       presaleinfo = await presalecontract.presale_info();
     } catch (error) {
       setOpenAlert(true);
-      setAlertMsg("Get Presale Information Error");
+      setAlertMsg('Get Presale Information Error');
       return null;
     }
 
-    const soft_starttime = `${moment.utc(parseInt(presaleinfo.soft_start) * 1000).format("Do of MMM, h A")} UTC`;
-    const soft_endtime = `${moment.utc(parseInt(presaleinfo.soft_end) * 1000).format("Do of MMM, h A")} UTC`;
-    const public_starttime = `${moment.utc(parseInt(presaleinfo.public_start) * 1000).format("Do of MMM, h A")} UTC`;
-    const public_endtime = `${moment.utc(parseInt(presaleinfo.public_end) * 1000).format("Do of MMM, h A")} UTC`;
+    const soft_starttime = `${moment.utc(parseInt(presaleinfo.soft_start) * 1000).format('Do of MMM, h A')} UTC`;
+    const soft_endtime = `${moment.utc(parseInt(presaleinfo.soft_end) * 1000).format('Do of MMM, h A')} UTC`;
+    const public_starttime = `${moment.utc(parseInt(presaleinfo.public_start) * 1000).format('Do of MMM, h A')} UTC`;
+    const public_endtime = `${moment.utc(parseInt(presaleinfo.public_end) * 1000).format('Do of MMM, h A')} UTC`;
 
     setPresaleInfo([
-      { id: "Token Rate:", val: 1 / tokenrate + " BNB" },
+      { id: 'Token Rate:', val: 1 / tokenrate + ' BNB' },
       {
-        id: "Softcap:",
-        val:
-          ethers.utils.formatUnits(presaleinfo.softcap, 18).toString() +
-          " " +
-          chainSuffix,
+        id: 'Softcap:',
+        val: ethers.utils.formatUnits(presaleinfo.softcap, 18).toString() + ' ' + chainSuffix,
       },
       {
-        id: "Hardcap:",
-        val:
-          ethers.utils.formatUnits(presaleinfo.hardcap, 18).toString() +
-          " " +
-          chainSuffix,
+        id: 'Hardcap:',
+        val: ethers.utils.formatUnits(presaleinfo.hardcap, 18).toString() + ' ' + chainSuffix,
       },
       {
-        id: "Buy min:",
-        val:
-          ethers.utils.formatUnits(presaleinfo.raise_min, 18).toString() +
-          " " +
-          chainSuffix,
+        id: 'Buy min:',
+        val: ethers.utils.formatUnits(presaleinfo.raise_min, 18).toString() + ' ' + chainSuffix,
       },
       {
-        id: "Buy max:",
-        val:
-          ethers.utils.formatUnits(presaleinfo.raise_max, 18).toString() +
-          " " +
-          chainSuffix,
+        id: 'Buy max:',
+        val: ethers.utils.formatUnits(presaleinfo.raise_max, 18).toString() + ' ' + chainSuffix,
       },
-      { id: "Soft Presale Start:", val: soft_starttime },
-      { id: "Soft Presale End:", val: soft_endtime },
-      { id: "Public Presale Start:", val: public_starttime },
-      { id: "Public Presale End:", val: public_endtime },
+      { id: 'Soft Presale Start:', val: soft_starttime },
+      { id: 'Soft Presale End:', val: soft_endtime },
+      { id: 'Public Presale Start:', val: public_starttime },
+      { id: 'Public Presale End:', val: public_endtime },
     ]);
 
     let tokeninfoarr;
@@ -198,23 +171,18 @@ const Opened = () => {
       tokeninfoarr = await presalecontract.tokeninfo();
     } catch (error) {
       setOpenAlert(true);
-      setAlertMsg("Get Token Information Error");
+      setAlertMsg('Get Token Information Error');
       return null;
     }
 
     let sale_supply =
-      (ethers.utils.formatUnits(
-        tokeninfoarr.totalsupply,
-        tokeninfoarr.decimal,
-      ) /
-        100) *
-      10;
+      (ethers.utils.formatUnits(tokeninfoarr.totalsupply, tokeninfoarr.decimal) / 100) * 10;
     setTokenInfo([
-      { id: "Token Name:", val: tokeninfoarr.name },
-      { id: "Token Symbol:", val: tokeninfoarr.symbol },
-      { id: "Token Decimal:", val: parseInt(tokeninfoarr.decimal) },
-      { id: "Address:", val: presaleinfo.sale_token },
-      { id: "Sale Supply:", val: sale_supply + " " + tokeninfoarr.symbol },
+      { id: 'Token Name:', val: tokeninfoarr.name },
+      { id: 'Token Symbol:', val: tokeninfoarr.symbol },
+      { id: 'Token Decimal:', val: parseInt(tokeninfoarr.decimal) },
+      { id: 'Address:', val: presaleinfo.sale_token },
+      { id: 'Sale Supply:', val: sale_supply + ' ' + tokeninfoarr.symbol },
     ]);
 
     let status;
@@ -222,25 +190,20 @@ const Opened = () => {
       status = await presalecontract.status();
     } catch (error) {
       setOpenAlert(true);
-      setAlertMsg("Get Status Information Error");
+      setAlertMsg('Get Status Information Error');
       return null;
     }
 
     setStatus([
       {
-        id: "Raised Amount",
-        val:
-          ethers.utils.formatUnits(status.raised_amount, 18).toString() +
-          " " +
-          chainSuffix,
+        id: 'Raised Amount',
+        val: ethers.utils.formatUnits(status.raised_amount, 18).toString() + ' ' + chainSuffix,
       },
       {
-        id: "Sold Amount",
+        id: 'Sold Amount',
         val:
-          ethers.utils
-            .formatUnits(status.sold_amount, tokeninfoarr.decimal)
-            .toString() +
-          " " +
+          ethers.utils.formatUnits(status.sold_amount, tokeninfoarr.decimal).toString() +
+          ' ' +
           tokeninfoarr.symbol,
       },
     ]);
@@ -249,45 +212,39 @@ const Opened = () => {
       const buyerInfo = await presalecontract.buyers(account);
       setBuyerInfo([
         {
-          id: "Invested",
-          val:
-            ethers.utils.formatUnits(buyerInfo.base, 18).toString() +
-            " " +
-            chainSuffix,
+          id: 'Invested',
+          val: ethers.utils.formatUnits(buyerInfo.base, 18).toString() + ' ' + chainSuffix,
         },
         {
-          id: "ELO Amount",
-          val:
-            ethers.utils.formatUnits(buyerInfo.sale, 18).toString() +
-            " " +
-            tokeninfoarr.symbol,
+          id: 'ELO Amount',
+          val: ethers.utils.formatUnits(buyerInfo.sale, 18).toString() + ' ' + tokeninfoarr.symbol,
         },
       ]);
     } catch (error) {
       setOpenAlert(true);
-      setAlertMsg("Get Buyers Information Error");
+      setAlertMsg('Get Buyers Information Error');
       return null;
     }
 
     const state = await getPresaleStatus(presalecontract);
     switch (parseInt(state)) {
       case 1:
-        setPresaleState("Public Presale Active");
+        setPresaleState('Public Presale Active');
         break;
       case 2:
-        setPresaleState("Stopped");
+        setPresaleState('Stopped');
         break;
       case 3:
-        setPresaleState("Soft Presale Active");
+        setPresaleState('Soft Presale Active');
         break;
       case 4:
-        setPresaleState("Success");
+        setPresaleState('Success');
         break;
       case 5:
-        setPresaleState("Failed");
+        setPresaleState('Failed');
         break;
       default:
-        setPresaleState("unknown state");
+        setPresaleState('unknown state');
         break;
     }
   };
@@ -298,7 +255,7 @@ const Opened = () => {
       presalestate = await presalecontract.presaleStatus();
     } catch (error) {
       setOpenAlert(true);
-      setAlertMsg("Get Status Error");
+      setAlertMsg('Get Status Error');
       return null;
     }
 
@@ -309,28 +266,24 @@ const Opened = () => {
     let presalecontract;
     if (!account) {
       setOpenAlert(true);
-      setAlertMsg("Wallet is unconnected");
+      setAlertMsg('Wallet is unconnected');
       return null;
     }
 
     const signer = await library.getSigner();
-    presalecontract = getContract(
-      PRESALE_ABI,
-      PresaleContractAddress[chainindex],
-      signer,
-    );
+    presalecontract = getContract(PRESALE_ABI, PresaleContractAddress[chainindex], signer);
     if (
       parseInt(library.provider.chainId) !== netChainId[0] &&
       parseInt(library.provider.chainId) !== netChainId[1]
     ) {
       setOpenAlert(true);
-      setAlertMsg("Selected chain is unrecognized");
+      setAlertMsg('Selected chain is unrecognized');
       return;
     }
 
     if (!amount || amount <= 0) {
       setOpenAlert(true);
-      setAlertMsg("Please enter a valid amount");
+      setAlertMsg('Please enter a valid amount');
       return;
     }
 
@@ -345,10 +298,10 @@ const Opened = () => {
       // console.log("Transaction hash is ", tx.hash);
       // console.log(receipt)
       setOpenAlert(true);
-      setAlertMsg("Deposit done successfully");
+      setAlertMsg('Deposit done successfully');
     } catch (error) {
       setOpenAlert(true);
-      setAlertMsg("Deposit failed");
+      setAlertMsg('Deposit failed');
       return;
     }
   };
@@ -357,22 +310,18 @@ const Opened = () => {
     let presalecontract;
     if (!account) {
       setOpenAlert(true);
-      setAlertMsg("Wallet is unconnected");
+      setAlertMsg('Wallet is unconnected');
       return null;
     }
 
     const signer = await library.getSigner();
-    presalecontract = getContract(
-      PRESALE_ABI,
-      PresaleContractAddress[chainindex],
-      signer,
-    );
+    presalecontract = getContract(PRESALE_ABI, PresaleContractAddress[chainindex], signer);
     if (
       parseInt(library.provider.chainId) !== netChainId[0] &&
       parseInt(library.provider.chainId) !== netChainId[1]
     ) {
       setOpenAlert(true);
-      setAlertMsg("Selected chain is unrecognized");
+      setAlertMsg('Selected chain is unrecognized');
       return;
     }
 
@@ -383,10 +332,10 @@ const Opened = () => {
       // console.log("Transaction hash is ", tx.hash);
       // console.log(receipt)
       setOpenAlert(true);
-      setAlertMsg("Withdraw done successfully");
+      setAlertMsg('Withdraw done successfully');
     } catch (error) {
       setOpenAlert(true);
-      setAlertMsg("Withdraw failed");
+      setAlertMsg('Withdraw failed');
       return;
     }
   };
@@ -395,22 +344,18 @@ const Opened = () => {
     let presalecontract;
     if (!account) {
       setOpenAlert(true);
-      setAlertMsg("Wallet is unconnected");
+      setAlertMsg('Wallet is unconnected');
       return null;
     }
 
     const signer = await library.getSigner();
-    presalecontract = getContract(
-      PRESALE_ABI,
-      PresaleContractAddress[chainindex],
-      signer,
-    );
+    presalecontract = getContract(PRESALE_ABI, PresaleContractAddress[chainindex], signer);
     if (
       parseInt(library.provider.chainId) !== netChainId[0] &&
       parseInt(library.provider.chainId) !== netChainId[1]
     ) {
       setOpenAlert(true);
-      setAlertMsg("Selected chain is unrecognized");
+      setAlertMsg('Selected chain is unrecognized');
       return;
     }
 
@@ -423,10 +368,10 @@ const Opened = () => {
       // console.log(receipt)
 
       setOpenAlert(true);
-      setAlertMsg("Claim done successfully");
+      setAlertMsg('Claim done successfully');
     } catch (error) {
       setOpenAlert(true);
-      setAlertMsg("Claim failed");
+      setAlertMsg('Claim failed');
       return;
     }
   };
@@ -434,17 +379,17 @@ const Opened = () => {
   const actionButton = () => {
     let label;
     switch (presaleState) {
-      case "Soft Presale Active":
-        label = "Buy";
+      case 'Soft Presale Active':
+        label = 'Buy';
         break;
-      case "Public Presale Active":
-        label = "Buy";
+      case 'Public Presale Active':
+        label = 'Buy';
         break;
-      case "Success":
-        label = "Claim";
+      case 'Success':
+        label = 'Claim';
         break;
-      case "Failed":
-        label = "Withdraw";
+      case 'Failed':
+        label = 'Withdraw';
         break;
       default:
         return null;
@@ -452,20 +397,20 @@ const Opened = () => {
 
     const execFunc = async () => {
       switch (presaleState) {
-        case "Soft Presale Active":
-          label = "Buy";
+        case 'Soft Presale Active':
+          label = 'Buy';
           Deposit(amountToBuy);
           break;
-        case "Public Presale Active":
-          label = "Buy";
+        case 'Public Presale Active':
+          label = 'Buy';
           Deposit(amountToBuy);
           break;
-        case "Success":
-          label = "Claim";
+        case 'Success':
+          label = 'Claim';
           Claim();
           break;
-        case "Failed":
-          label = "Withdraw";
+        case 'Failed':
+          label = 'Withdraw';
           Withdraw();
           break;
         default:
@@ -482,14 +427,14 @@ const Opened = () => {
 
   const handleStateChipColor = (state) => {
     switch (state) {
-      case "Soft Presale Active":
-      case "Public Presale Active":
-      case "Success":
-        return "success";
-      case "Failed":
-        return "error";
+      case 'Soft Presale Active':
+      case 'Public Presale Active':
+      case 'Success':
+        return 'success';
+      case 'Failed':
+        return 'error';
       default:
-        return "default";
+        return 'default';
     }
   };
 
@@ -497,60 +442,60 @@ const Opened = () => {
     try {
       switch (parseInt(library.provider.chainId)) {
         case netChainId[1]:
-          return "$BNB";
+          return '$BNB';
         case netChainId[0]:
-          return "$ETH";
+          return '$ETH';
         default:
-          return "Unknown";
+          return 'Unknown';
       }
     } catch (e) {
-      return "Unrecognized chain";
+      return 'Unrecognized chain';
     }
   };
 
   return (
     <Fragment>
       <Alert openAlert={openAlert} setOpenAlert={setOpenAlert} msg={alertMsg} />
-      {presaleState === "Soft Presale Active" && (
+      {presaleState === 'Soft Presale Active' && (
         <Typography
           color="text.primary"
-          sx={{ fontWeight: "bold", mb: 1, textAlign: "center" }}
+          sx={{ fontWeight: 'bold', mb: 1, textAlign: 'center' }}
           variant="h6"
         >
           Soft sale started
         </Typography>
       )}
-      {presaleState === "Stopped" && (
+      {presaleState === 'Stopped' && (
         <Typography
           color="text.primary"
-          sx={{ fontWeight: "bold", mb: 1, textAlign: "center" }}
+          sx={{ fontWeight: 'bold', mb: 1, textAlign: 'center' }}
           variant="h6"
         >
           Soft sale ended, public presale will start soon.
         </Typography>
       )}
-      {presaleState === "Public Presale Active" && (
+      {presaleState === 'Public Presale Active' && (
         <Typography
           color="text.primary"
-          sx={{ fontWeight: "bold", mb: 1, textAlign: "center" }}
+          sx={{ fontWeight: 'bold', mb: 1, textAlign: 'center' }}
           variant="h6"
         >
           Public sale started
         </Typography>
       )}
-      {presaleState === "Success" && (
+      {presaleState === 'Success' && (
         <Typography
           color="text.primary"
-          sx={{ fontWeight: "bold", mb: 1, textAlign: "center" }}
+          sx={{ fontWeight: 'bold', mb: 1, textAlign: 'center' }}
           variant="h6"
         >
           Presale finished with successful
         </Typography>
       )}
-      {presaleState === "Failed" && (
+      {presaleState === 'Failed' && (
         <Typography
           color="text.primary"
-          sx={{ fontWeight: "bold", mb: 1, textAlign: "center" }}
+          sx={{ fontWeight: 'bold', mb: 1, textAlign: 'center' }}
           variant="h6"
         >
           Presale finished with failure
@@ -564,7 +509,7 @@ const Opened = () => {
             sx={{
               borderRadius: 10,
               p: 1,
-              boxShadow: "0 2px 16px rgb(53 69 89 / 5%)",
+              boxShadow: '0 2px 16px rgb(53 69 89 / 5%)',
             }}
           >
             <CardContent>
@@ -637,13 +582,9 @@ const Opened = () => {
                   />
                 </Stack>
               )}
-              {presaleState === "Public Presale Active" && (
+              {presaleState === 'Public Presale Active' && (
                 <Fragment>
-                  <Typography
-                    variant="caption"
-                    display="block"
-                    sx={{ fontWeight: 700, mb: 1 }}
-                  >
+                  <Typography variant="caption" display="block" sx={{ fontWeight: 700, mb: 1 }}>
                     Buy ELO Token
                   </Typography>
                   <TextField
@@ -658,24 +599,18 @@ const Opened = () => {
                     onChange={(e) => setAmountToBuy(e.target.value)}
                     InputProps={{
                       startAdornment: (
-                        <InputAdornment position="start">
-                          {handleSelectedChain()}
-                        </InputAdornment>
+                        <InputAdornment position="start">{handleSelectedChain()}</InputAdornment>
                       ),
-                      autoComplete: "off",
+                      autoComplete: 'off',
                     }}
                     fullWidth
                     sx={{ mb: 1 }}
                   />
                 </Fragment>
               )}
-              {presaleState === "Soft Presale Active" && (
+              {presaleState === 'Soft Presale Active' && (
                 <Fragment>
-                  <Typography
-                    variant="caption"
-                    display="block"
-                    sx={{ fontWeight: 700, mb: 1 }}
-                  >
+                  <Typography variant="caption" display="block" sx={{ fontWeight: 700, mb: 1 }}>
                     Buy ELO Token
                   </Typography>
                   <TextField
@@ -690,11 +625,9 @@ const Opened = () => {
                     onChange={(e) => setAmountToBuy(e.target.value)}
                     InputProps={{
                       startAdornment: (
-                        <InputAdornment position="start">
-                          {handleSelectedChain()}
-                        </InputAdornment>
+                        <InputAdornment position="start">{handleSelectedChain()}</InputAdornment>
                       ),
-                      autoComplete: "off",
+                      autoComplete: 'off',
                     }}
                     fullWidth
                     sx={{ mb: 1 }}

@@ -1,7 +1,7 @@
-import React from "react";
-import { useParams } from "react-router-dom";
-import LockerInfoRenderer from "../components/Card/lockerInfoRenderer";
-import * as s from "../styles/global";
+import React from 'react';
+import { useParams } from 'react-router-dom';
+import LockerInfoRenderer from '../components/Card/lockerInfoRenderer';
+import * as s from '../styles/global';
 
 const LockerInfo = () => {
   const { lockerAddress } = useParams();

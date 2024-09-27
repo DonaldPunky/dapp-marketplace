@@ -1,6 +1,6 @@
-import { applyMiddleware, combineReducers, compose, createStore } from "redux";
-import thunk from "redux-thunk";
-import contractReducer from "./contract/contractReducer";
+import { applyMiddleware, combineReducers, compose, createStore } from 'redux';
+import thunk from 'redux-thunk';
+import contractReducer from './contract/contractReducer';
 
 const rootReducer = combineReducers({
   contract: contractReducer,

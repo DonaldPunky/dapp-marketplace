@@ -1,8 +1,8 @@
-import { Fragment } from "react";
-import Typography from "@mui/material/Typography";
-import Container from "@mui/material/Container";
-import Box from "@mui/material/Box";
-import MintCard from "../../components/mint/MintCard";
+import { Fragment } from 'react';
+import Typography from '@mui/material/Typography';
+import Container from '@mui/material/Container';
+import Box from '@mui/material/Box';
+import MintCard from '../../components/mint/MintCard';
 
 export default function Mint() {
   return (
@@ -12,7 +12,7 @@ export default function Mint() {
           <Typography
             color="primary.main"
             variant="h4"
-            sx={{ fontWeight: "bold", mb: 1 }}
+            sx={{ fontWeight: 'bold', mb: 1 }}
             component="div"
           >
             Fair Launch
@@ -24,18 +24,18 @@ export default function Mint() {
       </Container>
       <Box
         sx={{
-          bgcolor: "neutral.main",
+          bgcolor: 'neutral.main',
           py: 7,
           borderTop: 1,
           borderBottom: 1,
-          borderColor: "grey.100",
+          borderColor: 'grey.100',
           mb: 4,
         }}
       >
         <Container>
           <Typography
             color="text.primary"
-            sx={{ fontWeight: "bold", mb: 4, textAlign: "center" }}
+            sx={{ fontWeight: 'bold', mb: 4, textAlign: 'center' }}
             variant="h5"
           >
             Mint your NFT

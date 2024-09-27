@@ -1,32 +1,27 @@
-import { Fragment, useEffect, useState } from "react";
-import Grid from "@mui/material/Grid";
-import Stack from "@mui/material/Stack";
-import Typography from "@mui/material/Typography";
-import Box from "@mui/material/Box";
-import Slider from "@mui/material/Slider";
-import Card from "@mui/material/Card";
-import CardContent from "@mui/material/CardContent";
-import CardActions from "@mui/material/CardActions";
-import Button from "@mui/material/Button";
-import Chip from "@mui/material/Chip";
-import { useMoralis } from "react-moralis";
-import { ethers } from "ethers";
-import ERC721_ABI from "../../contracts/ERC721_abi.json";
-import Alert from "../ui/Alert";
+import { Fragment, useEffect, useState } from 'react';
+import Grid from '@mui/material/Grid';
+import Stack from '@mui/material/Stack';
+import Typography from '@mui/material/Typography';
+import Box from '@mui/material/Box';
+import Slider from '@mui/material/Slider';
+import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
+import CardActions from '@mui/material/CardActions';
+import Button from '@mui/material/Button';
+import Chip from '@mui/material/Chip';
+import { useMoralis } from 'react-moralis';
+import { ethers } from 'ethers';
+import ERC721_ABI from '../../contracts/ERC721_abi.json';
+import Alert from '../ui/Alert';
 
-const NFTContractAddress = "0x20fEE8A8305De41DDf9d8c7CE6a7f540326e6FDf";
+const NFTContractAddress = '0x20fEE8A8305De41DDf9d8c7CE6a7f540326e6FDf';
 
 //const netChainId = "0x1"; // ETH Mainnet
 const netChainId = 0x4; // Rinkeby
 
 const CardLabel = ({ text }) => {
   return (
-    <Typography
-      color="text.secondary"
-      sx={{ fontWeight: 500 }}
-      variant="body1"
-      display="block"
-    >
+    <Typography color="text.secondary" sx={{ fontWeight: 500 }} variant="body1" display="block">
       {text}
     </Typography>
   );
@@ -34,10 +29,7 @@ const CardLabel = ({ text }) => {
 
 const CardValue = ({ text }) => {
   return (
-    <Typography
-      color="text.primary"
-      sx={{ fontWeight: 500, textAlign: "right" }}
-    >
+    <Typography color="text.primary" sx={{ fontWeight: 500, textAlign: 'right' }}>
       {text}
     </Typography>
   );
@@ -46,57 +38,50 @@ const CardValue = ({ text }) => {
 const marks = [
   {
     value: 1,
-    label: "1 ",
+    label: '1 ',
   },
   {
     value: 5,
-    label: "5 ",
+    label: '5 ',
   },
   {
     value: 10,
-    label: "10 ",
+    label: '10 ',
   },
   {
     value: 15,
-    label: "15 ",
+    label: '15 ',
   },
   {
     value: 20,
-    label: "20 ",
+    label: '20 ',
   },
 ];
 
 function sliderValueText(value) {
-  return `${value} ${value > 1 && "s"}`;
+  return `${value} ${value > 1 && 's'}`;
 }
 
-const handleMint = async (
-  Moralis,
-  web3,
-  amount,
-  mintPrice,
-  setOpenAlert,
-  setAlertMsg,
-) => {
+const handleMint = async (Moralis, web3, amount, mintPrice, setOpenAlert, setAlertMsg) => {
   if (!web3._provider) {
     setOpenAlert(true);
-    setAlertMsg("Please connect to a wallet");
+    setAlertMsg('Please connect to a wallet');
     return;
   }
 
   if (parseInt(web3.givenProvider.chainId) !== netChainId) {
     setOpenAlert(true);
-    setAlertMsg("Selected chain is unrecognized");
+    setAlertMsg('Selected chain is unrecognized');
     return;
   }
 
   let price_val = amount * mintPrice;
-  console.log("test print", price_val.toPrecision(8));
+  console.log('test print', price_val.toPrecision(8));
   //console.log("test param", ethers.utils.formatUnits(amount * mintPrice, 18).toString());
 
   const options = {
     contractAddress: NFTContractAddress,
-    functionName: "mintToken",
+    functionName: 'mintToken',
     abi: ERC721_ABI,
     params: {
       numberOfTokens: amount,
@@ -108,19 +93,19 @@ const handleMint = async (
 
   const tx = await Moralis.executeFunction(options);
 
-  tx.on("transactionHash", (hash) => {
+  tx.on('transactionHash', (hash) => {
     setOpenAlert(true);
     setAlertMsg(`Transaction hash:  ${hash}`);
   })
-    .on("receipt", () => {
+    .on('receipt', () => {
       setOpenAlert(true);
-      setAlertMsg("Transaction done successfully");
+      setAlertMsg('Transaction done successfully');
     })
-    .on("confirmation", () => {
+    .on('confirmation', () => {
       setOpenAlert(true);
-      setAlertMsg("Transaction is ended");
+      setAlertMsg('Transaction is ended');
     })
-    .on("error", (error) => {
+    .on('error', (error) => {
       setOpenAlert(true);
       setAlertMsg(`Something went wrong: ${error}`);
     });
@@ -132,8 +117,8 @@ const MintCard = () => {
   const [mintInfo, setMintInfo] = useState([]);
   const [presale_price, setPresalePrice] = useState(0);
   const [mintActive, setMintActive] = useState(true);
-  const [statestr, setStateStr] = useState("Presale status");
-  const [alertMsg, setAlertMsg] = useState("");
+  const [statestr, setStateStr] = useState('Presale status');
+  const [alertMsg, setAlertMsg] = useState('');
   const [openAlert, setOpenAlert] = useState(false);
 
   useEffect(() => {
@@ -158,11 +143,11 @@ const MintCard = () => {
         getBalance(Moralis);
       } else {
         setOpenAlert(true);
-        setAlertMsg("Selected chain is unrecognized");
+        setAlertMsg('Selected chain is unrecognized');
       }
     } else {
       setOpenAlert(true);
-      setAlertMsg("Selected chain is unrecognized");
+      setAlertMsg('Selected chain is unrecognized');
     }
   });
 
@@ -173,42 +158,42 @@ const MintCard = () => {
     };
 
     const totalsupply = await Moralis.executeFunction({
-      functionName: "totalSupply",
+      functionName: 'totalSupply',
       ...options,
     });
     const tokenPrice = await Moralis.executeFunction({
-      functionName: "getTokenPrice",
+      functionName: 'getTokenPrice',
       ...options,
     });
     const atokenPrice = ethers.utils.formatUnits(tokenPrice, 18);
     setPresalePrice(atokenPrice);
     const maxsupply = await Moralis.executeFunction({
-      functionName: "maxSupply",
+      functionName: 'maxSupply',
       ...options,
     });
     const presaleactive = await Moralis.executeFunction({
-      functionName: "presaleActive",
+      functionName: 'presaleActive',
       ...options,
     });
     const saleactive = await Moralis.executeFunction({
-      functionName: "saleIsActive",
+      functionName: 'saleIsActive',
       ...options,
     });
     // const isWhitelist = await Moralis.executeFunction({ functionName: 'isWhiteList', ...options })
 
     if (presaleactive) {
-      setStateStr("Presale started");
+      setStateStr('Presale started');
     } else if (saleactive) {
-      setStateStr("Presale ended, sale started");
+      setStateStr('Presale ended, sale started');
     } else {
-      setStateStr("Will soon");
+      setStateStr('Will soon');
     }
 
     const remainig = maxsupply - totalsupply;
 
     if (remainig <= 0) {
       setMintActive(true);
-      setStateStr("sold out");
+      setStateStr('sold out');
     } else {
       setMintActive(false);
     }
@@ -218,10 +203,10 @@ const MintCard = () => {
     }
 
     setMintInfo([
-      { label: "Total Supply", value: maxsupply.toString() },
-      { label: "Remaining", value: remainig.toString() },
-      { label: "Minting Cost", value: atokenPrice.toString() + " ETH" },
-      { label: "Per Wallet", value: "20  NFT" },
+      { label: 'Total Supply', value: maxsupply.toString() },
+      { label: 'Remaining', value: remainig.toString() },
+      { label: 'Minting Cost', value: atokenPrice.toString() + ' ETH' },
+      { label: 'Per Wallet', value: '20  NFT' },
     ]);
   };
 
@@ -231,7 +216,7 @@ const MintCard = () => {
         getBalance(Moralis);
       } else {
         setOpenAlert(true);
-        setAlertMsg("Selected chain is unrecognized");
+        setAlertMsg('Selected chain is unrecognized');
       }
     }
   });
@@ -246,15 +231,11 @@ const MintCard = () => {
             sx={{
               borderRadius: 10,
               p: 1,
-              boxShadow: "0 2px 16px rgb(53 69 89 / 5%)",
+              boxShadow: '0 2px 16px rgb(53 69 89 / 5%)',
             }}
           >
             <CardContent>
-              <Chip
-                label={statestr}
-                color="default"
-                sx={{ fontWeight: 500, mb: 2 }}
-              />
+              <Chip label={statestr} color="default" sx={{ fontWeight: 500, mb: 2 }} />
               {mintInfo.map((item, i) => (
                 <Stack
                   direction="row"
@@ -275,7 +256,7 @@ const MintCard = () => {
               >
                 Amount to mint
               </Typography>
-              <Box mx="auto" sx={{ width: "90%" }}>
+              <Box mx="auto" sx={{ width: '90%' }}>
                 <Slider
                   aria-label="Amount to mint"
                   defaultValue={1}
@@ -297,14 +278,7 @@ const MintCard = () => {
                 fullWidth
                 disabled={mintActive}
                 onClick={() =>
-                  handleMint(
-                    Moralis,
-                    web3,
-                    amountToMint,
-                    presale_price,
-                    setOpenAlert,
-                    setAlertMsg,
-                  )
+                  handleMint(Moralis, web3, amountToMint, presale_price, setOpenAlert, setAlertMsg)
                 }
               >
                 Mint

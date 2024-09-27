@@ -1,27 +1,15 @@
-import { useState, useEffect } from "react";
-import {
-  STORAGE_NETWORK_ID,
-  STORAGE_NETWORK_NAME,
-} from "../../../../constants";
-import { useWeb3React } from "@web3-react/core";
-import { useApplicationContext } from "../../../../context/applicationContext";
-import { saveAppData } from "../../../../utils/storage";
-import {
-  TextField,
-  Typography,
-  InputLabel,
-  Select,
-  MenuItem,
-} from "@mui/material";
-import * as s from "../../../../styles/global";
-import styled from "styled-components";
-import Loader from "../../../../components/Loader";
-import { InjectedConnector } from "@web3-react/injected-connector";
-import {
-  SUPPORTED_NETWORKS,
-  SUPPORTED_CHAIN_IDS,
-} from "../../../../connectors";
-import { switchInjectedNetwork } from "../../../../utils/utils";
+import { useState, useEffect } from 'react';
+import { STORAGE_NETWORK_ID, STORAGE_NETWORK_NAME } from '../../../../constants';
+import { useWeb3React } from '@web3-react/core';
+import { useApplicationContext } from '../../../../context/applicationContext';
+import { saveAppData } from '../../../../utils/storage';
+import { TextField, Typography, InputLabel, Select, MenuItem } from '@mui/material';
+import * as s from '../../../../styles/global';
+import styled from 'styled-components';
+import Loader from '../../../../components/Loader';
+import { InjectedConnector } from '@web3-react/injected-connector';
+import { SUPPORTED_NETWORKS, SUPPORTED_CHAIN_IDS } from '../../../../connectors';
+import { switchInjectedNetwork } from '../../../../utils/utils';
 
 const ContentWrapper = styled.div`
   display: flex;
@@ -35,7 +23,7 @@ const ContentWrapper = styled.div`
     pointer-events: none;
     opacity: 0.6;
     `
-      : ""};
+      : ''};
 `;
 
 export default function Networks() {
@@ -49,11 +37,9 @@ export default function Networks() {
   const [isLoading, setIsLoading] = useState(false);
 
   const [chainIdToSetUp, setChainIdToSetUp] = useState(
-    chainId && !!networks?.[chainId || 0] ? chainId : "",
+    chainId && !!networks?.[chainId || 0] ? chainId : ''
   );
-  const [webSocketRPC, setWebSocketRPC] = useState(
-    networks?.[chainId || 0]?.webSocketRPC || "",
-  );
+  const [webSocketRPC, setWebSocketRPC] = useState(networks?.[chainId || 0]?.webSocketRPC || '');
   const [canSaveNetworksSettings, setCanSaveNetworksSettings] = useState(false);
 
   const isStorageNetwork = chainId === STORAGE_NETWORK_ID;
@@ -61,20 +47,19 @@ export default function Networks() {
 
   useEffect(() => {
     const isDifferentSettings =
-      webSocketRPC.toLowerCase() !==
-      networks?.[chainIdToSetUp || 0]?.webSocketRPC?.toLowerCase();
+      webSocketRPC.toLowerCase() !== networks?.[chainIdToSetUp || 0]?.webSocketRPC?.toLowerCase();
 
     setCanSaveNetworksSettings(
       isStorageNetwork &&
         SUPPORTED_CHAIN_IDS.includes(chainIdToSetUp) &&
         webSocketRPC &&
         // TODO: add isValidWebSocketRPC with connecting to the ws and check the related chainIdToSetUp
-        isDifferentSettings,
+        isDifferentSettings
     );
   }, [networks, webSocketRPC, chainIdToSetUp, isStorageNetwork]);
 
   useEffect(() => {
-    setWebSocketRPC(networks?.[chainIdToSetUp || 0]?.webSocketRPC || "");
+    setWebSocketRPC(networks?.[chainIdToSetUp || 0]?.webSocketRPC || '');
   }, [networks, chainIdToSetUp]);
 
   const saveNetworksData = async () => {
@@ -84,7 +69,7 @@ export default function Networks() {
       await saveAppData({
         library,
         domain,
-        owner: account || "",
+        owner: account || '',
         data: {
           networks: {
             [chainIdToSetUp]: {
@@ -96,11 +81,11 @@ export default function Networks() {
           triggerDomainData();
         },
         onHash: (hash) => {
-          console.log("saveNetworksData hash: ", hash);
+          console.log('saveNetworksData hash: ', hash);
         },
       });
     } catch (error) {
-      console.group("%c saveNetworksData", "color: red");
+      console.group('%c saveNetworksData', 'color: red');
       console.error(error);
       console.groupEnd();
     } finally {
@@ -156,11 +141,8 @@ export default function Networks() {
       <s.SpacerSmall />
 
       {isStorageNetwork ? (
-        <s.button
-          onClick={saveNetworksData}
-          disabled={!canSaveNetworksSettings}
-        >
-          {isLoading ? <Loader /> : "Save Networks Settings"}
+        <s.button onClick={saveNetworksData} disabled={!canSaveNetworksSettings}>
+          {isLoading ? <Loader /> : 'Save Networks Settings'}
         </s.button>
       ) : (
         <s.button onClick={switchToStorage} disabled={!canChangeNetwork}>

@@ -1,8 +1,8 @@
-import { useWeb3React as useWeb3ReactCore } from "@web3-react/core";
-import { useEffect, useState } from "react";
-import { injected } from "../connectors";
-import { NetworkContextName } from "../constants";
-import { isMobile } from "../utils/utils";
+import { useWeb3React as useWeb3ReactCore } from '@web3-react/core';
+import { useEffect, useState } from 'react';
+import { injected } from '../connectors';
+import { NetworkContextName } from '../constants';
+import { isMobile } from '../utils/utils';
 
 export function useActiveWeb3React() {
   const context = useWeb3ReactCore();
@@ -60,7 +60,7 @@ export function useInactiveListener(suppress = false) {
 
         // eat errors
         activate(injected, undefined, true).catch((error) => {
-          console.error("Failed to activate after chain changed", error);
+          console.error('Failed to activate after chain changed', error);
         });
       };
 
@@ -68,18 +68,18 @@ export function useInactiveListener(suppress = false) {
         if (accounts.length > 0) {
           // eat errors
           activate(injected, undefined, true).catch((error) => {
-            console.error("Failed to activate after accounts changed", error);
+            console.error('Failed to activate after accounts changed', error);
           });
         }
       };
 
-      ethereum.on("chainChanged", handleChainChanged);
-      ethereum.on("accountsChanged", handleAccountsChanged);
+      ethereum.on('chainChanged', handleChainChanged);
+      ethereum.on('accountsChanged', handleAccountsChanged);
 
       return () => {
         if (ethereum.removeListener) {
-          ethereum.removeListener("chainChanged", handleChainChanged);
-          ethereum.removeListener("accountsChanged", handleAccountsChanged);
+          ethereum.removeListener('chainChanged', handleChainChanged);
+          ethereum.removeListener('accountsChanged', handleAccountsChanged);
         }
       };
     }

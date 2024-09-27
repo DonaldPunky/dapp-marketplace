@@ -1,4 +1,4 @@
-import createIDOFormModal from "./createIDOFormModal";
+import createIDOFormModal from './createIDOFormModal';
 const {
   formField: {
     tokenAddress,
@@ -21,21 +21,21 @@ const {
 } = createIDOFormModal;
 
 export default {
-  [tokenAddress.name]: "",
-  [decimals.name]: "",
+  [tokenAddress.name]: '',
+  [decimals.name]: '',
   [isTokenValid.name]: false,
-  [presaleRate.name]: "",
+  [presaleRate.name]: '',
   [whitelist.name]: false,
-  [softCap.name]: "",
-  [softCap.name]: "",
-  [hardCap.name]: "",
-  [minETH.name]: "",
-  [maxETH.name]: "",
-  [refundType.name]: "",
-  [router.name]: "",
-  [liquidityPercentage.name]: "",
-  [listingRate.name]: "",
-  [start.name]: "",
-  [end.name]: "",
-  [unlock.name]: "",
+  [softCap.name]: '',
+  [softCap.name]: '',
+  [hardCap.name]: '',
+  [minETH.name]: '',
+  [maxETH.name]: '',
+  [refundType.name]: '',
+  [router.name]: '',
+  [liquidityPercentage.name]: '',
+  [listingRate.name]: '',
+  [start.name]: '',
+  [end.name]: '',
+  [unlock.name]: '',
 };

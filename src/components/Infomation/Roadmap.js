@@ -1,14 +1,9 @@
-import React from "react";
-import * as s from "../../styles/global";
+import React from 'react';
+import * as s from '../../styles/global';
 
 const Roadmap = (props) => {
   return (
-    <s.Container
-      jc="center"
-      ai="center"
-      fd="column"
-      style={{ flexWrap: "wrap" }}
-    >
+    <s.Container jc="center" ai="center" fd="column" style={{ flexWrap: 'wrap' }}>
       <s.TextTitle>Phase I</s.TextTitle>
       <s.Container jc="center" ai="center">
         <div>
@@ -39,9 +34,7 @@ const Roadmap = (props) => {
         <div>
           <s.TextDescription>• Launch Final Version</s.TextDescription>
           <s.TextDescription>• Become opensource platform</s.TextDescription>
-          <s.TextDescription>
-            • Provided full decentralize Earning
-          </s.TextDescription>
+          <s.TextDescription>• Provided full decentralize Earning</s.TextDescription>
         </div>
       </s.Container>
     </s.Container>

@@ -62,8 +62,8 @@ Please install or have installed the following:
 2. Clone the repo:
 
 ```bash
-  git clone https://gitlab.com/plusblue/marketplace-dapp.git
-  cd marketplace-dapp
+  git clone https://gitlab.com/plusblue/dapp-marketplace.git
+  cd dapp-marketplace
 ```
 
 <p align="right">(<a href="#top">back to top</a>)</p>
@@ -128,7 +128,7 @@ The app is based on a single global contract called MarketPlace, it contains the
       
    The files are structured as follows:
     <ul>
-      <li><b>pages:</b> Contains all the app views (MarketPage, ProductPage,...)</li>
+      <li><b>pages:</b> Contains all the app views (MarketPage, ProductPage,...)</li> 
       <li><b>Components:</b> Contains all the app component(main, navbar, Account,...) </li>
       <li><b>features:</b> contains the redux toolkit reducer and actions </li>
       <li><b>artifacts:</b> contains all the smart contract data and addresses transfered earlier </li>
@@ -144,3 +144,7 @@ The app is based on a single global contract called MarketPlace, it contains the
 Distributed under the MIT License. See `LICENSE` for more information.
 
 <p align="right">(<a href="#top">back to top</a>)</p>
+
+## Contact Us
+
+If you have any questions or suggestions, please feel free to contact us at [cowchain610@gmail.com](mailto:cowchain610@gmail.com).

@@ -1,18 +1,18 @@
-import Step from "@mui/material/Step";
-import StepLabel from "@mui/material/StepLabel";
-import Stepper from "@mui/material/Stepper";
-import { useWeb3React } from "@web3-react/core";
-import React from "react";
-import { useForm } from "react-hook-form";
-import { useStoreContext } from "../../../context/store";
-import * as s from "../../../styles/global";
-import IDOInfo from "./Step/idoInformation";
-import Preview from "./Step/preview";
-import ProjectInfo from "./Step/projectInfo";
-import TokenVerify from "./Step/tokenVerify";
+import Step from '@mui/material/Step';
+import StepLabel from '@mui/material/StepLabel';
+import Stepper from '@mui/material/Stepper';
+import { useWeb3React } from '@web3-react/core';
+import React from 'react';
+import { useForm } from 'react-hook-form';
+import { useStoreContext } from '../../../context/store';
+import * as s from '../../../styles/global';
+import IDOInfo from './Step/idoInformation';
+import Preview from './Step/preview';
+import ProjectInfo from './Step/projectInfo';
+import TokenVerify from './Step/tokenVerify';
 
 function getSteps() {
-  return ["Token verify", "IDO information", "Project information", "Submit"];
+  return ['Token verify', 'IDO information', 'Project information', 'Submit'];
 }
 
 export default function StepsForm() {
@@ -64,19 +64,19 @@ export default function StepsForm() {
       case 3:
         return <Preview />;
       default:
-        return "Unknown stepIndex";
+        return 'Unknown stepIndex';
     }
   }
 
   return (
     <s.Card>
-      <form onSubmit={form.handleSubmit(onSubmit)} style={{ width: "100%" }}>
+      <form onSubmit={form.handleSubmit(onSubmit)} style={{ width: '100%' }}>
         <Stepper
           activeStep={activeStep}
           alternativeLabel
           style={{
-            width: "100%",
-            color: "white",
+            width: '100%',
+            color: 'white',
           }}
         >
           {steps.map((label) => (
@@ -90,7 +90,7 @@ export default function StepsForm() {
           {activeStep === steps.length ? (
             <s.Container ai="center">
               <s.TextDescription>All steps completed</s.TextDescription>
-              <s.button type={"button"} onClick={handleReset}>
+              <s.button type={'button'} onClick={handleReset}>
                 Do again
               </s.button>
             </s.Container>
@@ -98,7 +98,7 @@ export default function StepsForm() {
             <s.Container>
               {getStepContent(activeStep)}
               <s.SpacerSmall />
-              <s.TextID fullWidth style={{ color: "red" }}>
+              <s.TextID fullWidth style={{ color: 'red' }}>
                 {context.error[0]}
               </s.TextID>
               <s.SpacerMedium />
@@ -113,13 +113,8 @@ export default function StepsForm() {
                   Back
                 </s.button>
                 {activeStep !== steps.length - 1 ? (
-                  <s.button
-                    variant="contained"
-                    color="primary"
-                    type="submit"
-                    style={{ margin: 5 }}
-                  >
-                    {activeStep === steps.length - 1 ? "Finish" : "Next"}
+                  <s.button variant="contained" color="primary" type="submit" style={{ margin: 5 }}>
+                    {activeStep === steps.length - 1 ? 'Finish' : 'Next'}
                   </s.button>
                 ) : null}
               </s.Container>

@@ -3489,9 +3489,7 @@
                                   "id": 1482,
                                   "name": "require",
                                   "nodeType": "Identifier",
-                                  "overloadedDeclarations": [
-                                    4294967278, 4294967278
-                                  ],
+                                  "overloadedDeclarations": [4294967278, 4294967278],
                                   "referencedDeclaration": 4294967278,
                                   "src": "7908:7:8",
                                   "typeDescriptions": {

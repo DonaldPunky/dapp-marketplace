@@ -1,11 +1,11 @@
-import React from "react";
-import styled from "styled-components";
-import { FaWallet } from "react-icons/fa";
+import React from 'react';
+import styled from 'styled-components';
+import { FaWallet } from 'react-icons/fa';
 // import { networks } from '../constants/networksInfo';
-import { SUPPORTED_NETWORKS, SUPPORTED_CHAIN_IDS } from "../connectors";
-import { Web3Status } from "../components/Web3Status";
-import * as s from "../styles/global";
-import { useApplicationContext } from "../context/applicationContext";
+import { SUPPORTED_NETWORKS, SUPPORTED_CHAIN_IDS } from '../connectors';
+import { Web3Status } from '../components/Web3Status';
+import * as s from '../styles/global';
+import { useApplicationContext } from '../context/applicationContext';
 // import Panel from './Panel'
 // import { ApplicationModal, setOpenModal } from '../state/application/actions'
 // import { useAppState } from 'state/application/hooks'
@@ -103,13 +103,11 @@ export default function Connection() {
                   <>
                     <p>Available Networks</p>
                     <SupportedNetworksList>
-                      {Object.values(SUPPORTED_NETWORKS).map(
-                        ({ name, chainId }) => (
-                          <li key={chainId}>
-                            {chainId} - {name}
-                          </li>
-                        ),
-                      )}
+                      {Object.values(SUPPORTED_NETWORKS).map(({ name, chainId }) => (
+                        <li key={chainId}>
+                          {chainId} - {name}
+                        </li>
+                      ))}
                     </SupportedNetworksList>
                   </>
                 )}

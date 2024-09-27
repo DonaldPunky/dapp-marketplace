@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 // Used for wrapping a page component
 export const Screen = styled.div`
@@ -12,7 +12,7 @@ export const Screen = styled.div`
   flex-direction: column;
   justify-content: center;
   align-item: center;
-  padding: ${({ p }) => (p ? p : "none")};
+  padding: ${({ p }) => (p ? p : 'none')};
 `;
 
 export const iconUpload = styled.input`
@@ -49,18 +49,18 @@ export const SpacerLarge = styled.div`
 
 // Used for providing a wrapper around a component
 export const Container = styled.div`
-  display: ${({ display }) => (display ? display : "flex")};
+  display: ${({ display }) => (display ? display : 'flex')};
   flex: ${({ flex }) => (flex ? flex : 0)};
-  flex-direction: ${({ fd }) => (fd ? fd : "column")};
-  justify-content: ${({ jc }) => (jc ? jc : "flex-start")};
-  align-items: ${({ ai }) => (ai ? ai : "flex-start")};
-  background-color: ${({ test }) => (test ? test : "none")};
-  width: ${({ w }) => (w ? w : "100%")};
-  background-image: ${({ image }) => (image ? `url(${image})` : "none")};
+  flex-direction: ${({ fd }) => (fd ? fd : 'column')};
+  justify-content: ${({ jc }) => (jc ? jc : 'flex-start')};
+  align-items: ${({ ai }) => (ai ? ai : 'flex-start')};
+  background-color: ${({ test }) => (test ? test : 'none')};
+  width: ${({ w }) => (w ? w : '100%')};
+  background-image: ${({ image }) => (image ? `url(${image})` : 'none')};
   background-size: cover;
   background-position: center;
-  margin: ${({ m }) => (m ? m : "none")};
-  padding: ${({ p }) => (p ? p : "none")};
+  margin: ${({ m }) => (m ? m : 'none')};
+  padding: ${({ p }) => (p ? p : 'none')};
   flex-wrap: wrap;
 `;
 
@@ -133,44 +133,44 @@ export const Title = styled.h1`
 `;
 
 export const Card = styled.div`
-  display: ${({ display }) => (display ? display : "flex")};
-  flex: ${({ flex }) => (flex ? flex : "1 0 25%")};
-  flex-direction: ${({ fd }) => (fd ? fd : "column")};
-  justify-content: ${({ jc }) => (jc ? jc : "flex-start")};
-  align-items: ${({ ai }) => (ai ? ai : "flex-start")};
-  background-color: ${({ test }) => (test ? test : "var(--card)")};
-  width: ${({ w }) => (w ? w : "100%")};
-  background-image: ${({ image }) => (image ? `url(${image})` : "none")};
+  display: ${({ display }) => (display ? display : 'flex')};
+  flex: ${({ flex }) => (flex ? flex : '1 0 25%')};
+  flex-direction: ${({ fd }) => (fd ? fd : 'column')};
+  justify-content: ${({ jc }) => (jc ? jc : 'flex-start')};
+  align-items: ${({ ai }) => (ai ? ai : 'flex-start')};
+  background-color: ${({ test }) => (test ? test : 'var(--card)')};
+  width: ${({ w }) => (w ? w : '100%')};
+  background-image: ${({ image }) => (image ? `url(${image})` : 'none')};
   background-size: cover;
   border-radius: 20px;
   background-position: center;
-  margin: ${({ m }) => (m ? m : "0px")};
-  padding: ${({ p }) => (p ? p : "30px")};
+  margin: ${({ m }) => (m ? m : '0px')};
+  padding: ${({ p }) => (p ? p : '30px')};
   max-width: 1000px;
-  max-height: ${({ mxh }) => (mxh ? mxh : "none")};
-  min-width: ${({ mnw }) => (mnw ? mnw : "none")};
-  min-height: ${({ mnh }) => (mnh ? mnh : "none")};
+  max-height: ${({ mxh }) => (mxh ? mxh : 'none')};
+  min-width: ${({ mnw }) => (mnw ? mnw : 'none')};
+  min-height: ${({ mnh }) => (mnh ? mnh : 'none')};
   flex-wrap: wrap;
 `;
 
 export const UpperCard = styled.div`
-  display: ${({ display }) => (display ? display : "flex")};
-  flex: ${({ flex }) => (flex ? flex : "1 0 25%")};
-  flex-direction: ${({ fd }) => (fd ? fd : "column")};
-  justify-content: ${({ jc }) => (jc ? jc : "flex-start")};
-  align-items: ${({ ai }) => (ai ? ai : "flex-start")};
-  background-color: ${({ test }) => (test ? test : "var(--upper-card)")};
-  width: ${({ w }) => (w ? w : "100%")};
-  background-image: ${({ image }) => (image ? `url(${image})` : "none")};
+  display: ${({ display }) => (display ? display : 'flex')};
+  flex: ${({ flex }) => (flex ? flex : '1 0 25%')};
+  flex-direction: ${({ fd }) => (fd ? fd : 'column')};
+  justify-content: ${({ jc }) => (jc ? jc : 'flex-start')};
+  align-items: ${({ ai }) => (ai ? ai : 'flex-start')};
+  background-color: ${({ test }) => (test ? test : 'var(--upper-card)')};
+  width: ${({ w }) => (w ? w : '100%')};
+  background-image: ${({ image }) => (image ? `url(${image})` : 'none')};
   background-size: cover;
   border-radius: 20px;
   background-position: center;
-  margin: ${({ m }) => (m ? m : "0px")};
-  padding: ${({ p }) => (p ? p : "15px")};
-  max-width: ${({ mxw }) => (mxw ? mxw : "none")};
-  max-height: ${({ mxh }) => (mxh ? mxh : "none")};
-  min-width: ${({ mnw }) => (mnw ? mnw : "none")};
-  min-height: ${({ mnh }) => (mnh ? mnh : "none")};
+  margin: ${({ m }) => (m ? m : '0px')};
+  padding: ${({ p }) => (p ? p : '15px')};
+  max-width: ${({ mxw }) => (mxw ? mxw : 'none')};
+  max-height: ${({ mxh }) => (mxh ? mxh : 'none')};
+  min-width: ${({ mnw }) => (mnw ? mnw : 'none')};
+  min-height: ${({ mnh }) => (mnh ? mnh : 'none')};
   flex-wrap: wrap;
 `;
 
@@ -190,24 +190,18 @@ export const Text = styled.div`
   line-height: 1.5rem;
   word-break: break-word;
 
-  ${({ small }) => (small ? "font-size: 0.8rem;" : "")}
+  ${({ small }) => (small ? 'font-size: 0.8rem;' : '')}
 
-  ${({ medium }) => (medium ? "font-size: 1rem;" : "")}
+  ${({ medium }) => (medium ? 'font-size: 1rem;' : '')}
 
   ${({ warning }) =>
-    warning
-      ? `padding: .6rem; border-radius: .3rem; background-color: var(--warning);`
-      : ""}
+    warning ? `padding: .6rem; border-radius: .3rem; background-color: var(--warning);` : ''}
 
   ${({ success }) =>
-    success
-      ? `padding: .6rem; border-radius: .3rem; background-color: var(--success);`
-      : ""}
+    success ? `padding: .6rem; border-radius: .3rem; background-color: var(--success);` : ''}
 
   ${({ error }) =>
-    error
-      ? `padding: .6rem; border-radius: .3rem; background-color: var(--error);`
-      : ""}
+    error ? `padding: .6rem; border-radius: .3rem; background-color: var(--error);` : ''}
 
   :first-child {
     margin-top: 0;
@@ -216,7 +210,7 @@ export const Text = styled.div`
 
 export const TextTitle = styled.p`
   color: var(--text);
-  width: ${({ fullWidth }) => (fullWidth ? "100%" : "none")};
+  width: ${({ fullWidth }) => (fullWidth ? '100%' : 'none')};
   text-align: center;
   line-height: 1;
   font-size: 42px;
@@ -225,7 +219,7 @@ export const TextTitle = styled.p`
 `;
 
 export const TextSubTitle = styled.p`
-  width: ${({ fullWidth }) => (fullWidth ? "100%" : "none")};
+  width: ${({ fullWidth }) => (fullWidth ? '100%' : 'none')};
   text-align: center;
   color: var(--text);
   font-size: 24px;
@@ -233,29 +227,29 @@ export const TextSubTitle = styled.p`
 `;
 
 export const TextDescription = styled.p`
-  width: ${({ fullWidth }) => (fullWidth ? "100%" : "none")};
+  width: ${({ fullWidth }) => (fullWidth ? '100%' : 'none')};
   text-align: center;
   color: var(--text);
-  font-size: ${({ fs }) => (fs ? fs : "20px")};
-  font-weight: ${({ fw }) => (fw ? fw : "500")};
+  font-size: ${({ fs }) => (fs ? fs : '20px')};
+  font-weight: ${({ fw }) => (fw ? fw : '500')};
   overflow: hidden;
   text-overflow: ellipsis;
   word-break: break-all;
 `;
 
 export const TextDescriptionEllipsis = styled.p`
-  width: ${({ fullWidth }) => (fullWidth ? "100%" : "none")};
+  width: ${({ fullWidth }) => (fullWidth ? '100%' : 'none')};
   text-align: center;
   color: var(--text);
-  font-size: ${({ fs }) => (fs ? fs : "20px")};
-  font-weight: ${({ fw }) => (fw ? fw : "500")};
+  font-size: ${({ fs }) => (fs ? fs : '20px')};
+  font-weight: ${({ fw }) => (fw ? fw : '500')};
   overflow: hidden;
   text-overflow: ellipsis;
   word-break: break-all;
 `;
 
 export const TextID = styled.p`
-  width: ${({ fullWidth }) => (fullWidth ? "100%" : "none")};
+  width: ${({ fullWidth }) => (fullWidth ? '100%' : 'none')};
   text-align: center;
   color: var(--secondary-color);
   font-size: 16px;
@@ -263,7 +257,7 @@ export const TextID = styled.p`
 `;
 
 export const TextIDWarning = styled.p`
-  width: ${({ fullWidth }) => (fullWidth ? "100%" : "none")};
+  width: ${({ fullWidth }) => (fullWidth ? '100%' : 'none')};
   text-align: center;
   color: red;
   line-height: 1;
@@ -334,18 +328,15 @@ export const Textarea = styled.textarea`
 `;
 
 export const button = styled.button`
-  background-color: ${({ secondary }) =>
-    secondary ? "inherit" : "var(--primary)"};
-  border: ${({ secondary }) =>
-      secondary ? "var(--secondary-color)" : "var(--primary)"}
-    0.125em solid;
+  background-color: ${({ secondary }) => (secondary ? 'inherit' : 'var(--primary)')};
+  border: ${({ secondary }) => (secondary ? 'var(--secondary-color)' : 'var(--primary)')} 0.125em
+    solid;
   font-weight: 700;
   padding: 5px 20px;
   border-radius: 20px;
-  color: ${({ secondary }) =>
-    secondary ? "var(--secondary-color)" : "var(--card)"};
+  color: ${({ secondary }) => (secondary ? 'var(--secondary-color)' : 'var(--card)')};
 
-  ${({ fullWidth }) => (fullWidth ? "width: 100%;" : "")}
+  ${({ fullWidth }) => (fullWidth ? 'width: 100%;' : '')}
 
   :disabled {
     background-color: transparent;
@@ -355,9 +346,8 @@ export const button = styled.button`
     text-shadow: none;
   }
   :hover {
-    border: ${({ secondary }) => (secondary ? "var(--white)" : "none")} 0.125em
-      solid;
-    color: ${({ secondary }) => (secondary ? "var(--white)" : "none")};
+    border: ${({ secondary }) => (secondary ? 'var(--white)' : 'none')} 0.125em solid;
+    color: ${({ secondary }) => (secondary ? 'var(--white)' : 'none')};
   }
 `;
 
@@ -379,7 +369,7 @@ export const ButtonSquare = styled.button`
 `;
 
 export const profilePic = styled.div`
-  background-image: url(${({ src }) => (src ? src : "")};);
+  background-image: url(${({ src }) => (src ? src : '')};);
   width: 150px;
   height: 150px;
 `;

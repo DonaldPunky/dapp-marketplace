@@ -1,5 +1,5 @@
-import { AbstractConnector } from "@web3-react/abstract-connector";
-import invariant from "tiny-invariant";
+import { AbstractConnector } from '@web3-react/abstract-connector';
+import invariant from 'tiny-invariant';
 
 class RequestError extends Error {
   constructor(message, code, data) {
@@ -30,7 +30,7 @@ class MiniRpcProvider {
   }
 
   clearBatch = async () => {
-    console.debug("Clearing batch", this.#batch);
+    console.debug('Clearing batch', this.#batch);
     const batch = this.#batch;
     this.#batch = [];
     this.#batchTimeoutId = null;
@@ -38,29 +38,22 @@ class MiniRpcProvider {
 
     try {
       response = await fetch(this.url, {
-        method: "POST",
+        method: 'POST',
         headers: {
-          "content-type": "application/json",
-          accept: "application/json",
+          'content-type': 'application/json',
+          accept: 'application/json',
         },
         body: JSON.stringify(batch.map((item) => item.request)),
       });
     } catch (error) {
       // todo: failed on disconnect
-      batch.forEach(({ reject }) =>
-        reject(new Error("Failed to send batch call")),
-      );
+      batch.forEach(({ reject }) => reject(new Error('Failed to send batch call')));
       return;
     }
 
     if (!response.ok) {
       batch.forEach(({ reject }) =>
-        reject(
-          new RequestError(
-            `${response.status}: ${response.statusText}`,
-            -32000,
-          ),
-        ),
+        reject(new RequestError(`${response.status}: ${response.statusText}`, -32000))
       );
       return;
     }
@@ -69,9 +62,7 @@ class MiniRpcProvider {
     try {
       json = await response.json();
     } catch (error) {
-      batch.forEach(({ reject }) =>
-        reject(new Error("Failed to parse JSON response")),
-      );
+      batch.forEach(({ reject }) => reject(new Error('Failed to parse JSON response')));
       return;
     }
     const byKey = batch.reduce((memo, current) => {
@@ -85,23 +76,19 @@ class MiniRpcProvider {
         request: { method },
       } = byKey[result.id];
       if (resolve) {
-        if ("error" in result) {
+        if ('error' in result) {
           reject(
-            new RequestError(
-              result?.error?.message,
-              result?.error?.code,
-              result?.error?.data,
-            ),
+            new RequestError(result?.error?.message, result?.error?.code, result?.error?.data)
           );
-        } else if ("result" in result) {
+        } else if ('result' in result) {
           resolve(result.result);
         } else {
           reject(
             new RequestError(
               `Received unexpected JSON-RPC response to ${method} request.`,
               -32000,
-              result,
-            ),
+              result
+            )
           );
         }
       }
@@ -110,23 +97,21 @@ class MiniRpcProvider {
 
   sendAsync = (request, callback) => {
     this.request(request.method, request.params)
-      .then((result) =>
-        callback(null, { jsonrpc: "2.0", id: request.id, result }),
-      )
+      .then((result) => callback(null, { jsonrpc: '2.0', id: request.id, result }))
       .catch((error) => callback(error, null));
   };
 
   request = async (method, params) => {
-    if (typeof method !== "string") {
+    if (typeof method !== 'string') {
       return this.request(method.method, method.params);
     }
-    if (method === "eth_chainId") {
+    if (method === 'eth_chainId') {
       return `0x${this.chainId.toString(16)}`;
     }
     const promise = new Promise((resolve, reject) => {
       this.#batch.push({
         request: {
-          jsonrpc: "2.0",
+          jsonrpc: '2.0',
           id: this.#nextId++,
           method,
           params,
@@ -148,16 +133,13 @@ export class NetworkConnector extends AbstractConnector {
   constructor({ urls, defaultChainId }) {
     invariant(
       defaultChainId || Object.keys(urls).length === 1,
-      "defaultChainId is a required argument with >1 url",
+      'defaultChainId is a required argument with >1 url'
     );
     super({ supportedChainIds: Object.keys(urls).map((k) => Number(k)) });
 
     this.#currentChainId = defaultChainId || Number(Object.keys(urls)[0]);
     this.#providers = Object.keys(urls).reduce((accumulator, chainId) => {
-      accumulator[Number(chainId)] = new MiniRpcProvider(
-        Number(chainId),
-        urls[Number(chainId)],
-      );
+      accumulator[Number(chainId)] = new MiniRpcProvider(Number(chainId), urls[Number(chainId)]);
       return accumulator;
     }, {});
   }

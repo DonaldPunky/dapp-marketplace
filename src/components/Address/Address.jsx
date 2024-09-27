@@ -1,18 +1,18 @@
-import { useEffect } from "react";
-import { useState } from "react";
-import { useMoralisDapp } from "../../providers/MoralisDappProvider/MoralisDappProvider";
-import { getEllipsisTxt } from "../../helpers/formatters";
-import Blockie from "../Blockie";
-import "./identicon.css";
+import { useEffect } from 'react';
+import { useState } from 'react';
+import { useMoralisDapp } from '../../providers/MoralisDappProvider/MoralisDappProvider';
+import { getEllipsisTxt } from '../../helpers/formatters';
+import Blockie from '../Blockie';
+import './identicon.css';
 
 const styles = {
   address: {
-    height: "36px",
-    display: "flex",
-    gap: "5px",
-    backgroundColor: "rgba(255, 255, 255, 0.1)",
-    borderRadius: "9px",
-    alignItems: "center",
+    height: '36px',
+    display: 'flex',
+    gap: '5px',
+    backgroundColor: 'rgba(255, 255, 255, 0.1)',
+    borderRadius: '9px',
+    alignItems: 'center',
   },
 };
 
@@ -38,7 +38,7 @@ function Address(props) {
       fill="none"
       strokeLinecap="round"
       strokeLinejoin="round"
-      style={{ cursor: "pointer" }}
+      style={{ cursor: 'pointer' }}
       onClick={() => {
         navigator.clipboard.writeText(address);
         setIsClicked(true);
@@ -54,9 +54,9 @@ function Address(props) {
 
   return (
     <div style={{ ...styles.address, ...props.style }}>
-      {props.avatar === "left" && <Blockie address={address} size={7} />}
+      {props.avatar === 'left' && <Blockie address={address} size={7} />}
       <p>{props.size ? getEllipsisTxt(address, props.size) : address}</p>
-      {props.avatar === "right" && <Blockie address={address} size={7} />}
+      {props.avatar === 'right' && <Blockie address={address} size={7} />}
       {props.copyable && (isClicked ? <Check /> : <Copy />)}
     </div>
   );

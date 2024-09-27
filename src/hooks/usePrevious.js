@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef } from 'react';
 
 // Used from https://usehooks.com/usePrevious/
 export default function usePrevious(value) {

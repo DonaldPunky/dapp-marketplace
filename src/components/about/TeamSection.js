@@ -1,75 +1,71 @@
-import Grid from "@mui/material/Grid";
-import Typography from "@mui/material/Typography";
-import Box from "@mui/material/Box";
-import Container from "@mui/material/Container";
-import Avatar from "@mui/material/Avatar";
-import Badge from "@mui/material/Badge";
-import LinkedInIcon from "@mui/icons-material/LinkedIn";
+import Grid from '@mui/material/Grid';
+import Typography from '@mui/material/Typography';
+import Box from '@mui/material/Box';
+import Container from '@mui/material/Container';
+import Avatar from '@mui/material/Avatar';
+import Badge from '@mui/material/Badge';
+import LinkedInIcon from '@mui/icons-material/LinkedIn';
 
 // Load members image from avatars
-import kevin from "../../assets/images/team/kevin.png";
-import derek from "../../assets/images/team/derek.png";
-import ajay from "../../assets/images/team/ajay.png";
-import vladimir from "../../assets/images/team/vladimir.png";
-import bhumish from "../../assets/images/team/bhumish.png";
-import gow from "../../assets/images/team/gow.png";
+import kevin from '../../assets/images/team/kevin.png';
+import derek from '../../assets/images/team/derek.png';
+import ajay from '../../assets/images/team/ajay.png';
+import vladimir from '../../assets/images/team/vladimir.png';
+import bhumish from '../../assets/images/team/bhumish.png';
+import gow from '../../assets/images/team/gow.png';
 //
 
 const members = [
   {
-    name: "Kevin Smith",
-    title: "CEO",
+    name: 'Kevin Smith',
+    title: 'CEO',
     avatar: kevin,
-    linkedin: "",
-    bio: "He is a CEO, co-founder of ELO, Effortless Order projects",
+    linkedin: '',
+    bio: 'He is a CEO, co-founder of ELO, Effortless Order projects',
   },
   {
-    name: "Derek Smith",
-    title: "Manager Development & Testing",
+    name: 'Derek Smith',
+    title: 'Manager Development & Testing',
     avatar: derek,
-    linkedin: "",
-    bio: "More than 6 years experiences in development & testing",
+    linkedin: '',
+    bio: 'More than 6 years experiences in development & testing',
   },
   {
-    name: "Ajay Jain",
-    title: "Web development Manager",
+    name: 'Ajay Jain',
+    title: 'Web development Manager',
     avatar: ajay,
-    linkedin: "",
-    bio: "He is a web development manager",
+    linkedin: '',
+    bio: 'He is a web development manager',
   },
   {
-    name: "Vladimir Urosevic",
-    title: "Restaurant Support Manager",
+    name: 'Vladimir Urosevic',
+    title: 'Restaurant Support Manager',
     avatar: vladimir,
-    linkedin: "",
-    bio: "He is a restaurant support manager",
+    linkedin: '',
+    bio: 'He is a restaurant support manager',
   },
   {
-    name: "Bhumish Shaw",
-    title: "Server Administration Manager",
+    name: 'Bhumish Shaw',
+    title: 'Server Administration Manager',
     avatar: bhumish,
-    linkedin: "",
-    bio: "He is a server administration manager",
+    linkedin: '',
+    bio: 'He is a server administration manager',
   },
   {
-    name: "Gow Patel",
-    title: "Mobile development Manager",
+    name: 'Gow Patel',
+    title: 'Mobile development Manager',
     avatar: gow,
-    linkedin: "",
-    bio: "He is a Mobile Development Manager",
+    linkedin: '',
+    bio: 'He is a Mobile Development Manager',
   },
 ];
 
 const TeamSection = () => {
   return (
-    <Box sx={{ py: 7, borderTop: 1, borderColor: "grey.100" }}>
+    <Box sx={{ py: 7, borderTop: 1, borderColor: 'grey.100' }}>
       <Container>
-        <Box sx={{ maxWidth: "500px" }}>
-          <Typography
-            variant="h5"
-            color="primary.main"
-            sx={{ mb: 1, fontWeight: 700 }}
-          >
+        <Box sx={{ maxWidth: '500px' }}>
+          <Typography variant="h5" color="primary.main" sx={{ mb: 1, fontWeight: 700 }}>
             Have you met the ELO Founders Team?
           </Typography>
           <Typography
@@ -86,17 +82,17 @@ const TeamSection = () => {
             <Grid item xs={12} md={4} key={i}>
               <Badge
                 overlap="circular"
-                anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
+                anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
                 badgeContent={
                   <Avatar
                     component="a"
                     href={member.linkedin}
                     target="_blank"
                     sx={{
-                      bgcolor: "#fff",
+                      bgcolor: '#fff',
                       width: 30,
                       height: 30,
-                      border: "2px solid #fff",
+                      border: '2px solid #fff',
                     }}
                   >
                     <LinkedInIcon color="action" />
@@ -109,7 +105,7 @@ const TeamSection = () => {
                 <Typography
                   variant="body"
                   color="text.primary"
-                  sx={{ fontWeight: 700, fontSize: "0.875rem" }}
+                  sx={{ fontWeight: 700, fontSize: '0.875rem' }}
                 >
                   {member.name}
                 </Typography>
@@ -117,7 +113,7 @@ const TeamSection = () => {
                   variant="caption"
                   display="block"
                   color="text.secondary"
-                  sx={{ fontSize: "0.875rem", mb: 1, fontWeight: 500 }}
+                  sx={{ fontSize: '0.875rem', mb: 1, fontWeight: 500 }}
                 >
                   {member.title}
                 </Typography>
@@ -125,7 +121,7 @@ const TeamSection = () => {
                   variant="caption"
                   display="block"
                   color="text.secondary"
-                  sx={{ fontSize: "0.875rem" }}
+                  sx={{ fontSize: '0.875rem' }}
                 >
                   {member.bio}
                 </Typography>

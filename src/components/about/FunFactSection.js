@@ -1,10 +1,10 @@
-import Typography from "@mui/material/Typography";
-import Box from "@mui/material/Box";
-import Container from "@mui/material/Container";
-import Button from "@mui/material/Button";
-import { Link } from "react-router-dom";
-import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
-import HighlightIcon from "@mui/icons-material/Highlight";
+import Typography from '@mui/material/Typography';
+import Box from '@mui/material/Box';
+import Container from '@mui/material/Container';
+import Button from '@mui/material/Button';
+import { Link } from 'react-router-dom';
+import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
+import HighlightIcon from '@mui/icons-material/Highlight';
 
 const FunFactSection = () => {
   return (
@@ -12,7 +12,7 @@ const FunFactSection = () => {
       id="funFact"
       sx={{
         py: 7,
-        textAlign: "center",
+        textAlign: 'center',
       }}
     >
       <Container>
@@ -21,14 +21,14 @@ const FunFactSection = () => {
           variant="h6"
           component="div"
           color="primary.main"
-          sx={{ fontWeight: "bold", mb: 2 }}
+          sx={{ fontWeight: 'bold', mb: 2 }}
         >
           Fun Fact
         </Typography>
         <Typography
           variant="h3"
           component="div"
-          sx={{ mb: 2, maxWidth: "800px", mx: "auto", fontWeight: 500 }}
+          sx={{ mb: 2, maxWidth: '800px', mx: 'auto', fontWeight: 500 }}
         >
           ...
         </Typography>
